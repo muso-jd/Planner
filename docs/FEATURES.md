@@ -4,10 +4,10 @@
 |---|---|
 | Today | Three suggested ready actions, daily progress, compact mood entry, scheduled routines/time blocks and morning/evening entries |
 | Capture | Quick notes, convert note to task, mood/feeling entry, timer; default landing on phones |
-| Calendar | Month/week seven-column grids on all viewports; horizontal scrolling on phones; tasks, blocks and routine schedules; select days or add events; task recurrence generates the next dated task on completion |
+| Calendar | Month/week seven-column grids on all viewports; horizontal scrolling on phones; tasks and blocks; routines remain in Today/Routines; select days or add events; task recurrence generates the next dated task on completion |
 | Tasks | Saved category/text tabs, six sort options, confirmation-based completion, importance, optional due date/time, reminders, repeat interval, focus date and funding estimates |
-| Projects/goals | Funding target, amount saved, start/target dates, linked tasks, milestones and progress |
-| Dependencies | Select prerequisite tasks; circular chains rejected; interactive SVG nodes open editors; budget/time allocation can block completion |
+| Projects/goals | Funding, dates, nested goals/projects, contained actions/milestones; derived completion/progress; separate inherited project accent color |
+| Dependencies | Task/goal/project prerequisites plus required contained work; mixed cycles rejected; Graph/Outline/Board/Table views; search/type/status/project filters; full/upstream/downstream highlights; budget/time gates retained |
 | Subtasks | Parent task grouping, separate prerequisite links; parent cycles rejected |
 | Routines | Daily/weekly/monthly tabs, end-of-month offsets, Monday-first weekday circles, inline time, type icons and completion analysis; old instructions retained but no instruction input |
 | Budget | Recurring EUR income/expenses, business/personal scope tabs, monthly cash-flow projections, timing countdowns, links, files and separate task funding |
@@ -106,3 +106,12 @@ Routines have Daily/Weekly/Monthly/Analysis tabs. Daily circles include/exclude 
 Trackers use four rows of seven dots, paging every 28 elapsed days while retaining the total day count. The timer is removed from Trackers but remains in Capture, along with recorded-session history and the running dock. Journal includes new notes, diary and feelings plus a restorable archive. New archives retain mood/diary observations in descriptive analytics; legacy deleted journal records can also be restored. Five progressively filled mood circles, a context field and a briefly green save checkmark appear under the title in Journal/Capture/Today. Selecting a mood does not save until the checkmark is pressed.
 
 On iOS, Safari → Share → Add to Home Screen uses the custom 180px icon. Existing installed icons may require removing/re-adding the Home Screen shortcut to refresh branding; preserve pending edits and the workspace key before changing installation. No Apple Calendar, Reminders or Tasks access is added.
+
+## Dependencies and Health history (3.2)
+
+- A parent task cannot complete until its subtasks and prerequisite items are complete. Completing subtasks makes a parent ready; tasks retain explicit completion with a note. A previously confirmed parent becomes effectively incomplete while required work is reopened; its confirmation/history is retained.
+- Projects/goals complete automatically only with nonempty, fully completed contained work and completed explicit prerequisites. Empty containers stay incomplete; old manual progress is retained in storage but no longer drives these calculations. Progress is the mean of direct contained-item progress. A 100% work rollup can still wait for a parent confirmation or external prerequisite.
+- Missing/deleted explicit prerequisites block work; deleted contained items are excluded. Editors reject cycles introduced by prerequisite/parent/container changes. Imported legacy cycles render as blocked, rather than recursively completing.
+- Project filters include descendants through project/goal membership and task parent links. Graph arrows run prerequisite → dependent; dashed lines mean contained work. Select a node to highlight; Open highlighted item edits it. Large graphs scroll.
+- Health import offers 7/28/90/365 days ending on the selected reporting date, split into at most 28-day half-open windows. Preview checks sleep, exercise, weight, HRV, resting heart rate, daily oxygen saturation, daily respiratory rate and body fat. Returned/importable counts, coverage and access errors are separate. Other enabled APIs/types are not scanned.
+- Stop reading aborts the current request and presents any completed partial results for review. No health readings are stored until Import is selected. The last availability report is saved as encrypted workspace metadata. OAuth tokens stay in browser memory. Manual entries, archived readings and workout annotations survive repeat imports.

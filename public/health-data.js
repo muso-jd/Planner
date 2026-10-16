@@ -1,11 +1,11 @@
 import {day} from './core.js';
 export const HEALTH_SCOPES=['activity_and_fitness','sleep','health_metrics_and_measurements'].map(s=>'https://www.googleapis.com/auth/googlehealth.'+s+'.readonly');
-export const HEALTH_TYPES=['sleep','exercise','weight','daily-heart-rate-variability','daily-resting-heart-rate'];
+export const HEALTH_TYPES=['sleep','exercise','weight','daily-heart-rate-variability','daily-resting-heart-rate','daily-oxygen-saturation','daily-respiratory-rate','body-fat'];
 const number=v=>v!==undefined&&v!==null&&v!==''&&Number.isFinite(Number(v))?Number(v):null;
 const dateObject=d=>typeof d==='string'?d.slice(0,10):d?.year?`${d.year}-${String(d.month).padStart(2,'0')}-${String(d.day).padStart(2,'0')}`:'';
 const civil=c=>typeof c==='string'?c:dateObject(c?.date)+(c?.time?'T'+[c.time.hours||0,c.time.minutes||0,c.time.seconds||0].map(n=>String(n).padStart(2,'0')).join(':'):'');
 export const seconds=d=>typeof d==='string'&&/^\d+(\.\d+)?s$/.test(d)?parseFloat(d):null;
-export function healthFilter(type,from,to){const key=type.replaceAll('-','_'),field=type==='sleep'?'interval.civil_end_time':type==='exercise'?'interval.civil_start_time':type==='weight'?'sample_time.civil_time':'date';return `${key}.${field} >= "${from}" AND ${key}.${field} < "${to}"`}
+export function healthFilter(type,from,to){const key=type.replaceAll('-','_'),field=type==='sleep'?'interval.civil_end_time':type==='exercise'?'interval.civil_start_time':['weight','body-fat'].includes(type)?'sample_time.civil_time':'date';return `${key}.${field} >= "${from}" AND ${key}.${field} < "${to}"`}
 export async function normalizeHealth(point,type){
  const key=type.replace(/-([a-z])/g,(_,c)=>c.toUpperCase()),v=point[key];if(!v)return null;
  const start=v.interval?.startTime,end=v.interval?.endTime,at=v.sampleTime?.physicalTime||end||start;
@@ -19,7 +19,10 @@ export async function normalizeHealth(point,type){
  if(type==='exercise'){const m=v.metricsSummary||{};r.metric='workout';r.title=v.displayName||String(v.exerciseType||'Workout').replaceAll('_',' ').toLowerCase();r.start=start;r.end=end;r.value=seconds(v.activeDuration)!==null?seconds(v.activeDuration)/60:(Date.parse(end)-Date.parse(start))/60000;r.unit='minutes';r.exerciseType=v.exerciseType;r.averageHeartRate=number(m.averageHeartRateBeatsPerMinute);r.calories=number(m.caloriesKcal);r.distanceKm=number(m.distanceMillimeters)!==null?Number(m.distanceMillimeters)/1e6:null;r.zoneMinutes=Object.fromEntries(Object.entries(m.heartRateZoneDurations||{}).map(([k,d])=>[k,(seconds(d)||0)/60]));if(!Number.isFinite(r.value)||r.value<=0)return null;}
  if(type==='daily-heart-rate-variability'){r.metric='hrv';r.title='Heart rate variability';r.value=number(v.averageHeartRateVariabilityMilliseconds);r.unit='ms';if(r.value===null)return null;}
  if(type==='daily-resting-heart-rate'){r.metric='restingHeartRate';r.title='Resting heart rate';r.value=number(v.beatsPerMinute);r.unit='bpm';if(r.value===null||r.value<=0)return null;}
- return r;
+ if(type==='daily-oxygen-saturation'){r.metric='oxygenSaturation';r.title='Daily oxygen saturation';r.value=number(v.averagePercentage);r.unit='%';if(r.value===null||r.value<0||r.value>100)return null;}
+ if(type==='daily-respiratory-rate'){r.metric='respiratoryRate';r.title='Daily respiratory rate';r.value=number(v.breathsPerMinute);r.unit='breaths/min';if(r.value===null||r.value<=0)return null;}
+ if(type==='body-fat'){r.metric='bodyFat';r.title='Body fat';r.value=number(v.percentage);r.unit='%';if(r.value===null||r.value<0||r.value>100)return null;}
+ return r.metric?r:null;
 }
 export function recoveryPlan(workout,now=Date.now()){
  const hours=number(workout.recoveryHours),end=Date.parse(workout.end||workout.at);
@@ -33,4 +36,12 @@ export function validateHealth(r){
  if(!Number.isFinite(r.value)||r.value<min||r.value>max)throw Error(`Enter a value from ${min} to ${max}.`);
  if(r.metric==='workout'){if(!Number.isFinite(Date.parse(r.end)))throw Error('Choose the workout end time.');if(r.intensity!==''&&(!Number.isFinite(Number(r.intensity))||Number(r.intensity)<1||Number(r.intensity)>10))throw Error('Intensity must be 1–10, or blank.');if(r.recoveryHours!==''&&(!Number.isFinite(Number(r.recoveryHours))||Number(r.recoveryHours)<0||Number(r.recoveryHours)>168))throw Error('Planned rest must be 0–168 hours, or blank.');}
  return r;
+}
+
+// Half-open civil-date windows cover exactly N reporting days, including the end date.
+export function healthWindows(end,days,size=28){
+ if(![7,28,90,365].includes(days)||!/^\d{4}-\d{2}-\d{2}$/.test(end))throw Error('Choose a supported import period.');
+ const upper=new Date(end+'T12:00:00Z');upper.setUTCDate(upper.getUTCDate()+1);
+ const from=new Date(upper);from.setUTCDate(from.getUTCDate()-days);const windows=[];
+ while(from<upper){const to=new Date(from);to.setUTCDate(to.getUTCDate()+size);if(to>upper)to.setTime(upper.getTime());windows.push({from:from.toISOString().slice(0,10),to:to.toISOString().slice(0,10)});from.setTime(to.getTime());}return windows;
 }

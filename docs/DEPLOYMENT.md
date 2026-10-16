@@ -167,3 +167,9 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 - Existing D1, Artlook Gatekeeper and private Drive folder bindings reused from live settings. No new binding, schema migration, owner-record write or Google configuration change. Google Health requires user API enablement/consent; authorization tokens remain browser memory-only. See `docs/GOOGLE.md` and `docs/changes/2026-10-16-calendar-health-insights.md`.
 - PWA shell: 3.1.0. Let the update download, close every old planner app window/tab, then reopen; preserve pending edits and workspace keys.
 - Rollback: Worker version `07aaf4e9-80ad-4e0b-91d1-d14bf3f4c147` (3.0.0), retaining all data and bindings. Older UI does not display Health records or the new export controls; new fields remain in the encrypted vault. Cached clients follow the existing activation rules. Prefer a forward correction and never delete data or deployment history as rollback.
+
+## Dependencies and Health history — 3.2.0
+
+Source branch `feature/dependencies-health-history`, stacked on `feature/calendar-health-insights` (PR #3). No automatic Git deployment. Build includes `/dependencies.js`; PWA shell is 3.2.0. No new binding, D1 migration, owner-data rewrite, audience change or Google configuration change. Keep the existing private Drive folder and service bindings. Upload the built module using the content-only Worker API to preserve live configuration.
+
+Rollback target: `92794d93-6818-498c-a79e-4b93dfcf1bac` (3.1.0), preserving D1 and all bindings. Old UI does not understand cross-type prerequisite completion or project accent inheritance, but stored fields remain. Close all old PWA windows after the new shell downloads and reopen; preserve pending edits. Exact deployment evidence is appended only after rollout verification.
