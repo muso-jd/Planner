@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.3.0 — 2026-10-16
+
+- Make Life Planner installable as a standalone Android web app with launcher and maskable icons.
+- Add installation controls on the unlock screen and in Connect, with browser-menu guidance.
+- Cache the public app shell for offline reopening, preserving existing local edits and reconnect sync.
+- Keep API/Google/image responses outside the service-worker cache; defer app updates until old windows close.
+
 ## 2.2.3 — 2026-10-16
 
 - Reduce category icons to compact rounded outlines with more space before entry text.

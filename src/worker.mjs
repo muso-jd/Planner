@@ -6,7 +6,7 @@ async function hash(s){return Array.from(new Uint8Array(await crypto.subtle.dige
 export default {async fetch(request,env){
  try {
  const url=new URL(request.url);
- if(url.pathname==='/api/health')return json({ok:true,version:'2.2.3',storage:!!env.DB});
+ if(url.pathname==='/api/health')return json({ok:true,version:'2.3.0',storage:!!env.DB});
  if(url.pathname.startsWith('/api/')){
   if(!env.DB)return json({error:'Cloud storage is unavailable'},503);
   if(request.headers.get('Origin') && request.headers.get('Origin')!==url.origin)return json({error:'Origin rejected'},403);

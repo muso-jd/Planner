@@ -45,3 +45,11 @@ Authenticated `/api/drive/list` normalizes the request to the single server-conf
 ## Local typography (2.2.3)
 
 Noto Sans Mono is bundled as a variable WOFF font with Latin/extended Latin, general punctuation, euro and arrow coverage. The text-safe base64 source in public/fonts is embedded by scripts/build.mjs; the Worker decodes it into binary at /fonts/noto-sans-mono.woff with the font/woff MIME type. No runtime font service is contacted. The SIL Open Font License is retained alongside the asset. System fallback handles glyphs outside the subset.
+
+## Installable app shell (2.3.0)
+
+manifest.webmanifest declares a stable root identity, clean start URL, standalone display and 192/512 px PNG plus maskable icons. pwa.js handles the browser installation lifecycle separately from workspace code and registers sw.js. Icon artwork is code-native SVG; scripts/generate-icons.mjs exports PNG base64 sources using Playwright.
+
+The service worker atomically precaches an explicit same-origin public asset list under a versioned life-planner-shell cache. Only those GET paths are intercepted. API envelopes, attachments, credentials, Google requests and writes bypass Cache Storage. Existing localStorage workspace persistence continues to hold pending edits and existing sync handles reconnect. No background sync or Web Push is added. Worker updates wait for old clients to close; activation removes only old shell caches and claims clients. Every shell-affecting deployment must bump the cache version in sw.js to match the app version.
+
+Installation references: https://web.dev/learn/pwa/installation and https://web.dev/learn/pwa/web-app-manifest.

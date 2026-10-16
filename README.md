@@ -35,3 +35,5 @@ npm test
 This public repository contains application code and synthetic tests only. Personal list contents, migrated data, workspace keys and OAuth access tokens are excluded.
 
 Typography uses locally served Noto Sans Mono. Font licensing and source provenance are recorded in `public/fonts/README.md`.
+
+Android: open the live URL in Chrome, then choose **Install app** from the browser menu or use **Connect → Install on Android**. The app opens in its own window. Use your existing workspace key; after an online load, cached records can be edited offline and synchronized on reconnect. Run `npm run test:pwa` for installation/offline checks (Playwright required).

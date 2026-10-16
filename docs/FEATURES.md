@@ -28,7 +28,7 @@
 - Budget entries are a manual planning ledger, not bank sync, tax calculation or double-entry bookkeeping.
 - Routine medication instructions are entered by the user. Imported routine slots were placeholders, not a verified medication plan.
 - Cloud history retains encrypted save versions; UI currently lists their timestamps rather than offering one-click restoration. History is unpruned, so storage grows with saves.
-- Encryption protects cloud records. The browser's working cache is readable on the device; lock clears the active cache once sync is complete. No service worker/offline shell is installed; keep the page open for offline editing.
+- Encryption protects cloud records. The browser's working cache is readable on the device; lock clears the active cache once sync is complete. The public app shell supports offline reopening after one successful online load; cached workspace records can be edited offline and sync when the connection returns. First-time unlock and uncached diary images need a connection.
 - One current timer is enforced within each loaded workspace, but simultaneous offline timer starts on separate devices can create multiple sessions for later manual reconciliation.
 
 ## Urgency and entry colors (2.1.0)
@@ -63,3 +63,11 @@ List entries reserve a full-height icon rail beside the title and metadata. Whit
 ## Compact icons and typography (2.2.3)
 
 Category icons now use compact 28 px glyphs (24 px on phones), thinner rounded strokes and the coordinated white/color glow. Additional space separates icons from text; title buttons no longer indent titles relative to category/metadata lines. Entry titles are 17 px on desktop/tablet and 16 px on phones, with larger card titles. The planner uses locally served Noto Sans Mono, with system fallback for unsupported glyphs.
+
+## Android installation (2.3.0)
+
+Open the live planner in Android Chrome. Use Connect → Install on Android, or Chrome’s menu → Install app / Add to Home screen → Install. A direct install button appears when the browser offers its installation event; otherwise the dialog explains the menu route. The unlock screen also includes this control. Installation creates a standalone launcher entry; browser/device behavior can vary. There is no Play Store listing or APK download.
+
+Use the same workspace key and optionally Keep this device connected on your own phone. Phone launches prioritize capture, mood and timing. After loading online once, the app shell and existing device records can reopen offline; changes remain local until reconnect sync. Uncached diary images, Google exchange and backups need a connection. Installation does not enable closed-app reminders.
+
+Updates wait until all existing planner tabs/app windows close, protecting in-progress edits. Reopen online to check for an update; close all planner windows and reopen again to activate a downloaded update.

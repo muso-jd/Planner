@@ -1,0 +1,9 @@
+let installPrompt=null;
+const dialog=document.querySelector('#installApp'),action=document.querySelector('#confirmInstall'),status=document.querySelector('#installStatus');
+const installed=()=>matchMedia('(display-mode: standalone)').matches;
+function updateInstall(){action.hidden=!installPrompt||installed();status.textContent=installed()?'Life Planner is running as an installed app.':installPrompt?'Ready to install. Confirm the browser prompt to add Life Planner.':'On Android, open this planner in Chrome. Open the ⋮ menu, then choose Install app or Add to Home screen → Install. If the option is missing, reopen or refresh the page after a moment.';}
+window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;updateInstall()});
+window.addEventListener('appinstalled',()=>{installPrompt=null;status.textContent='Life Planner is installed. Open it from your home screen or app launcher.';action.hidden=true});
+document.addEventListener('click',event=>{if(event.target.closest('[data-install-app]')){updateInstall();dialog.showModal()}if(event.target.closest('#closeInstall'))dialog.close()});
+action.addEventListener('click',async()=>{if(!installPrompt)return;action.disabled=true;const prompt=installPrompt;installPrompt=null;try{await prompt.prompt();const choice=await prompt.userChoice;status.textContent=choice.outcome==='accepted'?'Installation requested. Your browser will finish adding Life Planner.':'Installation cancelled. You can install later from the browser menu.';}catch{status.textContent='Use Chrome’s ⋮ menu → Install app to try again.'}finally{action.hidden=true;action.disabled=false}});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'}).catch(()=>{status.textContent='Offline setup could not finish. Reconnect and refresh the planner, then try installing again.'});
