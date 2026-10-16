@@ -22,3 +22,5 @@ The Artlook gatekeeper was inspected and its internal service-binding pattern re
 ## Deployment
 
 Continues the existing feature branch and PR. See DEPLOYMENT.md for the exact source and production version. The additive image-table migration does not modify existing vault records. The only private configuration update sets the supplied folder and backup preferences through revision-checked encrypted sync; existing user entries are preserved.
+
+Production deployment completed at 2026-10-16T09:02:09.898485Z from source `3a33d5cb510b0cbfda9a6cea299253767e70f9ab`; deployment/version IDs and rollback are in DEPLOYMENT.md. Live health and served source hash passed. The authenticated Artlook service-bound read returned an empty file list successfully. This does not establish write authorization; real uploads remain pending Google setup.

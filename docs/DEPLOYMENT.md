@@ -41,3 +41,16 @@ The live `/api/health` returned `ok: true`, version `2.0.0`, and `storage: true`
 - Deployment: `d2dce330-a3ce-416a-aab3-e80d5505d4db`; Worker version: `dbeb9628-2d32-430e-8a31-f33218fcd145`; traffic: 100%.
 - Verification: health returned `ok:true`, `version:2.1.0`, `storage:true`; live `app.js` SHA-256 matched the tested source (`1130688a08d99ba334edbbc73ca3970721f708833b3175fd75c0029bd4a9802d`). Build, 14 automated tests and 61 browser checks passed.
 - Rollback: route traffic to version `be7a1306-875d-4668-a635-1ce203196dcc` (2.0.0); do not delete any Worker or database. Existing vault data and new presentation/completion fields remain retained.
+
+## Verified production rollout — 2.2.0
+
+- UTC: 2026-10-16T09:02:09.898485Z.
+- Source: `3a33d5cb510b0cbfda9a6cea299253767e70f9ab`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production, https://planner.jeremydachojd.workers.dev/.
+- Deployment ID: `ee37c5d5-653f-4eda-b666-b511eca7d37d`; Worker version ID: `127d5237-bfc5-4096-a6c8-4c6f7a133b53`; traffic: 100%.
+- Bindings: existing `DB`; `ARTLOOK_GATEKEEPER` service → existing `gatekeeper` production; `DRIVE_FOLDER_ID` plain-text environment value configured privately. Preserve this folder binding on future deployments; it is intentionally not embedded in Git configuration.
+- Additive migration: `images` table from schema.sql created before deployment. Existing entries remain in their vault.
+- Live health: `ok:true`, `version:2.2.0`, `storage:true`. Served app.js matched local SHA-256 `e5f089eb8f31ca1ccd1de8ae13bd9798bae9b49c04853c84465bed4d442607aa`.
+- Authenticated live gatekeeper status confirmed the service and folder binding, explicitly `mode:read-only`. The fixed-folder list returned HTTP success with zero files. This verifies transport, not Google write permission or proof of access to non-public folder contents.
+- Build, 16 automated tests and 63 browser checks passed. Real Google uploads remain unconfigured; no uploaded Drive files or backups are claimed.
+- Rollback: route traffic to Worker version `dbeb9628-2d32-430e-8a31-f33218fcd145` (2.1.0), retaining all D1 tables and image rows. The older UI does not expose diary attachments. No deployment, source gatekeeper, secret or Drive file was deleted.
