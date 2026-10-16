@@ -76,3 +76,15 @@ The live `/api/health` returned `ok: true`, version `2.0.0`, and `storage: true`
 - Validation: build, 16 automated tests and 63 browser checks passed; desktop and phone screenshots reviewed. Chromium covered desktop, simulated iPad portrait/landscape and phone. No physical Safari/iPad validation is claimed.
 - Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
 - Rollback: route to version `4d159ba9-7dfb-45c1-83ef-799e08fab116` (2.2.1), retaining all data and bindings.
+
+## Verified production rollout — 2.2.3 (Compact icons and typography)
+
+- UTC: 2026-10-16T09:31:42.366496Z.
+- Source: `e8ae24fb8394fce096d844b144aa183812bf4826`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `aa2d6efe-942f-4d80-bf84-9ec48ddab09a`; Worker version: `341a100f-a17f-4620-91e6-6370c8af94b8`; traffic: 100%.
+- Health confirmed `ok:true`, `version:2.2.3`, `storage:true`.
+- Live stylesheet matched tested source SHA-256 `c0be81bf11fdc5f2733bb921ea1ccc0a4db4bae1fa8a26cef17855cae5f856dd`. Live binary font matched SHA-256 `0d12790e1978021a68d0485b5234681eeb5e2edb47bc7bb2e5254c21fb5cc76c`.
+- Validation: build, 16 automated tests and 63 browser checks passed; desktop/phone screenshots reviewed. Chromium covered desktop, simulated iPad portrait/landscape and phone; physical Safari/iPad remains unverified.
+- Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
+- Rollback: route to version `dbf41e96-7d10-488f-a469-786ebf3fc665` (2.2.2), retaining all data and bindings.
