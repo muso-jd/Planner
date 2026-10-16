@@ -1,6 +1,6 @@
 # Architecture
 
-The dependency-free frontend in `public/` is embedded into a module Worker at build time. Requests to `/api/vault` use the `DB` D1 binding. The database jurisdiction is EU, with read replication disabled. A synthetic SQLite adapter tests the same SQL statements locally.
+The dependency-free frontend in `public/` is embedded into a module Worker at build time. Requests to `/api/vault` use the `DB` D1 binding. The database jurisdiction is EU, with read replication disabled. A synthetic SQLite adapter tests the same SQL statements locally. Control Center 3 adds focused frontend modules without changing the vault authentication or revision protocol.
 
 ## Workspace identity and encryption
 
@@ -57,3 +57,15 @@ Installation references: https://web.dev/learn/pwa/installation and https://web.
 ## Journal mood observations (2.3.1)
 
 Journal renders mood records alongside diary/conscience records rather than creating parallel diary copies. New quick check-ins carry an immutable at timestamp; existing records fall back to updated for display, preserved into at on first edit. Rating value remains numeric for analytics. Journal formatting provides a fallback title, context/notes and a Europe/Vienna time label. No stored record migration is required. The app-shell cache version is bumped with this frontend change.
+
+## Control Center 3 modules
+
+- `planning.js`: pure month expansion, scope accounting, task funding, payment timing, routine scheduling, tracker paging and sorting. Recurring ledger occurrences are derived, not inserted as duplicate records. Month-end anchors are preserved by the shared recurrence predicate. Amounts are summed as integer cents.
+- `control-center.js`: shared editor adapters and coordinated views. Existing editor field names and submit logic remain compatible; visible switches/palettes update the retained form values. Floating labels keep accessible names. Advanced task fields are progressively disclosed. Themes/accent and saved task tabs are settings fields and participate in existing field-level merges.
+- `attachments.js`: files up to 20 MiB are uploaded sequentially in 384 KiB encrypted chunks through the existing authenticated `/api/images/:id` blob transport. Each chunk payload is `{kind:'attachment-chunk',data:<base64>}`. The vault stores only attachment metadata and UUID part references. Downloads are forced to files with an octet-stream Blob, not rendered as active HTML. No API/D1 migration or public file URL is added.
+
+Full JSON/Drive backups now use data version 3 with a `files` map of decrypted chunk payloads. Drive still encrypts the whole backup using the established envelope. Import validates chunk kind/size/base64/UUID then re-encrypts to the current workspace key before adding record references. Old version-2 image backups remain accepted. Cancelled imports/uploads can leave retained encrypted chunks; no automatic deletion is performed.
+
+New Journal archive actions set `archived:true`, hiding records from active Journal/Capture but retaining them in descriptive mood/diary analytics. The archive also exposes legacy deleted Journal records for explicit restoration. No other record types are restored implicitly. Existing routine dose text is retained in records but omitted from the new editor.
+
+The version-3 PWA shell precaches the new modules and iOS icon. File/image payloads and credentials remain outside Cache Storage. iOS support is Home Screen branding only, not Apple service integration.

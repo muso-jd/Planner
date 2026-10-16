@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.0.0 — 2026-10-16
+
+- Redesign shared editors with inline category/icon palettes, color-dot titles, inside-field labels, income/expense and scope switches, and progressive task details.
+- Add recurring ledger income/expenses, monthly projections, future-payment timing categories/countdowns, task/event links, encrypted file attachments and budget scope/analytics tabs.
+- Add separate open-task funding balances; task costs and expected income do not become booked ledger entries.
+- Add daily/weekly/month-end-offset routines, Monday-first include/exclude circles, inline time controls and routine analysis.
+- Replace task/routine completion boxes with large gray/signal-green checkmarks; preserve task completion confirmation.
+- Remove the timer from Trackers and add four-by-seven elapsed-day dot grids.
+- Add Journal notes and restorable archive; unify compact mood/context/checkmark capture under view titles.
+- Add saved task tabs and six sorting modes, sidebar actions, timestamp-only sync/error state, and synchronized dark/white/black themes with accent selection.
+- Add custom iOS Home Screen icon and installation guidance; no Apple service integrations.
+
 ## 2.3.3 — 2026-10-16
 
 - Add Remove due date in task editing, clearing the deadline time and reminder when saved.
