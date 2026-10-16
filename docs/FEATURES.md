@@ -71,3 +71,7 @@ Open the live planner in Android Chrome. Use Connect → Install on Android, or 
 Use the same workspace key and optionally Keep this device connected on your own phone. Phone launches prioritize capture, mood and timing. After loading online once, the app shell and existing device records can reopen offline; changes remain local until reconnect sync. Uncached diary images, Google exchange and backups need a connection. Installation does not enable closed-app reminders.
 
 Updates wait until all existing planner tabs/app windows close, protecting in-progress edits. Reopen online to check for an update; close all planner windows and reopen again to activate a downloaded update.
+
+## Feelings in Journal (2.3.1)
+
+Save feeling and mood buttons from Today, Capture or Journal save a single mood observation that also appears in Journal’s selected-day view and history. Existing mood observations are included automatically, without migration or duplicate diary records. Entries show the rating (or Unrated), feeling/context and Vienna time. Historic entries use their existing update timestamp where no check-in timestamp exists; undated imported records remain in history. Editing an entry supports date, rating, context and optional notes. Mood analytics continues to use the same underlying records.

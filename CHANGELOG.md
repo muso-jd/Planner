@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.1 — 2026-10-16
+
+- Include existing and new feelings/mood check-ins in Journal daily entries and paginated history.
+- Show feeling context, mood rating and Vienna check-in time; allow editing without duplicating analytics records.
+- Retain check-in timestamps independently of later edits and keep synchronized mood observations intact.
+
 ## 2.3.0 — 2026-10-16
 
 - Make Life Planner installable as a standalone Android web app with launcher and maskable icons.

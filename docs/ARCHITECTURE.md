@@ -53,3 +53,7 @@ manifest.webmanifest declares a stable root identity, clean start URL, standalon
 The service worker atomically precaches an explicit same-origin public asset list under a versioned life-planner-shell cache. Only those GET paths are intercepted. API envelopes, attachments, credentials, Google requests and writes bypass Cache Storage. Existing localStorage workspace persistence continues to hold pending edits and existing sync handles reconnect. No background sync or Web Push is added. Worker updates wait for old clients to close; activation removes only old shell caches and claims clients. Every shell-affecting deployment must bump the cache version in sw.js to match the app version.
 
 Installation references: https://web.dev/learn/pwa/installation and https://web.dev/learn/pwa/web-app-manifest.
+
+## Journal mood observations (2.3.1)
+
+Journal renders mood records alongside diary/conscience records rather than creating parallel diary copies. New quick check-ins carry an immutable at timestamp; existing records fall back to updated for display, preserved into at on first edit. Rating value remains numeric for analytics. Journal formatting provides a fallback title, context/notes and a Europe/Vienna time label. No stored record migration is required. The app-shell cache version is bumped with this frontend change.
