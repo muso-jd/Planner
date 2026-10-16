@@ -118,3 +118,15 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 - Existing D1, Artlook and private folder bindings preserved. No migration or production owner-record writes.
 - PWA shell version: 2.3.1. Existing clients must let the update download, close all planner windows/tabs, then reopen to activate.
 - Rollback: route to Worker version `a3e4cf9f-2fdb-4594-aa52-d3ae2c575ade` (2.3.0), retaining all records/bindings. Cached clients follow the existing shell activation rules; a forward fix is preferable to downgrading installed shells.
+
+## Verified production rollout — 2.3.2 (Urgent alarm red)
+
+- UTC: 2026-10-16T10:37:47.621495Z.
+- Source: `cf7ccee9c2cc9f12143b152a7cc09a90da2d6966`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `290464dd-b260-4e21-9db0-e33c17cddee4`; Worker version: `d754b8c3-f765-444a-ac9d-60e28b370b89`; traffic: 100%.
+- Health: `ok:true`, `version:2.3.2`, `storage:true`. Live stylesheet matched SHA-256 `a1a37afc84eb54af10f7a6e34fb51c0e5ccd4fe684010031e129f4cf40a8016a`; live sw.js matched `24b54830899fa0df7fef4d0374ce99851bdfd2a7bad35d8f0388877899273915`.
+- Validation: build, 16 automated tests and 63 Chromium browser checks passed; desktop and phone screenshots inspected. Simulated desktop/iPad/phone layouts only; physical devices remain unverified. The temporary browser executable was restored after the first launch failed; the standard Playwright download returned a truncated archive, so the available packaged Chromium binary was used successfully.
+- Existing bindings and user records retained. Only urgency presentation changed; Google authorization was not tested or modified.
+- PWA shell version: 2.3.2; downloaded updates activate after all old app windows/tabs close.
+- Rollback: route to Worker version `9a285055-4456-4595-bf61-6cd70f9966fd` (2.3.1), retaining records and bindings. Existing clients follow shell activation rules; prefer forward corrective releases.
