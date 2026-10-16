@@ -2,17 +2,17 @@
 
 | Area | Behavior |
 |---|---|
-| Today | Three suggested ready actions, daily progress, mood entry, routines, blocks and morning/evening entries |
+| Today | Three suggested ready actions, daily progress, compact mood entry, scheduled routines/time blocks and morning/evening entries |
 | Capture | Quick notes, convert note to task, mood/feeling entry, timer; default landing on phones |
 | Plan | Week view, categorized blocks/events/tasks; edit date/time by tapping; recurrence of tasks generates the next dated task on completion |
-| Tasks | Search/filter, completion, importance, due date/time, 30m/1h/1d reminders, repeat interval, focus date |
+| Tasks | Saved category/text tabs, six sort options, confirmation-based completion, importance, optional due date/time, reminders, repeat interval, focus date and funding estimates |
 | Projects/goals | Funding target, amount saved, start/target dates, linked tasks, milestones and progress |
 | Dependencies | Select prerequisite tasks; circular chains rejected; interactive SVG nodes open editors; budget/time allocation can block completion |
 | Subtasks | Parent task grouping, separate prerequisite links; parent cycles rejected |
-| Routines | Adjustable time, weekdays, own dose/instructions, medication/supplement kinds, completion per selected date |
-| Budget | EUR income/expenses, business/personal scope, monthly cash flow, spending limit, category totals, CSV |
-| Journal | Diary, morning/evening templates, mood history and values/conscience check-in |
-| Tracking | Timestamp timer that survives reload, manual sessions, abstinence and time-since logs, adjustable start dates |
+| Routines | Daily/weekly/monthly tabs, end-of-month offsets, Monday-first weekday circles, inline time, type icons and completion analysis; old instructions retained but no instruction input |
+| Budget | Recurring EUR income/expenses, business/personal scope tabs, monthly cash-flow projections, timing countdowns, links, files and separate task funding |
+| Journal | Notes, diary, morning/evening templates, compact mood entry, history, values check-ins and restorable archive |
+| Tracking | Abstinence/time-since logs and paged 28-dot grids; timer and recorded-session history remain in Capture, with a running dock, not Trackers |
 | Insights | 28-day completion heatmap, mood distribution, recorded hours by category, cash flow, blocked work and estimated backlog |
 | Connections | Encrypted device sync; reviewed JSON/ICS import, full JSON/ICS export, Google OAuth token connection with on-demand pull/push |
 
@@ -21,7 +21,7 @@
 - Google needs your own OAuth web client ID and API consent. There is no preconfigured Google account or unattended bidirectional sync. Authorization and actual Google account writes are not verified until configured.
 - Google Tasks supports a date, not scheduled time/reminder fields. Use Calendar time blocks for timed external reminders.
 - Browser reminders run while Planner is open; no Web Push service or closed-browser delivery is implemented. Morning/evening prompts default to 04:00 and 23:00 Vienna time and are adjustable.
-- Apple integrations are excluded.
+- Apple Calendar/Reminders/Tasks integrations are excluded. Custom iOS Home Screen icon/installation metadata is included as requested.
 - ICS import supports basic VEVENT/VTODO title, notes, due/start, completion and basic recurrence. It does not expand RRULE/EXDATE/VTIMEZONE into occurrences, preserve all alarms, or handle every third-party timezone. Use Google import for expanded calendar occurrences.
 - Repeating tasks create one next occurrence on completion. Repeating blocks expand in Today and the week view and export as recurrence rules. Editing a repeating block changes the series; per-occurrence exceptions are not implemented.
 - Analytics describe entered records, not inferred facts. Historical routine percentages reflect the current routine roster; archive/edit can change the denominator.
@@ -83,3 +83,19 @@ Urgent/P0 badges, summary headings/actions, urgent row markers and overdue deadl
 ## Optional task deadlines (2.3.3)
 
 In a task editor, choose Remove due date, then Save changes. This clears the due date/time and deadline reminder. Clearing the date field manually has the same saved result. Cancel leaves the saved deadline unchanged. Undated tasks stay in the backlog and remain undated when edited; they no longer count as overdue. Explicit Urgent / Priority 0, focus dates and recurrence preferences remain available. Existing recurring-task behavior schedules the next occurrence after completion.
+
+## Control Center 3 current controls
+
+The header is replaced by sidebar navigation with Capture/Sync actions at the bottom. Settings contains lock and synchronized dark, white and black themes plus an accent picker. Sync shows only the last successful timestamp; it turns red on issues, with detail in its tooltip/accessibility label. Phone navigation stays at the bottom, with safe-area spacing.
+
+Editors use inside-field labels, an inline title-color dot and single-row category/icon strips. Unselected icons are gray; selected icons use category colors. The title dot opens the native picker; double-click restores inheritance. Income/expense is chosen with +/− controls and scope with Personal/Business icons. Task recurrence, funding, project and dependencies are grouped in an expandable section. Task filters are tabs; add synchronized category/text tabs and choose urgency, due date, title, recently updated, required budget or shortest-duration sorting.
+
+Budget's Total/Business/Personal tabs show a full-month cash-flow projection and a dated-through-today subtotal. Daily/weekly/monthly/yearly ledger series expand in each selected month; editing changes the series. Future entries show remaining calendar days and an automatic timing category (Due soon within seven days), without changing their semantic area. The Analytics tab shows six months. Task/event links open their connected records. The separate task panel sums expected income minus required budget for open tasks, excluding completed/archived work; allocations are not income. It is not added to monthly cash flow. Dates in the manual ledger are not proof of payment; there is no bank reconciliation or per-occurrence settlement/exception system.
+
+Attach files to ledger entries, tasks, events, routines, trackers, notes or diary entries: up to 20 MiB each, with encrypted chunk storage, cross-device downloads and inclusion in full local/Drive backups. Downloads require a connection; files are not in the offline shell cache. Detaching/cancelling retains encrypted chunks rather than permanently deleting data. Large full backups use browser memory and can take time.
+
+Routines have Daily/Weekly/Monthly/Analysis tabs. Daily circles include/exclude days, Monday first; weekly selects one weekday. Monthly uses T−offset from month end: 0 last day, 1 previous day, 0–30 supported with short-month clamping. Click the inline HH:mm time to edit. Type icons replace the old menu and the instruction input is removed while old text remains stored. Completion controls are gray checkmarks that turn signal green; tasks retain confirmation and a completion note window.
+
+Trackers use four rows of seven dots, paging every 28 elapsed days while retaining the total day count. The timer is removed from Trackers but remains in Capture, along with recorded-session history and the running dock. Journal includes new notes, diary and feelings plus a restorable archive. New archives retain mood/diary observations in descriptive analytics; legacy deleted journal records can also be restored. Five progressively filled mood circles, a context field and a briefly green save checkmark appear under the title in Journal/Capture/Today. Selecting a mood does not save until the checkmark is pressed.
+
+On iOS, Safari → Share → Add to Home Screen uses the custom 180px icon. Existing installed icons may require removing/re-adding the Home Screen shortcut to refresh branding; preserve pending edits and the workspace key before changing installation. No Apple Calendar, Reminders or Tasks access is added.

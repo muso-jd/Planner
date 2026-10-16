@@ -8,7 +8,7 @@ Build `npm run build`, run `npm test` and targeted browser checks, then upload `
 
 ## Current rollout
 
-Source branch: `feature/life-workspace-sync`. Deployment metadata is recorded below after the validated source commit is pushed. The feature branch does not automatically deploy through GitHub Actions; no pre-existing CI configuration was present.
+Control Center 3 source branch: `feature/planner-control-center`, stacked on `feature/life-workspace-sync`. Deployment metadata is recorded below after the validated source commit is pushed. Neither feature branch automatically deploys through GitHub Actions; no pre-existing CI configuration was present. Source pushes alone do not switch production.
 
 ## Rollback
 

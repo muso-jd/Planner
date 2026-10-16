@@ -4,9 +4,11 @@ A personal workspace for planning, projects, finances, routines, reflection and 
 
 **Live:** https://planner.jeremydachojd.workers.dev/ · **Source:** https://github.com/muso-jd/Planner
 
-Open your private activation link for the migrated workspace, then use **Connect → Copy pairing link** on another device. Keep the workspace key safe. Workspace enrollment is private; use the supplied activation link for the migrated records. Original device-local `matrix*V4` records migrate when that device opens the upgraded site using the same workspace key.
+Open your private activation link for the migrated workspace, then use **Settings → Copy pairing link** on another device. Keep the workspace key safe. Workspace enrollment is private; use the supplied activation link for the migrated records. Original device-local `matrix*V4` records migrate when that device opens the upgraded site using the same workspace key.
 
-Tasks support **Urgent · Priority 0**, automatic overdue urgency and grouped reminders. In any entry editor, use **Custom title color** to coordinate your workspace; linked tasks can inherit project colors. Area icons appear before entry titles, and task completion asks for an optional note and confirmation.
+Tasks support **Urgent · Priority 0**, automatic overdue urgency, saved filter tabs and sorting. Shared editors use colored icon/category strips, inside-field labels and a white title-color dot (double-click to inherit). Task completion still asks for a note and confirmation. A sidebar replaces the header, and Settings contains theme/accent controls and workspace locking.
+
+Budget has Total, Business, Personal and Analytics tabs, recurring income/expenses, future-payment countdowns, file attachments and task/event links. Monthly cash flow and the separate open-task funding balance are deliberately not added together. Routines support daily/weekly schedules and month-end offsets; trackers use 28-day dot grids. Journal contains notes, feelings and a restorable archive.
 
 Diary entries support image uploads and previews. Google Drive can receive normal JPEG copies and encrypted full backups after OAuth/Picker setup; the requested destination is configured privately. See [Google setup](docs/GOOGLE.md).
 
@@ -30,10 +32,11 @@ npm test
 - [Upgrade and validation report](docs/changes/2026-10-16-life-workspace.md)
 - [Urgency and color update](docs/changes/2026-10-16-urgency-colors.md)
 - [Diary images and Drive](docs/changes/2026-10-16-diary-images-drive.md)
+- [Control Center 3 redesign and validation](docs/changes/2026-10-16-control-center-3.md)
 - [Changelog](CHANGELOG.md)
 
 This public repository contains application code and synthetic tests only. Personal list contents, migrated data, workspace keys and OAuth access tokens are excluded.
 
 Typography uses locally served Noto Sans Mono. Font licensing and source provenance are recorded in `public/fonts/README.md`.
 
-Android: open the live URL in Chrome, then choose **Install app** from the browser menu or use **Connect → Install on Android**. The app opens in its own window. Use your existing workspace key; after an online load, cached records can be edited offline and synchronized on reconnect. Run `npm run test:pwa` for installation/offline checks (Playwright required).
+Android: open the live URL in Chrome, then choose **Install app** from the browser menu or use **Settings → Install app**. On iPhone/iPad, Safari → Share → Add to Home Screen uses the custom Life icon. Use your existing workspace key; after an online load, cached records can be edited offline and synchronized on reconnect. Run `npm run test:pwa` for installation/offline checks and `npm run test:control-center` for the redesigned workflows (Playwright required).
