@@ -75,3 +75,7 @@ Updates wait until all existing planner tabs/app windows close, protecting in-pr
 ## Feelings in Journal (2.3.1)
 
 Save feeling and mood buttons from Today, Capture or Journal save a single mood observation that also appears in Journal’s selected-day view and history. Existing mood observations are included automatically, without migration or duplicate diary records. Entries show the rating (or Unrated), feeling/context and Vienna time. Historic entries use their existing update timestamp where no check-in timestamp exists; undated imported records remain in history. Editing an entry supports date, rating, context and optional notes. Mood analytics continues to use the same underlying records.
+
+## Urgent alarm color (2.3.2)
+
+Urgent/P0 badges, summary headings/actions, urgent row markers and overdue deadline text use vivid alarm red (#ff4d4f), with coordinated red borders/backgrounds. Task title and category colors retain their selected colors.

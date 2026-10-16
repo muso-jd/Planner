@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.2 — 2026-10-16
+
+- Use a vivid alarm red for urgent badges, summary text/actions, urgent row markers and overdue deadlines.
+- Preserve custom title/category colors and readable urgency labels.
+
 ## 2.3.1 — 2026-10-16
 
 - Include existing and new feelings/mood check-ins in Journal daily entries and paginated history.
