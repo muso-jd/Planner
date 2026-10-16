@@ -1,0 +1,32 @@
+// Filled silhouettes, with even-odd cutouts. No runtime icon dependency.
+export const iconPaths={
+ business:'M9 3h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3V5a2 2 0 0 1 2-2Zm0 4h6V5H9Zm-7 5v2h9v2h2v-2h9v-2H13v-1h-2v1Z',
+ personal:'M12 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 12c-6 0-9 3-9 7a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1c0-4-3-7-9-7Z',
+ creative:'m16 2 6 6-13 13-7 1 1-7Zm-11 14-1 4 4-1Z',
+ fun:'M7 2h10v3h5v4a6 6 0 0 1-6 6h-1v4h4v3H5v-3h4v-4H8a6 6 0 0 1-6-6V5h5Zm0 5H4v2a4 4 0 0 0 4 4Zm10 0-1 6a4 4 0 0 0 4-4V7Z',
+ sports:'M3 4h3v6h12V4h3v3h2v10h-2v3h-3v-7H6v7H3v-3H1V7h2Z',
+ health:'M8 2h8v6h6v8h-6v6H8v-6H2V8h6Z',
+ admin:'M8 2h8v3h3a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3Zm0 8v2h9v-2Zm0 5v2h9v-2Z',
+ rest:'M14 2a10 10 0 1 0 8 14A9 9 0 0 1 14 2Z',
+ camera:'M8 3h8l2 4h3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3Zm4 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z',
+ tech:'M3 2h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h5v2H5v-2h5v-2H3a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 2v10h18V4Z',
+ home:'m12 1 12 10-2 2-2-2v11h-6v-8h-4v8H4V11l-2 2-2-2Z',
+ hardware:'M15 2a7 7 0 0 0-7 9L1 18a3 3 0 0 0 5 5l8-8a7 7 0 0 0 8-9l-5 5-4-4 5-5Z',
+ note:'M5 1h11l5 5v15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2Zm10 2v5h5ZM7 11v2h10v-2Zm0 5v2h8v-2Z',
+ clock:'M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22Zm-1 4v8l5 3 1-2-4-2V5Z',
+ goal:'M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22Zm0 3a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm0 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z',
+ clean:'m16 1 3 2-6 11 2 2-3 7H1l4-12 5 2Z',
+ supplement:'M2 7a7 7 0 0 1 12-5l8 8a7 7 0 0 1-10 10L4 12A7 7 0 0 1 2 7Zm6-3a4 4 0 0 0-3 7l3 3 6-6-3-3a4 4 0 0 0-3-1Z',
+ sleep:'M1 4h3v9h6V8h8a4 4 0 0 1 4 4v9h-3v-4H4v4H1Zm6 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z',
+ cooking:'M2 1h2v6h1V1h2v6h1V1h2v8l-3 3v11H5V12L2 9Zm15 0h4v22h-3V13h-4V6Z',
+ water:'M12 1S3 11 3 16a9 9 0 0 0 18 0c0-5-9-15-9-15Z',
+ medication:'M7 1h10v4h-2v3l5 5v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8l5-5V5H7Zm4 11v3H8v2h3v3h2v-3h3v-2h-3v-3Z',
+ calendar:'M5 1h3v3h8V1h3v3h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2ZM4 10v10h16V10Zm2 2h4v3H6Zm7 0h4v3h-4Z',
+ tasks:'M4 1h16a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2Zm2 7 2 2 4-4-2-2-2 2-1-1Zm8-2v3h5V6ZM6 16l2 2 4-4-2-2-2 2-1-1Zm8-2v3h5v-3Z',
+ projects:'M1 5a2 2 0 0 1 2-2h6l3 3h9a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2Z',
+ analytics:'M2 14h5v9H2Zm7-7h5v16H9Zm7-6h6v22h-6Z',
+ settings:'m9 1 6 0 1 4 4-1 3 5-3 3 3 3-3 5-4-1-1 4H9l-1-4-4 1-3-5 3-3-3-3 3-5 4 1Zm3 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z',
+ sync:'M12 2a10 10 0 0 1 9 6V4h2v9h-9v-2h6a8 8 0 0 0-14-5L4 5a10 10 0 0 1 8-3Zm-11 9h9v2H4a8 8 0 0 0 14 5l2 1A10 10 0 0 1 3 16v4H1Z',
+ check:'m3 11 6 6L21 4l3 3L9 22 0 14Z'
+};
+export const navIcons={today:'goal',capture:'creative',plan:'calendar',tasks:'tasks',projects:'projects',routines:'sync',money:'business',journal:'note',trackers:'clock',health:'health',analytics:'analytics',settings:'settings',feeling:'personal',time:'clock'};

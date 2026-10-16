@@ -1,6 +1,6 @@
 {
   "name": "life-planner",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,8 @@
     "test:browser": "node tests/browser.mjs",
     "test:pwa": "node tests/pwa.mjs",
     "test:control-center": "node tests/control-center.mjs",
-    "test:journal": "node tests/journal-history.mjs"
+    "test:journal": "node tests/journal-history.mjs",
+    "test:calendar-health": "node tests/calendar-health.mjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

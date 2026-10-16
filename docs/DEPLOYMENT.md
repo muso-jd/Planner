@@ -8,7 +8,7 @@ Build `npm run build`, run `npm test` and targeted browser checks, then upload `
 
 ## Current rollout
 
-Control Center 3 source branch: `feature/planner-control-center`, stacked on `feature/life-workspace-sync`. Deployment metadata is recorded below after the validated source commit is pushed. Neither feature branch automatically deploys through GitHub Actions; no pre-existing CI configuration was present. Source pushes alone do not switch production.
+Calendar/Health/Insights 3.1 source branch: `feature/calendar-health-insights`, stacked on `feature/planner-control-center`, which is stacked on `feature/life-workspace-sync`. Deployment metadata is recorded below after the validated source commit is pushed. Feature branches do not automatically deploy through GitHub Actions; no pre-existing CI configuration was present. Source pushes alone do not switch production. Version 3.1 adds `health.googleapis.com` to CSP and includes all new frontend modules/styles in the embedded bundle and PWA shell, with no D1 migration or new binding.
 
 ## Rollback
 

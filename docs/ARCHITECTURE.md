@@ -69,3 +69,17 @@ Full JSON/Drive backups now use data version 3 with a `files` map of decrypted c
 New Journal archive actions set `archived:true`, hiding records from active Journal/Capture but retaining them in descriptive mood/diary analytics. The archive also exposes legacy deleted Journal records for explicit restoration. No other record types are restored implicitly. Existing routine dose text is retained in records but omitted from the new editor.
 
 The version-3 PWA shell precaches the new modules and iOS icon. File/image payloads and credentials remain outside Cache Storage. iOS support is Home Screen branding only, not Apple service integration.
+
+## Calendar, Health and Insights (3.1)
+
+Phone navigation is a view-level adaptation at 600 CSS pixels, with Notes/Diary/Feeling/Time routes and a More dialog for the remaining sections. It reuses the same note, mood and session records, not a separate phone database. A media-query change refreshes navigation when rotating/resizing across the breakpoint. The phone Time view re-renders its timer controls after starting a session.
+
+`calendar.js` derives Monday-first month/week grids and uses existing task/block recurrence plus the shared routine scheduler. Its grid scrolls horizontally instead of collapsing into a list. `solid-icons.js` supplies filled SVG paths; navigation inherits its tab colour while content silhouettes remain white. `workspace.css` styles these new views after the existing Control Center stylesheet.
+
+`insights.js` derives daily reporting series and renders accessible SVG trends, category bars and expandable data tables. Missing mood/sleep/stress/weight/HRV readings remain null/gaps. Finished sessions and dated task completions are aggregated in Vienna reporting dates. Current project/task inventory is labelled separately from historical activity. Monthly budget charts use the established recurring ledger projection; task funding stays separate.
+
+`health-data.js` constructs Google Health v4 filters, normalizes documented units and validates manual records. `health.js` obtains a separate session-only token with three read-only scopes, calls `health.googleapis.com` directly and previews paginated results before writing normalized `health` records into the existing encrypted vault. Stable IDs use a SHA-256 digest of Google source identities (or type/time identity where unavailable); raw source data is not bundled into code. Import errors remain per-type and visible. Reimports retain manual entries and local workout annotations; archived records are not restored. No server API, schema, refresh token, webhook or Health write permission is added. CSP permits connections to the Health API; the PWA cache still excludes all external/API traffic.
+
+`google-export.js` builds task/calendar payloads, including valid reminder offsets and Vienna timing. The app sends a single saved task only after its export form is submitted. Independent flat destination/id fields track Planner-owned Tasks and Calendar exports, retaining compatibility with prior bulk-export links. New recurring task instances clear all export IDs. In-flight requests preserve newer local fields when recording export metadata.
+
+Planned recovery is explicitly a user-defined rest interval counted from workout end, never an inferred physiological score. Stress is a manual entry; HRV is not relabelled as stress. Health records participate in the existing sync, conflict handling and backup envelope without changing those protocols.
