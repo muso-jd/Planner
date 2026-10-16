@@ -79,3 +79,7 @@ Save feeling and mood buttons from Today, Capture or Journal save a single mood 
 ## Urgent alarm color (2.3.2)
 
 Urgent/P0 badges, summary headings/actions, urgent row markers and overdue deadline text use vivid alarm red (#ff4d4f), with coordinated red borders/backgrounds. Task title and category colors retain their selected colors.
+
+## Optional task deadlines (2.3.3)
+
+In a task editor, choose Remove due date, then Save changes. This clears the due date/time and deadline reminder. Clearing the date field manually has the same saved result. Cancel leaves the saved deadline unchanged. Undated tasks stay in the backlog and remain undated when edited; they no longer count as overdue. Explicit Urgent / Priority 0, focus dates and recurrence preferences remain available. Existing recurring-task behavior schedules the next occurrence after completion.

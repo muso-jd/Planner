@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.3 — 2026-10-16
+
+- Add Remove due date in task editing, clearing the deadline time and reminder when saved.
+- Keep undated tasks undated when reopening their editor instead of substituting today.
+- Remove automatic overdue urgency when a deadline is cleared; preserve explicit Priority 0.
+
 ## 2.3.2 — 2026-10-16
 
 - Use a vivid alarm red for urgent badges, summary text/actions, urgent row markers and overdue deadlines.
