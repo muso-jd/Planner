@@ -130,3 +130,15 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 - Existing bindings and user records retained. Only urgency presentation changed; Google authorization was not tested or modified.
 - PWA shell version: 2.3.2; downloaded updates activate after all old app windows/tabs close.
 - Rollback: route to Worker version `9a285055-4456-4595-bf61-6cd70f9966fd` (2.3.1), retaining records and bindings. Existing clients follow shell activation rules; prefer forward corrective releases.
+
+## Verified production rollout — 2.3.3 (Remove task due date)
+
+- UTC: 2026-10-16T10:43:59.4913Z.
+- Source: `0fbe9c6010865604654c9a47fa128623423207c3`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `f83e1273-75dd-47f9-90ac-23ea59c4613f`; Worker version: `23c3034d-6525-433d-9b98-52d5a9d1ea4e`; traffic: 100%.
+- Health: `ok:true`, `version:2.3.3`, `storage:true`. Live app.js matched tested SHA-256 `c2e8655db3f303d7ba5561079b994ba84a699d494b9b30e0c5fe62984a436012`; live sw.js matched `bafd1043c1f729aeb26b067860f2058e08544782d327ce29e8dcf1e04f88e4c7`.
+- Validation: build and 16 automated tests passed. Focused browser regression covered explicit/manual clearing, cancellation, time/reminder cleanup, existing undated tasks, reopen persistence, overdue urgency removal, manual P0 retention and second-device sync. Phone editor screenshot inspected; physical devices unverified.
+- Existing bindings/data preserved; no migration or production owner-record writes. Google authorization was not changed or exercised.
+- PWA shell: 2.3.3; downloaded updates activate after all old app windows/tabs close.
+- Rollback: route to Worker version `d754b8c3-f765-444a-ac9d-60e28b370b89` (2.3.2), preserving all records and bindings. Older editors may substitute today for an undated task; prefer a forward fix and follow shell activation rules.
