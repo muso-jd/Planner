@@ -88,3 +88,21 @@ The live `/api/health` returned `ok: true`, version `2.0.0`, and `storage: true`
 - Validation: build, 16 automated tests and 63 browser checks passed; desktop/phone screenshots reviewed. Chromium covered desktop, simulated iPad portrait/landscape and phone; physical Safari/iPad remains unverified.
 - Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
 - Rollback: route to version `dbf41e96-7d10-488f-a469-786ebf3fc665` (2.2.2), retaining all data and bindings.
+
+## Android PWA deployment procedure (2.3.0 onward)
+
+Keep the cache version in public/sw.js in step with every app-shell release. Rebuild and upload the complete asset bundle together. A waiting service worker activates after all existing app windows/tabs close; no forced reload discards in-progress UI state. The initial online load must finish caching before offline launch is available. API, image and Google responses are never placed in Cache Storage.
+
+When rolling back to a version before 2.3.0, already-controlled clients can retain the 2.3.0 shell. Synchronize pending edits first, then unregister only this origin's service worker and remove only life-planner-shell caches using browser developer tools before reopening. Do not clear site storage/localStorage or uninstall while unsynced records remain. Prefer a forward corrective PWA release with a new shell version for normal updates.
+
+## Verified production rollout — 2.3.0 (Android installation)
+
+- UTC: 2026-10-16T09:41:19.195397Z.
+- Source: `c90b654ddd629f0aaaf055eef75ee688ac1e7c8a`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `49048ba4-007e-46ff-aa41-27b1676c28db`; Worker version: `a3e4cf9f-2fdb-4594-aa52-d3ae2c575ade`; traffic: 100%.
+- Health confirmed `ok:true`, `version:2.3.0`, `storage:true`. Live HTML, manifest, pwa.js, sw.js and all three PNG icons matched the tested local bytes. Manifest SHA-256: `472c818d0385fe03dd7cd137c96e31484ca415548279b933f468abb79de62d6f`; service worker: `8c0a6f880d56e18bda2c57a346f385f615e0cbd0bce922717a4444e8ceb161eb`.
+- Validation: build, 16 automated tests, 63 responsive Chromium checks and focused PWA tests passed. Chromium reported zero installability errors. Offline note creation survived reload and synchronized on reconnect. Install dialog screenshot inspected at phone width. Physical Android installation/OS packaging and physical Safari/iPad remain unverified.
+- The first live check through Python urllib returned a transport 403. Repeating with the working curl transport verified the production assets above.
+- Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
+- Rollback server target: Worker version `341a100f-a17f-4620-91e6-6370c8af94b8` (2.2.3). Follow the pre-PWA rollback procedure above for clients retaining a cached shell; preserve local edits, D1 and all bindings.
