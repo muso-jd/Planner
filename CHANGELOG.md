@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.2.0 — 2026-10-16
+
+- Add diary image uploads, previews, separate encrypted image sync and full backups including photos.
+- Add a privately configured Google Drive destination, pending image copies, manual/daily in-browser backups, and narrow folder selection/authorization.
+- Save Drive images as regular JPEG files and keep planner backups encrypted.
+- Reuse Artlook’s read-only gatekeeper via an authenticated, fixed-folder service binding without changing the source Worker or copying its secret.
+- Explicitly show missing Google authorization; real Drive writes remain pending setup.
+
 ## 2.1.0 — 2026-10-16
 
 - Add explicit Urgent · Priority 0 and automatic overdue urgency, including same-day timed deadlines in Vienna time.

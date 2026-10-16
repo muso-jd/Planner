@@ -27,3 +27,17 @@ Google Identity Services obtains a short-lived browser token after a user gestur
 `color` is a validated six-digit hex override; unset tasks inherit their linked project's override. `icon` is an allow-listed SVG icon identifier or `auto` derived from category. Presentation does not change task identity. Urgency is derived from manual priority 0 or an elapsed Vienna deadline and does not rewrite stored importance. Grouped overdue alerts use a per-device timestamp scoped to the workspace cache; frequency is synchronized in settings.
 
 Task completion requires a UI confirmation. The saved record includes `completionNotes` (latest note) and `completionLog` entries `{id, at, notes}`; planning notes remain untouched. Confirming rechecks the latest task and resource blockers. Recurrence is generated only after confirmation and does not copy completion logs. These fields follow the same encrypted snapshot and conflict-review rules as other records.
+
+## Image attachments and Drive (2.2.0)
+
+`images(workspace,id,data,iv,created)` stores encrypted, immutable per-image payloads. `/api/images/:id` requires the same bearer token, verifies a provisioned workspace, and scopes reads/writes to that workspace. Envelopes are bounded to 1.5 MB; client-side optimized JPEG payloads are validated before rendering. The main vault contains image references only. Full backups fetch and include the referenced image payloads.
+
+Drive uses a separate session-only token with `drive.file` scope. Google Picker grants access to the existing destination folder without general Drive scope. Image uploads use multipart JPEG content, not encrypted blobs, per the user's preference. Backup uploads use AES-GCM envelopes. App properties identify previously uploaded images to reduce duplicate copies on retry. Drive status is only acknowledged after the API succeeds. Offline/expired authorization leaves pending copies on Cloudflare, with explicit retry controls. No refresh token or Google client secret is stored. Daily backups are an in-browser condition check after cloud sync, throttled on failure, not an unattended service.
+
+The destination folder is configured privately through a CAS-protected encrypted settings update. Google scopes, consent and upload behavior were checked against the primary documentation linked in GOOGLE.md. OAuth and real-account uploads remain unconfigured/unverified.
+
+## Reused Artlook gatekeeper
+
+Production Artlook's `gatekeeper` Worker was inspected. Its only Google credential is `GOOGLE_API_KEY`; it handles Drive lists and legacy gallery checks, not OAuth uploads. Planner reuses that credential through an `ARTLOOK_GATEKEEPER` service binding, following Artlook's adapter pattern. The source Worker, secret and allowed origins are not changed or copied into Git.
+
+Authenticated `/api/drive/list` normalizes the request to the single server-configured `DRIVE_FOLDER_ID`, rejects arbitrary queries and other folders, bounds pagination, uses internal transport to the existing Artlook origin, and forwards only selected file metadata. `/api/drive/status` reports the read-only capability explicitly. This does not make a private Drive folder public and cannot grant write access. OAuth/Picker remains necessary for JPEG and backup writes.

@@ -32,3 +32,12 @@ Restoring code does not downgrade the database schema. The old source contains p
 | Source PR | https://github.com/muso-jd/Planner/pull/1 |
 
 The live `/api/health` returned `ok: true`, version `2.0.0`, and `storage: true`. An authenticated live vault read decrypted successfully: revision 1, 136 records, including 110 original tasks plus five roadmap milestones, 13 routines, two projects and five trackers. No owner records were modified by this verification. The remote cloud browser rendered the live unlock screen. Local browser tests covered the editing and sync flows; direct local Chromium navigation to the external Worker failed through the available network path, so no unlocked live browser session is claimed. The old Worker version remains available as the rollback target above. The feature PR is open; main is not merged.
+
+## Verified production rollout — 2.1.0
+
+- UTC: 2026-10-16T08:47:43.929286Z.
+- Source: `bea7b2651468c2472cfd608f44eca2c7f1922e15`, branch `feature/life-workspace-sync`.
+- Worker: `planner`, production; URL https://planner.jeremydachojd.workers.dev/.
+- Deployment: `d2dce330-a3ce-416a-aab3-e80d5505d4db`; Worker version: `dbeb9628-2d32-430e-8a31-f33218fcd145`; traffic: 100%.
+- Verification: health returned `ok:true`, `version:2.1.0`, `storage:true`; live `app.js` SHA-256 matched the tested source (`1130688a08d99ba334edbbc73ca3970721f708833b3175fd75c0029bd4a9802d`). Build, 14 automated tests and 61 browser checks passed.
+- Rollback: route traffic to version `be7a1306-875d-4668-a635-1ce203196dcc` (2.0.0); do not delete any Worker or database. Existing vault data and new presentation/completion fields remain retained.

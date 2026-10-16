@@ -8,6 +8,8 @@ Open your private activation link for the migrated workspace, then use **Connect
 
 Tasks support **Urgent · Priority 0**, automatic overdue urgency and grouped reminders. In any entry editor, use **Custom title color** to coordinate your workspace; linked tasks can inherit project colors. Area icons appear before entry titles, and task completion asks for an optional note and confirmation.
 
+Diary entries support image uploads and previews. Google Drive can receive normal JPEG copies and encrypted full backups after OAuth/Picker setup; the requested destination is configured privately. See [Google setup](docs/GOOGLE.md).
+
 ## Develop
 
 Node.js 24 or newer. Production has no npm dependencies.
@@ -27,6 +29,7 @@ npm test
 - [Google connection setup](docs/GOOGLE.md)
 - [Upgrade and validation report](docs/changes/2026-10-16-life-workspace.md)
 - [Urgency and color update](docs/changes/2026-10-16-urgency-colors.md)
+- [Diary images and Drive](docs/changes/2026-10-16-diary-images-drive.md)
 - [Changelog](CHANGELOG.md)
 
 This public repository contains application code and synthetic tests only. Personal list contents, migrated data, workspace keys and OAuth access tokens are excluded.
