@@ -65,3 +65,14 @@ The live `/api/health` returned `ok: true`, version `2.0.0`, and `storage: true`
 - Validation: build, 16 automated tests and the focused 42-record Journal browser regression passed. No physical Safari/iPad validation is claimed.
 - Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
 - Rollback: route to version `127d5237-bfc5-4096-a6c8-4c6f7a133b53` (2.2.0), retaining all data and bindings.
+
+## Verified production rollout — 2.2.2 (Category icon glow)
+
+- UTC: 2026-10-16T09:21:49.850463Z.
+- Source: `a93ffceb737dffb7052e276705e4f24901ca0f3c`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `9611a8c9-1da8-407e-8443-6b0cc875496a`; Worker version: `dbf41e96-7d10-488f-a469-786ebf3fc665`; traffic: 100%.
+- Health confirmed `ok:true`, `version:2.2.2`, `storage:true`. Live app.js matched tested source SHA-256 `9d63256f90d84bc8a063f084c12503852614635e5ecaedf945ca5e9b52d52dd5`.
+- Validation: build, 16 automated tests and 63 browser checks passed; desktop and phone screenshots reviewed. Chromium covered desktop, simulated iPad portrait/landscape and phone. No physical Safari/iPad validation is claimed.
+- Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
+- Rollback: route to version `4d159ba9-7dfb-45c1-83ef-799e08fab116` (2.2.1), retaining all data and bindings.
