@@ -30,3 +30,14 @@
 - Cloud history retains encrypted save versions; UI currently lists their timestamps rather than offering one-click restoration. History is unpruned, so storage grows with saves.
 - Encryption protects cloud records. The browser's working cache is readable on the device; lock clears the active cache once sync is complete. No service worker/offline shell is installed; keep the page open for offline editing.
 - One current timer is enforced within each loaded workspace, but simultaneous offline timer starts on separate devices can create multiple sessions for later manual reconciliation.
+
+## Urgency and entry colors (2.1.0)
+
+- **Urgent · Priority 0** is a dedicated option in a task's priority selector. Existing importance scores 1–10 keep their meaning (higher is more important); 0 is the urgent override.
+- An unfinished task becomes effectively P0 after its timed deadline in Europe/Vienna, or after its due date ends if no time is set. This is derived without overwriting the chosen importance. Rescheduling removes automatic overdue urgency; manual P0 remains urgent. Completing/archiving removes urgency.
+- A persistent urgent summary appears across views, including phone capture. Urgent/overdue filters and urgent-first ordering make the queue reviewable. Budget/time/task prerequisites still apply to urgent work.
+- In **Connect → Reminder preferences**, choose overdue reminders: every 30 minutes, hourly (default), daily or off. One grouped toast/optional browser notification lists up to three overdue titles. A per-device timestamp throttles reminders across reloads. Foreground reminders require the page to be visible; there is no closed-browser push.
+- Edit an entry and choose **Custom title color**. Using the color picker enables the override. Turning it off restores the linked project's color, otherwise the category color. The color applies to entry title text across list/card/calendar/dependency views, not all metadata. Urgency badges retain a separate readable label/color. Colors synchronize and are included in full JSON backups; Google/ICS do not carry Planner's title-color override.
+
+- Area/category icons appear on the left of entry titles and category tags. Existing Photography, IT, Household, Hardware, Cycling, Commerce and Health categories have matching icons; other categories use sensible defaults. Entry editors allow an icon override. Projects and goals now also expose category selection.
+- Completing a task opens a dedicated note window. **Keep open** or Escape cancels; **Confirm completion** records the optional note and marks the task done. Notes remain separate from planning notes, sync with the task, and can be read in the task editor's **Completion notes** history. Recurring successors start with an empty completion history. Urgent/resource-blocked tasks retain prerequisite checks.

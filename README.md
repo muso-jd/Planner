@@ -6,6 +6,8 @@ A personal workspace for planning, projects, finances, routines, reflection and 
 
 Open your private activation link for the migrated workspace, then use **Connect → Copy pairing link** on another device. Keep the workspace key safe. Workspace enrollment is private; use the supplied activation link for the migrated records. Original device-local `matrix*V4` records migrate when that device opens the upgraded site using the same workspace key.
 
+Tasks support **Urgent · Priority 0**, automatic overdue urgency and grouped reminders. In any entry editor, use **Custom title color** to coordinate your workspace; linked tasks can inherit project colors. Area icons appear before entry titles, and task completion asks for an optional note and confirmation.
+
 ## Develop
 
 Node.js 24 or newer. Production has no npm dependencies.
@@ -24,6 +26,7 @@ npm test
 - [Deployment and rollback](docs/DEPLOYMENT.md)
 - [Google connection setup](docs/GOOGLE.md)
 - [Upgrade and validation report](docs/changes/2026-10-16-life-workspace.md)
+- [Urgency and color update](docs/changes/2026-10-16-urgency-colors.md)
 - [Changelog](CHANGELOG.md)
 
 This public repository contains application code and synthetic tests only. Personal list contents, migrated data, workspace keys and OAuth access tokens are excluded.

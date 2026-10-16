@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.0 — 2026-10-16
+
+- Add explicit Urgent · Priority 0 and automatic overdue urgency, including same-day timed deadlines in Vienna time.
+- Add urgent/overdue filters, urgent-first sorting, and a persistent review banner.
+- Add grouped overdue reminders every 30 minutes, hourly, daily, or off; hourly is the default while Planner is visible.
+- Add custom entry title colors for tasks, projects, goals, blocks, routines, notes, journals, trackers, time and ledger entries. Linked tasks inherit a project color unless overridden.
+- Add area/category icons before entry titles, with automatic category matching and a per-entry icon selector.
+- Require a completion note window and confirmation before marking a task done; retain synchronized completion history and allow cancellation.
+- Remove deferred editor autofocus that could steal focus from rapid edits.
+- Preserve manually chosen Priority 0 when editing and importing linked Google tasks.
+
 ## 2.0.0 — 2026-10-16
 
 - Replace device-only storage with encrypted EU D1 cloud workspaces, pairing keys, optimistic revisions, automatic merges and conflict review.

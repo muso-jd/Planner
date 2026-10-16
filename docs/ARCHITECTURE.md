@@ -21,3 +21,9 @@ The API accepts only well-formed bearer tokens and encrypted envelopes, checks b
 ## External services
 
 Google Identity Services obtains a short-lived browser token after a user gesture. Tokens stay in runtime memory. Calendar and Tasks requests go directly to Google; no refresh tokens or Google secrets live on Cloudflare. Imports require review; exports affect selected records and never delete remote entries. Source docs: https://developers.google.com/identity/oauth2/web/guides/use-token-model and https://developers.google.com/workspace/tasks/reference/rest/v1/tasks.
+
+## Entry presentation and completion (2.1.0)
+
+`color` is a validated six-digit hex override; unset tasks inherit their linked project's override. `icon` is an allow-listed SVG icon identifier or `auto` derived from category. Presentation does not change task identity. Urgency is derived from manual priority 0 or an elapsed Vienna deadline and does not rewrite stored importance. Grouped overdue alerts use a per-device timestamp scoped to the workspace cache; frequency is synchronized in settings.
+
+Task completion requires a UI confirmation. The saved record includes `completionNotes` (latest note) and `completionLog` entries `{id, at, notes}`; planning notes remain untouched. Confirming rechecks the latest task and resource blockers. Recurrence is generated only after confirmation and does not copy completion logs. These fields follow the same encrypted snapshot and conflict-review rules as other records.
