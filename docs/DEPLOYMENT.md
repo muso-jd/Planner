@@ -142,3 +142,15 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 - Existing bindings/data preserved; no migration or production owner-record writes. Google authorization was not changed or exercised.
 - PWA shell: 2.3.3; downloaded updates activate after all old app windows/tabs close.
 - Rollback: route to Worker version `d754b8c3-f765-444a-ac9d-60e28b370b89` (2.3.2), preserving all records and bindings. Older editors may substitute today for an undated task; prefer a forward fix and follow shell activation rules.
+
+## Verified production rollout — 3.0.0 (Control Center)
+
+- UTC: 2026-10-16T13:38:39.239849Z.
+- Tested/deployed source: `85d349dfd5cd7e17d877fe859176ad4f8d52934e`, branch `feature/planner-control-center`; PR #2 is stacked on the existing sync branch. Neither PR is merged into main.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `41cddb4a-a00a-4dca-b4b4-d46656ca92fd`; Worker version: `07aaf4e9-80ad-4e0b-91d1-d14bf3f4c147`; traffic: 100%.
+- Live health confirmed `ok:true`, `version:3.0.0`, `storage:true`. HTML, app.js, style.css, planning.js, control-center.js, attachments.js, sw.js, pwa.js and the iOS PNG matched the tested local bytes. SHA-256: app.js `0bbdbd0e8f0f3d8ea6b84b933b51c4b4e01038a5cbd3a67a3f8bf80014957122`; control-center.js `9473dd8ce8512a8bebc7d48e731176fb56903f280d92000cd5960be658095b1e`; sw.js `c8c512bf8c86cc1c05d07ec2342b222eeaa94ce28ae2172588033a5d07764486`; iOS icon `5b3635da4587300ac7163cb08ee6e47927cd365c40966b1afebb77c2e28005f3`.
+- Validation: build, 23 automated tests, 60 new browser checks and 63 existing browser checks passed with no page errors. Focused PWA/offline, 1 MiB encrypted attachment backup/restore to a different workspace key, Journal history, feeling sync and optional-deadline regressions passed. Desktop, simulated iPad portrait/landscape, phone, editors and light-theme screenshots inspected. Physical devices and real Google authorization/writes remain unverified.
+- Existing D1, Artlook Gatekeeper and private Drive folder bindings preserved from live settings. No schema migration, production owner-record writes or Google configuration changes. Details and limitations: `docs/changes/2026-10-16-control-center-3.md`.
+- PWA shell: 3.0.0; let the update download, close every old planner app window/tab, then reopen. Unsynced local edits must be preserved.
+- Rollback server target: Worker version `23c3034d-6525-433d-9b98-52d5a9d1ea4e` (2.3.3), retaining all data and bindings. The old UI does not expose new attachments/recurrence controls; cached PWA clients follow shell activation rules. Prefer a forward corrective release; do not delete data, deployments or caches containing pending edits.
