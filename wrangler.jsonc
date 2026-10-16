@@ -1,0 +1,20 @@
+{
+  "name": "planner",
+  "main": "dist/worker.mjs",
+  "compatibility_date": "2026-10-16",
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "planner-vault",
+      "database_id": "d63e971e-966d-436b-9c87-b5f687d465ad"
+    }
+  ],
+  "services": [
+    {
+      "binding": "ARTLOOK_GATEKEEPER",
+      "service": "gatekeeper",
+      "environment": "production"
+    }
+  ]
+}

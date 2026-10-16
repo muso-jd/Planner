@@ -1,0 +1,4 @@
+import {createRequire} from 'node:module';import fs from 'node:fs';
+const require=createRequire(import.meta.url);const {chromium}=require(process.env.PLANNER_PLAYWRIGHT_MODULE||'playwright');
+const browser=await chromium.launch({executablePath:process.env.PLANNER_CHROMIUM||undefined,args:['--no-sandbox']});
+try{const page=await browser.newPage();for(const [name,size]of [['life-192',192],['life-512',512],['life-maskable-512',512]]){await page.setViewportSize({width:size,height:size});await page.setContent('<style>body{margin:0}svg{display:block;width:100vw;height:100vh}</style>'+fs.readFileSync('public/icons/life.svg','utf8'));const png=await page.screenshot();fs.writeFileSync('public/icons/'+name+'.png.base64',png.toString('base64')+'\n');}}finally{await browser.close()}
