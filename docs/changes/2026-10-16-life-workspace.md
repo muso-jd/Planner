@@ -22,4 +22,4 @@ Configured: EU D1 and private migrated workspace. Google OAuth client configurat
 
 ## Deployment state
 
-The source and documentation are on the task branch. Actual deployment ID, UTC time and exact source commit are recorded in DEPLOYMENT.md after rollout. This report does not imply main was merged or Google was configured.
+Deployed to the existing production Worker at 2026-10-16T08:23:02.126352Z from commit `87fbc324baeede46b66303c762578bc72d41b499`. Deployment `55982cc9-c3d6-4ccd-b020-24572c4930ef` routes 100% to Worker version `be7a1306-875d-4668-a635-1ce203196dcc`. Live health and authenticated decryption of all 136 migrated records passed. The cloud browser rendered the live unlock screen; the local headless browser could not reach the external deployment, so unlocked UI testing used the local Worker/SQLite harness. GitHub PR #1 is open; main is not merged. Google remains unconfigured. See DEPLOYMENT.md for the full record and rollback.
