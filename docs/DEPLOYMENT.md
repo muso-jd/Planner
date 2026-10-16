@@ -8,7 +8,7 @@ Build `npm run build`, run `npm test` and targeted browser checks, then upload `
 
 ## Current rollout
 
-Control Center 3 source branch: `feature/planner-control-center`, stacked on `feature/life-workspace-sync`. Deployment metadata is recorded below after the validated source commit is pushed. Neither feature branch automatically deploys through GitHub Actions; no pre-existing CI configuration was present. Source pushes alone do not switch production.
+Calendar/Health/Insights 3.1 source branch: `feature/calendar-health-insights`, stacked on `feature/planner-control-center`, which is stacked on `feature/life-workspace-sync`. Deployment metadata is recorded below after the validated source commit is pushed. Feature branches do not automatically deploy through GitHub Actions; no pre-existing CI configuration was present. Source pushes alone do not switch production. Version 3.1 adds `health.googleapis.com` to CSP and includes all new frontend modules/styles in the embedded bundle and PWA shell, with no D1 migration or new binding.
 
 ## Rollback
 
@@ -154,3 +154,16 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 - Existing D1, Artlook Gatekeeper and private Drive folder bindings preserved from live settings. No schema migration, production owner-record writes or Google configuration changes. Details and limitations: `docs/changes/2026-10-16-control-center-3.md`.
 - PWA shell: 3.0.0; let the update download, close every old planner app window/tab, then reopen. Unsynced local edits must be preserved.
 - Rollback server target: Worker version `23c3034d-6525-433d-9b98-52d5a9d1ea4e` (2.3.3), retaining all data and bindings. The old UI does not expose new attachments/recurrence controls; cached PWA clients follow shell activation rules. Prefer a forward corrective release; do not delete data, deployments or caches containing pending edits.
+
+## Verified production rollout — 3.1.0 (Phone capture, Calendar, Health and Insights)
+
+- UTC: 2026-10-16T14:43:31.435685Z.
+- Tested/deployed source: `a99cf46ac3477426b3904a5bf720fb9060c42f8c`, branch `feature/calendar-health-insights`; PR #3 is stacked on PR #2. No main-branch merge.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `9a5865b7-7330-4e6b-8008-b863e2337a3b`; Worker version: `92794d93-6818-498c-a79e-4b93dfcf1bac`; traffic: 100%.
+- Live health confirmed `ok:true`, `version:3.1.0`, `storage:true`. All 11 changed frontend assets matched tested local bytes: HTML, app.js, control-center.js, calendar.js, health-data.js, health.js, insights.js, solid-icons.js, google-export.js, workspace.css and sw.js. The live CSP permits `https://health.googleapis.com`.
+- SHA-256: app.js `8acc8fb790e2370c4b196e2d29b96f295a59262233efcf415a3a7737b97b3469`; health.js `4054ab6278a725b57d932860e4fe0bc2385d1e408810bf79c64d2eb4e6d9f31e`; workspace.css `8bb17c37e058dab452a0aeea99743d5e449ddaab2dd092e150a3e009fecaa540`; sw.js `f8e3ca1c1353c8c8cca8b60e435d5e2c2d5ce09ed0ff0edf4168a685d3745863`.
+- Validation: build and 30 automated tests passed; 57 new + 63 existing + 60 Control Center Chromium checks passed with zero page errors. PWA installability/offline/reconnect, Journal pagination/editing, mood sync, optional deadlines and 1 MiB attachment backup/restore regressions passed. Desktop, simulated iPad portrait/landscape, phone-focused capture, white-theme Health and editor screenshots inspected. Physical devices, real Google consent/reads/writes remain unverified.
+- Existing D1, Artlook Gatekeeper and private Drive folder bindings reused from live settings. No new binding, schema migration, owner-record write or Google configuration change. Google Health requires user API enablement/consent; authorization tokens remain browser memory-only. See `docs/GOOGLE.md` and `docs/changes/2026-10-16-calendar-health-insights.md`.
+- PWA shell: 3.1.0. Let the update download, close every old planner app window/tab, then reopen; preserve pending edits and workspace keys.
+- Rollback: Worker version `07aaf4e9-80ad-4e0b-91d1-d14bf3f4c147` (3.0.0), retaining all data and bindings. Older UI does not display Health records or the new export controls; new fields remain in the encrypted vault. Cached clients follow the existing activation rules. Prefer a forward correction and never delete data or deployment history as rollback.

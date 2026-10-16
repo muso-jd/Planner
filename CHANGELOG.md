@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.1.0 — 2026-10-16
+
+- Focus phone navigation on Notes, Diary, Feeling and Time; put other sections behind More while keeping full desktop/iPad navigation. Give phones dedicated feeling and timer/history views, with Notes as the landing view and Capture creating a note.
+
+- Rename Plan to Calendar with month/week grids that remain seven columns on every viewport, selectable dates and per-day event creation.
+- Replace line icons with solid silhouettes: white content icons and coloured navigation; remove the duplicate icon-only editor strip while retaining labelled categories and routine type selection.
+- Restore the editor action bar when starting a new ledger entry after import review.
+- Remove the bottom-left Sync button, expand Capture across the sidebar, and place the sync timestamp above Life with green success/red error states.
+- Add reviewed single-task export to Google Tasks or Calendar with independent destination links and repeat-export updates.
+- Put Journal day/history/archive and entry actions in one toolbar; show history only when selected.
+- Expand Insights into eight tabs with 7/28/90-day ranges, interactive chart points and accessible data tables.
+- Add Health tabs, manual weight/workout/sleep/stress entries and reviewed read-only Google Health imports for sleep, exercise, weight, HRV and resting heart rate. Retain manual readings and workout annotations on repeat imports.
+- Show self-reported workout intensity, device zones and an adjustable planned-rest countdown. No direct Google stress score or measured recovery result is fabricated.
+
 ## 3.0.0 — 2026-10-16
 
 - Redesign shared editors with inline category/icon palettes, color-dot titles, inside-field labels, income/expense and scope switches, and progressive task details.

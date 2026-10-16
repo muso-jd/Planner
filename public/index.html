@@ -11,17 +11,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Life Planner">
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/workspace.css">
 </head>
 <body>
 <aside class="sidebar">
+<span id="syncStatus" role="status" aria-label="No sync yet">—</span>
 <a class="brand" href="/">LIFE<span>YOUR PERSONAL OPERATING SPACE</span>
 </a>
 <nav id="navigation" aria-label="Workspace">
 </nav>
 <div class="sidebar-bottom">
-<span id="syncStatus" role="status" aria-label="No sync yet">—</span>
-<div class="sidebar-actions"><button id="syncButton" aria-label="Sync workspace">↻ Sync</button>
-<button id="quickAdd" class="primary">+ Capture</button></div>
+<div class="sidebar-actions"><button id="quickAdd" class="primary">+ Capture</button></div>
 </div>
 </aside>
 <main>
@@ -79,6 +79,21 @@
 <button class="primary" type="submit">Confirm completion</button>
 </div>
 </form>
+</dialog>
+<dialog id="googleTaskExport" aria-labelledby="googleExportTitle">
+<form id="googleTaskExportForm">
+<div class="dialog-head"><h2 id="googleExportTitle">Send task to Google</h2><button type="button" id="closeGoogleExport" aria-label="Close">×</button></div>
+<p id="googleExportTaskName"></p>
+<label>Destination<select id="googleExportTarget"><option value="tasks">Google Tasks</option><option value="calendar">Google Calendar</option></select></label>
+<p class="subtle">Sends only this saved task. Google Tasks supports a date-only deadline. Calendar requires a date and supports your timed reminder. Repeating this export updates Planner’s own linked item in the configured destination.</p>
+<p id="googleExportError" class="negative" role="alert"></p>
+<div class="dialog-actions"><button type="button" id="cancelGoogleExport">Cancel</button><button type="submit" class="primary">Send task</button></div>
+</form>
+</dialog>
+<dialog id="phoneWorkspaceMore" aria-labelledby="phoneWorkspaceTitle">
+<div class="dialog-head"><h2 id="phoneWorkspaceTitle">Workspace</h2><button type="button" id="closePhoneMore" aria-label="Close workspace menu">×</button></div>
+<p class="subtle">Your full workspace, when you need it.</p>
+<nav id="phoneWorkspaceLinks" class="phone-workspace-grid" aria-label="More workspace sections"></nav>
 </dialog>
 <dialog id="unlock">
 <form id="unlockForm">

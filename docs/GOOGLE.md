@@ -3,7 +3,7 @@
 1. In Google Cloud Console, use a project with Calendar API and Tasks API enabled.
 2. Configure OAuth consent and add yourself as a test user if the app is in testing.
 3. Create an OAuth client of type Web application. Add `https://planner.jeremydachojd.workers.dev` as an authorized JavaScript origin. Add localhost only when developing locally.
-4. Paste the client ID (not a client secret) into Planner → Connect and save it.
+4. Paste the client ID (not a client secret) into Planner → Settings and save it.
 5. Connect Google and authorize calendar events, calendar-list read access and Tasks access.
 6. List calendars/task lists if needed; enter their IDs. Default values are `primary` and `@default`.
 7. Preview imports, review the list, then import. Export uses the selected window for dated records and includes undated tasks. It creates records and subsequently patches records marked as previously exported by Planner.
@@ -17,6 +17,33 @@ Sources checked 2026-10-16:
 - https://developers.google.com/identity/oauth2/web/guides/use-token-model
 - https://developers.google.com/workspace/calendar/api/v3/reference/events/insert
 - https://developers.google.com/workspace/tasks/reference/rest/v1/tasks
+
+## Export one task
+
+Use the Google export icon beside a saved task, or Send saved task to Google inside its editor. Choose Google Tasks or Google Calendar, then Send task. Only that saved task is sent; save editor changes first if you want to export them. The destination uses the task-list/calendar IDs saved in Settings; defaults remain `@default` and `primary`. Authorization opens when needed. Calendar requires a date; a task without a time becomes an all-day event. Calendar supports the selected 30-minute, 1-hour or 1-day reminder; Tasks exposes a date-only deadline. Sending again updates the item Planner previously exported to that destination. Tasks and Calendar links are independent. A newly generated recurring task clears inherited export IDs. Importing a Planner-owned task export updates the original task rather than duplicating it; Calendar mirrors of exported tasks are skipped during block imports so they do not convert tasks into blocks.
+
+## Google Health
+
+1. Enable **Google Health API** in the same Cloud project as the web OAuth client. Follow https://developers.google.com/health/get-started and its Google Cloud setup checklist.
+2. Add these scopes to your OAuth consent configuration and grant them from **Health → Google Health → Connect Google Health**:
+   - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly`
+   - `https://www.googleapis.com/auth/googlehealth.sleep.readonly`
+   - `https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly`
+3. If the OAuth app is in testing, add your Google account as a test user. Wider distribution may need Google's scope verification/approval. Keep the exact live site's origin in Authorized JavaScript origins. Never put a client secret in this app.
+4. Choose 7, 28 or 90 days ending on the selected Planner reporting date. Preview Google data, inspect results/errors by data type, then import the readings you retrieved. Empty responses mean no available readings, not zero sleep or weight.
+
+The connector calls Google Health v4 directly from the browser. Sleep uses `dataPoints:reconcile`; exercise, weight, daily HRV and resting heart rate use paginated `dataPoints` lists with documented time filters. Access is read-only. The token stays in runtime memory and expires; reconnect manually when necessary. Imported readings are normalized into the encrypted Planner workspace, available across devices and included in full backups. No real Google consent or owner-health read is performed by automated tests.
+
+Stress entries are manual: the documented Google Health data-type list has no direct stress-score type. HRV remains a separately named metric. Workout intensity is self-reported RPE (1–10), alongside device heart-rate zones where returned. Planned rest is an optional 0–168-hour interval set by you after a workout; the countdown does not determine physiological recovery. Imported measurement values remain read-only; local workout notes, RPE and planned rest can be adjusted and survive repeated imports. Manual entries are not replaced by Google imports. No Apple service integration is included.
+
+Health sources checked 2026-10-16:
+
+- https://developers.google.com/health/get-started
+- https://developers.google.com/health/data-types
+- https://developers.google.com/health/filters
+- https://developers.google.com/health/reference/rest/v4/users.dataTypes.dataPoints
+- https://developers.google.com/health/reference/rest/v4/users.dataTypes.dataPoints/list
+- https://developers.google.com/health/reference/rest/v4/users.dataTypes.dataPoints/reconcile
 
 ## Drive images and backups
 
