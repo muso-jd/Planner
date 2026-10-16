@@ -55,3 +55,7 @@
 ## Journal history (2.2.1)
 
 Journal history includes all saved non-archived diary, morning/evening and values entries, including the selected day. View day remains inside Journal and shows the chosen day’s full entries and images. Load older entries retrieves the next 30 records from the synchronized workspace; no older entries are silently hidden. Undated imported entries remain editable.
+
+## Category icon presentation (2.2.2)
+
+List entries reserve a full-height icon rail beside the title and metadata. White category glyphs glow in the entry’s effective color, including custom colors and project inheritance. Glyphs preserve their proportions for long diary entries. Phone layouts use a narrower rail, and card headings have larger inline icons. Category badges use the same white/glow treatment.

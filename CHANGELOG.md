@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.2 — 2026-10-16
+
+- Enlarge category icons into a full-height rail beside list entries.
+- Use white icon strokes with a glow matching the entry color; preserve title colors.
+- Scale icon rails for phone layouts and enlarge project/card heading icons.
+
 ## 2.2.1 — 2026-10-16
 
 - Fix Journal history View day navigating to Today instead of the selected journal day.
