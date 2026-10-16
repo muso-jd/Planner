@@ -106,3 +106,15 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 - The first live check through Python urllib returned a transport 403. Repeating with the working curl transport verified the production assets above.
 - Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
 - Rollback server target: Worker version `341a100f-a17f-4620-91e6-6370c8af94b8` (2.2.3). Follow the pre-PWA rollback procedure above for clients retaining a cached shell; preserve local edits, D1 and all bindings.
+
+## Verified production rollout — 2.3.1 (Feelings in Journal)
+
+- UTC: 2026-10-16T09:50:18.393178Z.
+- Source: `da4ed88d7227e992704b81cb1d27f4fb30e691f2`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `420972a1-822e-46e8-bc77-bfd40ff0d5b5`; Worker version: `9a285055-4456-4595-bf61-6cd70f9966fd`; traffic: 100%.
+- Health: `ok:true`, `version:2.3.1`, `storage:true`. Live app.js matched tested SHA-256 `8de2fd3e12c3bc1c9ff50caa5a7d75be6abcd76141f2ba4683983d3e2f9765b1`; live sw.js matched `e4a0ea3e2c72fa7192604c561d5c3ed8e393e65d1644c5822eedc2ec0d75aac3`.
+- Validation: build and 16 automated tests passed. Focused mood/Journal browser checks covered existing/new observations, editing, phone layout, Vienna times and second-device sync. The 42-record history regression passed. Phone screenshot inspected; physical devices unverified.
+- Existing D1, Artlook and private folder bindings preserved. No migration or production owner-record writes.
+- PWA shell version: 2.3.1. Existing clients must let the update download, close all planner windows/tabs, then reopen to activate.
+- Rollback: route to Worker version `a3e4cf9f-2fdb-4594-aa52-d3ae2c575ade` (2.3.0), retaining all records/bindings. Cached clients follow the existing shell activation rules; a forward fix is preferable to downgrading installed shells.
