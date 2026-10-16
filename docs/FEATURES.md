@@ -51,3 +51,7 @@
 - Full local JSON downloads include image payloads. Import accepts full local backups and encrypted `.planner-backup.json` files using the current workspace key. Removing an image from a diary entry detaches its reference; no Drive file or stored image is permanently deleted. Cancelled uploads can leave retained, encrypted orphan copies; automatic purging is not implemented.
 - The provided destination folder is stored in encrypted workspace settings, not in this public repository. Its existence/permissions have not been verified with a real Google account. Drive saving is not active until the user configures OAuth/Picker and grants folder access. Calendar/Tasks authorization alone does not grant Drive access.
 - The existing Artlook gatekeeper is connected internally for read-only, folder-restricted listing. This reuses its hidden API key without exposing it or changing Artlook. **Check Artlook gatekeeper** tests the read path; it cannot authorize uploads or replace Google write consent.
+
+## Journal history (2.2.1)
+
+Journal history includes all saved non-archived diary, morning/evening and values entries, including the selected day. View day remains inside Journal and shows the chosen day’s full entries and images. Load older entries retrieves the next 30 records from the synchronized workspace; no older entries are silently hidden. Undated imported entries remain editable.

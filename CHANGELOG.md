@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.1 — 2026-10-16
+
+- Fix Journal history View day navigating to Today instead of the selected journal day.
+- Include selected-day entries in history, add text previews and load-older pagination beyond 30 records.
+- Handle undated journal records safely without rewriting saved entries.
+
 ## 2.2.0 — 2026-10-16
 
 - Add diary image uploads, previews, separate encrypted image sync and full backups including photos.
