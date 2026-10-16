@@ -54,3 +54,14 @@ The live `/api/health` returned `ok: true`, version `2.0.0`, and `storage: true`
 - Authenticated live gatekeeper status confirmed the service and folder binding, explicitly `mode:read-only`. The fixed-folder list returned HTTP success with zero files. This verifies transport, not Google write permission or proof of access to non-public folder contents.
 - Build, 16 automated tests and 63 browser checks passed. Real Google uploads remain unconfigured; no uploaded Drive files or backups are claimed.
 - Rollback: route traffic to Worker version `dbeb9628-2d32-430e-8a31-f33218fcd145` (2.1.0), retaining all D1 tables and image rows. The older UI does not expose diary attachments. No deployment, source gatekeeper, secret or Drive file was deleted.
+
+## Verified production rollout — 2.2.1 (Journal history)
+
+- UTC: 2026-10-16T09:12:31.766809Z.
+- Source: `fa260b27692b20a073d2e6ef643fed871c9447be`, branch `feature/life-workspace-sync`.
+- Worker/environment: `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Deployment: `993524fc-509c-46bb-96a7-76dfeda35377`; Worker version: `4d159ba9-7dfb-45c1-83ef-799e08fab116`; traffic: 100%.
+- Health confirmed `ok:true`, `version:2.2.1`, `storage:true`. Live app.js matched tested source SHA-256 `730318e787cc050997a48d31e4c0f6bd89e09ace5500f7074436f69c85cc6501`.
+- Validation: build, 16 automated tests and the focused 42-record Journal browser regression passed. No physical Safari/iPad validation is claimed.
+- Existing D1, Artlook service and private folder bindings retained; no data migration or user-entry writes.
+- Rollback: route to version `127d5237-bfc5-4096-a6c8-4c6f7a133b53` (2.2.0), retaining all data and bindings.

@@ -17,3 +17,5 @@ Journal date actions now carry their own context and stay in Journal. The select
 ## Deployment
 
 Continues the same feature branch and PR. Exact deployed source, version, UTC time, IDs and rollback target are recorded in DEPLOYMENT.md after rollout. Existing workspace keys, folder configuration, gatekeeper and image storage are retained.
+
+Deployed at 2026-10-16T09:12:31.766809Z from source `fa260b27692b20a073d2e6ef643fed871c9447be`. Live health confirmed 2.2.1, and live app.js matched the tested build. Exact deployment/version IDs and rollback are in DEPLOYMENT.md.
