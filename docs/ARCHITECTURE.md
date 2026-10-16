@@ -41,3 +41,7 @@ The destination folder is configured privately through a CAS-protected encrypted
 Production Artlook's `gatekeeper` Worker was inspected. Its only Google credential is `GOOGLE_API_KEY`; it handles Drive lists and legacy gallery checks, not OAuth uploads. Planner reuses that credential through an `ARTLOOK_GATEKEEPER` service binding, following Artlook's adapter pattern. The source Worker, secret and allowed origins are not changed or copied into Git.
 
 Authenticated `/api/drive/list` normalizes the request to the single server-configured `DRIVE_FOLDER_ID`, rejects arbitrary queries and other folders, bounds pagination, uses internal transport to the existing Artlook origin, and forwards only selected file metadata. `/api/drive/status` reports the read-only capability explicitly. This does not make a private Drive folder public and cannot grant write access. OAuth/Picker remains necessary for JPEG and backup writes.
+
+## Local typography (2.2.3)
+
+Noto Sans Mono is bundled as a variable WOFF font with Latin/extended Latin, general punctuation, euro and arrow coverage. The text-safe base64 source in public/fonts is embedded by scripts/build.mjs; the Worker decodes it into binary at /fonts/noto-sans-mono.woff with the font/woff MIME type. No runtime font service is contacted. The SIL Open Font License is retained alongside the asset. System fallback handles glyphs outside the subset.

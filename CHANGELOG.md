@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.3 — 2026-10-16
+
+- Reduce category icons to compact rounded outlines with more space before entry text.
+- Align entry titles with their category/metadata text and increase title sizes.
+- Use locally served Noto Sans Mono throughout the planner, including dependency graph labels.
+
 ## 2.2.2 — 2026-10-16
 
 - Enlarge category icons into a full-height rail beside list entries.

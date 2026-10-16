@@ -59,3 +59,7 @@ Journal history includes all saved non-archived diary, morning/evening and value
 ## Category icon presentation (2.2.2)
 
 List entries reserve a full-height icon rail beside the title and metadata. White category glyphs glow in the entry’s effective color, including custom colors and project inheritance. Glyphs preserve their proportions for long diary entries. Phone layouts use a narrower rail, and card headings have larger inline icons. Category badges use the same white/glow treatment.
+
+## Compact icons and typography (2.2.3)
+
+Category icons now use compact 28 px glyphs (24 px on phones), thinner rounded strokes and the coordinated white/color glow. Additional space separates icons from text; title buttons no longer indent titles relative to category/metadata lines. Entry titles are 17 px on desktop/tablet and 16 px on phones, with larger card titles. The planner uses locally served Noto Sans Mono, with system fallback for unsupported glyphs.

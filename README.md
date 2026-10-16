@@ -33,3 +33,5 @@ npm test
 - [Changelog](CHANGELOG.md)
 
 This public repository contains application code and synthetic tests only. Personal list contents, migrated data, workspace keys and OAuth access tokens are excluded.
+
+Typography uses locally served Noto Sans Mono. Font licensing and source provenance are recorded in `public/fonts/README.md`.
