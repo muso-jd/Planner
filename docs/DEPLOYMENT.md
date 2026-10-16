@@ -173,3 +173,15 @@ When rolling back to a version before 2.3.0, already-controlled clients can reta
 Source branch `feature/dependencies-health-history`, stacked on `feature/calendar-health-insights` (PR #3). No automatic Git deployment. Build includes `/dependencies.js`; PWA shell is 3.2.0. No new binding, D1 migration, owner-data rewrite, audience change or Google configuration change. Keep the existing private Drive folder and service bindings. Upload the built module using the content-only Worker API to preserve live configuration.
 
 Rollback target: `92794d93-6818-498c-a79e-4b93dfcf1bac` (3.1.0), preserving D1 and all bindings. Old UI does not understand cross-type prerequisite completion or project accent inheritance, but stored fields remain. Close all old PWA windows after the new shell downloads and reopen; preserve pending edits. Exact deployment evidence is appended only after rollout verification.
+
+### Verified production rollout — 3.2.0
+
+- UTC: `2026-10-16T15:34:49.348972Z`.
+- Exact tested/deployed source commit: `9f11abedd35c78841a9df67c7a411e975bd2dbf4`; source tree `33ebcc79b08a9c6fb964b2bd7885c8b29829d0c8`; branch `feature/dependencies-health-history`; https://github.com/muso-jd/Planner/pull/4 (stacked on PR #3, no main merge).
+- Worker/environment: `planner` / production; stable URL https://planner.jeremydachojd.workers.dev/.
+- Deployment: `7a398600-6208-4a11-a465-06efeda1fb77`; Worker version: `102fa993-689d-4e08-8352-46ba578d2a2b`; 100% traffic confirmed through the Cloudflare API.
+- The downloaded production Worker module exactly contains the tested compiled source (506,105 characters; 506,521 UTF-8 bytes). Compiled SHA-256: `52d5fcafdca9c734c32976228be2957f56f4416874703ba7d8555db7bb74dcb2`. All frontend assets are embedded in that verified module.
+- Existing `DB`, `ARTLOOK_GATEKEEPER` and private `DRIVE_FOLDER_ID` bindings remain present; content-only upload preserved live configuration and compatibility date. No D1 migration or owner-record writes.
+- Build and 36 tests passed. New dependency/history suite: 30 checks, 239 mocked Health requests, no page errors. Final general suite: 63 checks; final Calendar/Health suite: 57 checks; Control Center: 60 checks. PWA offline/reconnect checks passed. Desktop, simulated iPad portrait/landscape and phone screenshots reviewed after layout correction.
+- Verification limit: direct live `/api/health` and per-asset HTTP checks were denied by the execution network (HTTP 403 / browser ERR_BLOCKED_BY_CLIENT). Control-plane source equality and 100% traffic were verified separately; no successful live health-endpoint response or unlocked owner-session verification is claimed. Physical Safari/devices and real Google Health readings/permissions remain unverified.
+- PWA shell: `3.2.0`; close all old app windows after update download, then reopen, retaining pending edits. Rollback: route traffic to Worker version `92794d93-6818-498c-a79e-4b93dfcf1bac` (3.1.0), preserving data, bindings and version history.

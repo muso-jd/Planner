@@ -19,3 +19,7 @@ Validation evidence and deployment state are recorded below after the relevant c
 - Desktop 1512×982, iPad 1024×1366 / 1366×1024 and phone 390×844 Chromium layouts were simulated. Screenshot review found a missing grid span on the new explorer; corrected it and added a width assertion. Screenshots after correction were inspected. Physical devices/Safari remain untested.
 - Background-sync render races and the intentional independent project-accent behavior required updates to inherited test expectations; all tested corrections passed. A fresh browser download was unavailable; an existing working Chromium 153 binary completed validation.
 - Actual owner Health values, OAuth grants and enabled Google Cloud APIs remain unverified; the live workspace was locked in the agent browser. No personal data was added to this public repository or imported into production.
+
+## Deployment
+
+Deployed source `9f11abedd35c78841a9df67c7a411e975bd2dbf4` to production `planner` on 2026-10-16T15:34:49.348972Z. Worker version `102fa993-689d-4e08-8352-46ba578d2a2b` serves 100% traffic; downloaded deployed module equals the tested build. PR #4 remains open, main unchanged. Direct data-plane HTTP verification was blocked by the environment; exact evidence, preserved bindings and rollback target are in DEPLOYMENT.md. Final general and Calendar/Health reruns passed 63 and 57 checks respectively. No personal Google data read/import was performed.
