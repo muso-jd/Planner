@@ -16,3 +16,7 @@ The default dependency experience is now Focus: collapsible project/task outline
 - Existing dependency/history suite passed 30 checks with 239 mocked Health requests. Journal regression passed same-day/history pagination, navigation, edits and phone layout.
 - Simulated desktop, iPad portrait/landscape and phone Focus screenshots inspected. Real Safari and physical devices are not claimed.
 - No production owner-record writes, database migration, new binding, Health scope changes or main-branch merge. Source/deployment evidence is recorded in DEPLOYMENT.md after rollout.
+
+## Deployment
+
+Source `50c682d3513a31414c2fed22ceeb0a020c51d764` deployed to production `planner` at 2026-10-17T02:36:13.666775Z. Version `eb55ec25-b731-4c92-9b72-f5dcfe25db70` serves 100%; downloaded deployed module exactly matches the tested build. PR #5 remains open; main unchanged. Full evidence and rollback are in DEPLOYMENT.md. This documentation-only follow-up does not change deployed code.
