@@ -1,10 +1,26 @@
 # Deployment
 
-## Prepared black-glass / funding visibility update — 3.6.0
+## Standing Planner release authorization
 
-Branch `feature/black-glass-funded-tasks`, stacked on `feature/liquid-glass-themes` (PR #7). Source preparation only; no automatic Git deployment or production upload. Existing theme selection is retained. Build and PWA shell versions are prepared at 3.6.0 with no new assets, bindings, migrations or API changes.
+Jeremy explicitly instructed on 2026-10-17 to continue through deployment for requested Planner changes after validation, without a separate confirmation each time. Follow `AGENTS.md`: publish the focused branch/PR, deploy to the existing production Worker, verify and document the result. An explicit preview/draft-only request overrides this. This is standing authorization for the agent's release workflow, not a new GitHub deployment pipeline; existing merge and deployment-deletion boundaries still apply.
 
-If rolled out with authorization, use content-only Worker upload, preserve exact live bindings, and record source/deployment/version IDs, UTC and live verification. Rollback target is the verified 3.5.0 Worker version `1eaeeb87-3541-4cb2-ac98-0d5fa6640906`, deployment `44ae84b3-68c1-4648-bca2-e6bd1ba9f3b9`, with all data, bindings and history retained. Older clients fall back to Dark for the three new theme IDs, preserving their stored value; no funding data requires rollback.
+## Black-glass / funding visibility update — 3.6.0
+
+Branch `feature/black-glass-funded-tasks`, stacked on `feature/liquid-glass-themes` (PR #7). No automatic Git deployment. Existing theme selection is retained. Build and PWA shell versions are 3.6.0 with no new assets, bindings, migrations or API changes.
+
+Use content-only Worker upload and preserve exact live bindings. Rollback target is the verified 3.5.0 Worker version `1eaeeb87-3541-4cb2-ac98-0d5fa6640906`, deployment `44ae84b3-68c1-4648-bca2-e6bd1ba9f3b9`, with all data, bindings and history retained. Older clients fall back to Dark for the three new theme IDs, preserving their stored value; no funding data requires rollback.
+
+### Verified production rollout — 3.6.0
+
+- UTC `2026-10-17T11:34:05.908819Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact tested/deployed source `6f55566e6c1b61c2a324687c82f0312e4180c32f`; tree `8df4246cdc3688e5bdcff6ffee5aaa1c5cbcc756`; branch `feature/black-glass-funded-tasks`; https://github.com/muso-jd/Planner/pull/8, stacked on PR #7. No main merge.
+- Deployment `07a4af81-9952-451e-9de5-97e0e01e6106`; Worker version `decf4ce3-2c20-4c32-bfaa-ef9518d42f4b`; 100% traffic confirmed through Cloudflare.
+- Downloaded deployed module contains the exact tested build and embedded assets. Compiled SHA-256 `20e4074abff41c510d5c1d981c82288feaed28f5575ad4733c84e84ee6cbdbfe`.
+- All existing binding values and compatibility date `2026-10-16` were preserved, comparing before/after the content-only upload. No database migration, owner-record write or deployment deletion.
+- Live release-qualified `/api/health` returned HTTP 200 with `ok:true`, `version:3.6.0`, `storage:true`. Served `/themes.css` and `/control-center.js` matched local SHA-256 values `7205981a5b7af9b749364870dec47b443d93e990cbb918ae4b30832342307f2e` and `af0257fe1e734c63e4056fa804195703cf8d2350ec0a6b06aa962aea6c3e0de2` respectively.
+- Validation on unchanged application source: build, 45 unit/API tests, 11 funding-visibility checks, 27 theme checks, 19 existing funding/envelope checks and PWA installability/offline/reconnect. Browser suites reported zero page errors. Desktop and simulated iPad/phone layouts inspected; no physical Safari/device or unlocked owner-session test is claimed.
+- PWA shell 3.6.0: allow the update to download, close old Planner windows/tabs and reopen, retaining pending edits. Choose the new black themes under Settings → Make it yours. Existing selection is retained automatically.
+- Roll back by routing traffic to `1eaeeb87-3541-4cb2-ac98-0d5fa6640906` (3.5.0), preserving data, bindings and deployment history.
 
 ## Liquid-glass update — 3.5.0
 

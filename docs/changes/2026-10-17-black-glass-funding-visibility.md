@@ -1,4 +1,4 @@
-# Black glass and cleaner Budget funding — Planner 3.6 source
+# Black glass and cleaner Budget funding — Planner 3.6
 
 ## Behavior
 
@@ -23,4 +23,10 @@ Carbon, Black Ice and Amethyst join the existing three glass themes and three cl
 
 ## Delivery state
 
-Prepared on `feature/black-glass-funded-tasks`, stacked on the 3.5 branch/PR #7. This update is not merged or deployed. Production remains the verified 3.5 deployment. See `docs/DEPLOYMENT.md` for the intended rollout and rollback boundary.
+Deployed with explicit user authorization at `2026-10-17T11:34:05.908819Z` UTC to https://planner.jeremydachojd.workers.dev/. Exact tested source `6f55566e6c1b61c2a324687c82f0312e4180c32f`, branch `feature/black-glass-funded-tasks`, PR https://github.com/muso-jd/Planner/pull/8, stacked on PR #7. No main merge.
+
+Cloudflare reports deployment `07a4af81-9952-451e-9de5-97e0e01e6106`, Worker version `decf4ce3-2c20-4c32-bfaa-ef9518d42f4b`, at 100% traffic. Downloaded module exactly contains the tested build. Existing binding values and compatibility date were preserved. Full evidence and rollback to 3.5 are in `docs/DEPLOYMENT.md`.
+
+Live release-qualified health returned HTTP 200 with version 3.6.0 and storage available. The live theme stylesheet and Budget/theme controller matched their local SHA-256 checksums.
+
+Jeremy also established standing authorization to deploy requested Planner updates after validation without a separate deployment confirmation. This is recorded in `AGENTS.md` and the deployment guide; it does not create automatic Git deployment or authorize main merges/deployment deletion.

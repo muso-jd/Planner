@@ -12,7 +12,7 @@ Tasks support **Urgent · Priority 0**, automatic overdue urgency, saved filter 
 
 Planner 3.5 offers optional **Pearl**, **Dusk** and **Obsidian** liquid-glass themes under **Settings → Make it yours**, alongside Dark, White and Black. Visual previews, frosted surfaces, soft reflections, system typography and a floating dock carry across workspace views. Theme/accent choices sync with the encrypted workspace and remain available offline. Reduced transparency and increased contrast are respected when the browser exposes those preferences. See the [theme implementation and validation report](docs/changes/2026-10-17-liquid-glass-themes.md) for release details.
 
-The prepared 3.6 source adds **Carbon**, **Black Ice** and **Amethyst**, all with true black backgrounds, and hides zero-cost task rows from Budget while keeping funded descendants and calculated totals. See the [black-glass and funding visibility report](docs/changes/2026-10-17-black-glass-funding-visibility.md) for validation and deployment state.
+Planner 3.6 adds **Carbon**, **Black Ice** and **Amethyst**, all with true black backgrounds, and hides zero-cost task rows from Budget while keeping funded descendants and calculated totals. See the [black-glass and funding visibility report](docs/changes/2026-10-17-black-glass-funding-visibility.md) for validation and release details.
 
 Budget has Total, Business, Personal and Analytics tabs, recurring income/expenses, future-payment countdowns, file attachments and task/event links. Monthly cash flow and the separate open-task funding balance are deliberately not added together. Routines support daily/weekly schedules and month-end offsets; trackers use 28-day dot grids. Journal contains notes, feelings and a restorable archive.
 

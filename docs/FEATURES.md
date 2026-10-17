@@ -6,9 +6,9 @@ Settings → Make it yours offers Pearl (bright frost), Dusk (blue/violet twilig
 
 Backdrop filters apply to major panels and shell surfaces rather than every calendar cell or task row. Backdrops are static CSS gradients with no pointer tracking, shaders or animated distortion. Browsers that do not support backdrop filters receive opaque shell surfaces. Reduced-transparency and increased-contrast preferences use more opaque materials when supported by the browser; no physical Safari/device performance claim is made. The PWA shell must update before these themes are available. Deployment state is recorded in the dated change report and deployment guide.
 
-The prepared 3.6 source adds Carbon (silver), Black Ice (ice blue) and Amethyst (violet), each with a pure `#000000` page background, no canvas gradients and black browser chrome. Their panels/dock retain tinted translucent glass; accent color remains independently adjustable. All six glass and three classic options remain available.
+Planner 3.6 adds Carbon (silver), Black Ice (ice blue) and Amethyst (violet), each with a pure `#000000` page background, no canvas gradients and black browser chrome. Their panels/dock retain tinted translucent glass; accent color remains independently adjustable. All six glass and three classic options remain available.
 
-## Budget funding visibility (3.6 source)
+## Budget funding visibility (3.6)
 
 Budget funding trees omit task rows whose own cost rounds to zero cents, including unset estimates. Paid subtasks remain visible even when a parent is free, at the nearest visible ancestor's depth. Projects/goals with no funded descendants in the selected scope are omitted; completed paid tasks within containers still contribute to total needed, with zero still open. The funded-task count includes only open tasks with positive own costs. All records and calculations remain intact: expected-income estimates from free tasks still contribute to the separate estimate summary. Task/Project views and explicit ledger links are unchanged.
 
