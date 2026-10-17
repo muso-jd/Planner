@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.3.0 — 2026-10-17
+
+- Display Vienna save timestamps for new diary reflections in Journal, history and editors, preserving them after edits. Show legacy last-edit timestamps honestly when original save time is unavailable.
+- Show saved morning/evening reflection status and timestamps on Today.
+- Add independent, workspace-synced Calendar visibility toggles for weekly and monthly routines, off by default. Daily routines remain excluded.
+- Make Focus the default dependency view: collapsible work outline, selected-item inspector, Requires/Unlocks and ready upstream actions. Keep Graph/Outline/Board/Table as alternatives. Collapse advanced filters initially; scroll to the inspector after selection on narrow screens.
+
+
 ## 3.2.0 — 2026-10-16
 
 - Remove scheduled routines from Calendar; retain Today and Routines records and reminders.

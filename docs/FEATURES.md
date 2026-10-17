@@ -4,14 +4,14 @@
 |---|---|
 | Today | Three suggested ready actions, daily progress, compact mood entry, scheduled routines/time blocks and morning/evening entries |
 | Capture | Quick notes, convert note to task, mood/feeling entry, timer; default landing on phones |
-| Calendar | Month/week seven-column grids on all viewports; horizontal scrolling on phones; tasks and blocks; routines remain in Today/Routines; select days or add events; task recurrence generates the next dated task on completion |
+| Calendar | Month/week seven-column grids on all viewports; horizontal scrolling on phones; tasks and blocks; optional weekly/monthly routine layers, independently toggled and synced; daily routines stay in Today/Routines; select days or add events; task recurrence generates the next dated task on completion |
 | Tasks | Saved category/text tabs, six sort options, confirmation-based completion, importance, optional due date/time, reminders, repeat interval, focus date and funding estimates |
 | Projects/goals | Funding, dates, nested goals/projects, contained actions/milestones; derived completion/progress; separate inherited project accent color |
-| Dependencies | Task/goal/project prerequisites plus required contained work; mixed cycles rejected; Graph/Outline/Board/Table views; search/type/status/project filters; full/upstream/downstream highlights; budget/time gates retained |
+| Dependencies | Task/goal/project prerequisites plus required contained work; mixed cycles rejected; Focus outline + Requires/Unlocks inspector by default; Graph/Outline/Board/Table alternatives; search/type/status/project filters; full/upstream/downstream highlights; budget/time gates retained |
 | Subtasks | Parent task grouping, separate prerequisite links; parent cycles rejected |
 | Routines | Daily/weekly/monthly tabs, end-of-month offsets, Monday-first weekday circles, inline time, type icons and completion analysis; old instructions retained but no instruction input |
 | Budget | Recurring EUR income/expenses, business/personal scope tabs, monthly cash-flow projections, timing countdowns, links, files and separate task funding |
-| Journal | Notes, diary, morning/evening templates, compact mood entry and values check-ins; day/history/archive actions share one toolbar; history is shown on demand |
+| Journal | Notes, diary, morning/evening templates with visible Vienna save timestamps, compact mood entry and values check-ins; day/history/archive actions share one toolbar; history is shown on demand |
 | Tracking | Abstinence/time-since logs and paged 28-dot grids; timer and recorded-session history remain in Capture, with a running dock, not Trackers |
 | Insights | Overview, Time & focus, Tasks, Routines, Budget, Wellbeing, Projects & goals and Trackers; 7/28/90-day ranges, trends, category/weekday bars and chart data tables |
 | Health | Physical, Mental, Sleep and Analysis tabs; weight, workout, sleep and stress entries; Google Health sleep/exercise/weight/HRV/resting-heart-rate imports; RPE and device zones; adjustable planned rest |
@@ -115,3 +115,11 @@ On iOS, Safari → Share → Add to Home Screen uses the custom 180px icon. Exis
 - Project filters include descendants through project/goal membership and task parent links. Graph arrows run prerequisite → dependent; dashed lines mean contained work. Select a node to highlight; Open highlighted item edits it. Large graphs scroll.
 - Health import offers 7/28/90/365 days ending on the selected reporting date, split into at most 28-day half-open windows. Preview checks sleep, exercise, weight, HRV, resting heart rate, daily oxygen saturation, daily respiratory rate and body fat. Returned/importable counts, coverage and access errors are separate. Other enabled APIs/types are not scanned.
 - Stop reading aborts the current request and presents any completed partial results for review. No health readings are stored until Import is selected. The last availability report is saved as encrypted workspace metadata. OAuth tokens stay in browser memory. Manual entries, archived readings and workout annotations survive repeat imports.
+
+## Reflection timestamps, Calendar layers and Focus (3.3)
+
+New diary entries store an immutable first-save `at` timestamp. Editing preserves it. Journal/day/history/archive and the editor show Vienna date/time. Existing records without `at` or `createdAt` use an explicitly labelled “Last edited” fallback; missing or invalid times display “Time not recorded”. Today shows the latest saved Morning and Evening entries for the selected reporting date, separately from reminder times. No original timestamp is invented or backfilled from reminder settings.
+
+Calendar has Weekly routines and Monthly routines On/Off switches. Both default off, save as encrypted workspace settings, and follow each routine's actual schedule, including month-end offsets. Daily routines are never included. Calendar routine occurrences display the corresponding day's check state; toggling layers does not change routine definitions, checks, reminders or Calendar exports.
+
+Focus uses a collapsible project/task outline, a selected-item inspector, immediate Requires and Unlocks relations, and available upstream tasks under Ready next. Selection changes inspection, not records. On narrow screens, selection scrolls to details. Filters are collapsed initially and remain available; alternate visualizations preserve the existing dependency engine.
