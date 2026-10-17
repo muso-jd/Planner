@@ -36,3 +36,9 @@ export function isOverdue(task,now=new Date()){if(task.type!=='task'||task.delet
 export function isUrgent(task,now=new Date()){return task.type==='task'&&!task.deleted&&!task.done&&(task.priority===0||isOverdue(task,now))}
 export function taskOrder(a,b,now=new Date()){return Number(!!a.done)-Number(!!b.done)||Number(isUrgent(b,now))-Number(isUrgent(a,now))||(a.due||'9999').localeCompare(b.due||'9999')||(a.time||'99:99').localeCompare(b.time||'99:99')||(b.priority??5)-(a.priority??5)}
 export function safeColor(value){return typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value)?value:''}
+
+export function reflectionStamp(record){
+ const stable=record.at||record.createdAt,at=stable||record.updated;
+ if(!at||!Number.isFinite(Date.parse(at)))return 'Time not recorded';
+ return (stable?'Saved ':'Last edited ')+new Date(at).toLocaleString('en-GB',{timeZone:'Europe/Vienna',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'})+' · Vienna';
+}

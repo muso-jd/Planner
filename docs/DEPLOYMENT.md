@@ -185,3 +185,18 @@ Rollback target: `92794d93-6818-498c-a79e-4b93dfcf1bac` (3.1.0), preserving D1 a
 - Build and 36 tests passed. New dependency/history suite: 30 checks, 239 mocked Health requests, no page errors. Final general suite: 63 checks; final Calendar/Health suite: 57 checks; Control Center: 60 checks. PWA offline/reconnect checks passed. Desktop, simulated iPad portrait/landscape and phone screenshots reviewed after layout correction.
 - Verification limit: direct live `/api/health` and per-asset HTTP checks were denied by the execution network (HTTP 403 / browser ERR_BLOCKED_BY_CLIENT). Control-plane source equality and 100% traffic were verified separately; no successful live health-endpoint response or unlocked owner-session verification is claimed. Physical Safari/devices and real Google Health readings/permissions remain unverified.
 - PWA shell: `3.2.0`; close all old app windows after update download, then reopen, retaining pending edits. Rollback: route traffic to Worker version `92794d93-6818-498c-a79e-4b93dfcf1bac` (3.1.0), preserving data, bindings and version history.
+
+## Reflection / Calendar / Focus — 3.3.0
+
+Branch `feature/reflections-calendar-dependency-focus`, stacked on `feature/dependencies-health-history` (PR #4). No automatic Git deployment. The build and PWA shell include the revised modules at 3.3.0; no binding or schema changes are required. Reuse the content-only Worker upload to preserve private bindings. Previous serving version `102fa993-689d-4e08-8352-46ba578d2a2b` (3.2.0) is the rollback target, with data and bindings retained. Rollout evidence follows after deployment.
+
+### Verified rollout — 3.3.0
+
+- UTC: `2026-10-17T02:36:13.666775Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact source: `50c682d3513a31414c2fed22ceeb0a020c51d764`; tree `99d62b3bc2a94c2c74a34c672fde71656d2c738d`; branch `feature/reflections-calendar-dependency-focus`; PR https://github.com/muso-jd/Planner/pull/5, stacked on PR #4; no main merge.
+- Deployment: `40e17604-7be9-4285-ac2f-aa93a9cb55b8`; Worker version: `eb55ec25-b731-4c92-9b72-f5dcfe25db70`; 100% traffic confirmed through Cloudflare.
+- Downloaded deployed module exactly matches tested build, including all embedded frontend assets. Compiled SHA-256: `88ee2699cceea90c24e2a39145533af4c5dd71883ff524a40b27ce493e92870f`.
+- Content-only upload retained `DB`, `ARTLOOK_GATEKEEPER` and private `DRIVE_FOLDER_ID` bindings. No database migration, owner-record rewrite or audience change.
+- Build and 38 tests passed. New reflection/calendar/focus browser suite: 13 checks; dependency/history: 30; Control Center: 60; Calendar/Health: 57. Journal regression and PWA installability/offline/reconnect passed. Simulated desktop/iPad portrait/iPad landscape/phone screenshots inspected. No physical Safari/device verification.
+- Control-plane serving version and exact source were verified. No new unlocked live-user or personal Health verification is claimed.
+- PWA shell 3.3.0: let the update download, close all old planner windows and reopen, preserving pending edits. Rollback by routing traffic to `102fa993-689d-4e08-8352-46ba578d2a2b` (3.2.0), retaining data, bindings and historical deployments.

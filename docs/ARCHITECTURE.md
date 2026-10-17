@@ -93,3 +93,11 @@ The dependency explorer renders graph, outline, board or table from the same req
 `healthWindows` splits 365 reporting days into adjacent, half-open windows, including the selected day. Health requests run serially by type/window/page with AbortController, progress, repeated-token detection and per-type partial-result errors. Each normalized reading is deduplicated by stable source ID; extra daily fields are mapped using current Google Health v4 schemas. `putMany` applies a reviewed import and timestamp in one local persistence operation and schedules the existing encrypted CAS sync. No refresh token, Health writes, new server credential or changed API authorization boundary is introduced.
 
 Health connection disclosure and Google Calendar/Tasks import preview are reconstructed from session UI state so background sync does not clear their review controls. Last Health availability metadata belongs to the encrypted settings record; raw provider responses/tokens are excluded.
+
+## Reflection / Calendar / Focus revision (3.3)
+
+`reflectionStamp` formats stored timestamps explicitly in Europe/Vienna and labels legacy update-only provenance. New diary saves assign `at` once; edits leave it unchanged. Today derives recent period-specific reflection status; Journal uses the shared label in active/history/archive views.
+
+`calendarEntries` derives visible occurrences with `routineFrequency` and `routineOccursOn`. Settings `calendarWeeklyRoutines` and `calendarMonthlyRoutines` are separate booleans and use existing encrypted settings sync. Routine check state is date-specific; daily routines are always excluded. No schema, external calendar action or record migration is introduced.
+
+Focus is presentation-only state inside `dependencies.js`: selected item, collapsed outline branches and filter disclosure. It reuses `requirements`, containment edges and the memoized work model; completion and cycle rules are unchanged. Mobile selection scrolls the inspector into view. Alternate dependency layouts remain available.
