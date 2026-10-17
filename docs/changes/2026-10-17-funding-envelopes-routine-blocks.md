@@ -19,3 +19,7 @@ Expanded solid icons provide distinct navigation symbols and additional budget/a
 - Existing Control Center 60 checks, Calendar/Health 57 checks, Reflection/Focus 13 checks and PWA installability/offline/reconnect passed. Other final reruns are recorded with rollout evidence.
 - Desktop, simulated iPad portrait/landscape and phone funding/envelope screenshots inspected. No physical Safari/device or owner-data test is claimed. All fixtures are synthetic.
 - No production record migration, new binding, changed security policy, bank operation or main-branch merge. Rollout evidence is recorded in DEPLOYMENT.md after deployment.
+
+## Production rollout
+
+Published with explicit user approval in PR https://github.com/muso-jd/Planner/pull/6. Tested source `8ba104ce21c3bd8e64e605b27f823c87a0f1d300` deployed at `2026-10-17T08:02:37.125366Z` to https://planner.jeremydachojd.workers.dev/. Deployment `dd2417cc-ab35-4d5f-9691-757eb02cdb0e`, Worker version `f3c1eb72-ddf3-4a9a-af8b-5ed913065559`, 100% traffic. Downloaded source matches the compiled build exactly; existing bindings retained. General browser regression also passed 63 checks. Direct live HTTP verification was blocked by the execution network; no owner-session verification is claimed. Exact checksum and rollback to 3.3.0 are recorded in `docs/DEPLOYMENT.md`.

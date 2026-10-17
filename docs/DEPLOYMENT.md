@@ -204,3 +204,15 @@ Branch `feature/reflections-calendar-dependency-focus`, stacked on `feature/depe
 ## Funding / envelopes / routine blocks — 3.4.0
 
 Source branch `feature/funding-envelopes-routine-blocks`, stacked on `feature/reflections-calendar-dependency-focus` (PR #5). No automatic Git deployment. Build embeds `budget-envelopes.js` and PWA shell 3.4.0. There is a new encrypted record type but no server/database schema, binding or authorization change. Content-only Worker upload preserves configuration. Rollback target is the previously verified 3.3.0 Worker version `eb55ec25-b731-4c92-9b72-f5dcfe25db70`; retain data and bindings. The older UI cannot edit category budgets or routine-block links, but records remain intact. Prefer a forward fix; never delete data or deployment history.
+
+### Verified rollout — 3.4.0
+
+- UTC: `2026-10-17T08:02:37.125366Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact tested/deployed source commit: `8ba104ce21c3bd8e64e605b27f823c87a0f1d300`; tree `447a5f5943051c4bb3b6f1ededd2ee3d922e45a7`; branch `feature/funding-envelopes-routine-blocks`; https://github.com/muso-jd/Planner/pull/6, stacked on PR #5. No main merge.
+- Deployment: `dd2417cc-ab35-4d5f-9691-757eb02cdb0e`; Worker version: `f3c1eb72-ddf3-4a9a-af8b-5ed913065559`; 100% traffic confirmed through Cloudflare.
+- Downloaded deployed module contains the exact tested compiled source, including embedded frontend assets. Compiled SHA-256: `b40f385296bc2b7d19af9cb96955544cbd6a737e0114bab38805973893b588f2`.
+- Content-only upload retained `DB`, `ARTLOOK_GATEKEEPER` and private `DRIVE_FOLDER_ID` bindings and compatibility date `2026-10-16`. No database migration or owner-record writes.
+- Build and 45 unit/API tests passed. Browser suites: funding/envelopes/blocks 19 checks (no page errors), Control Center 60, Calendar/Health 57, general browser 63, Reflection/Focus 13. PWA installability/offline/reconnect passed. Simulated desktop/iPad/phone screenshots inspected; physical Safari/devices were not tested.
+- Verification limit: serving version, traffic and exact source were verified through the control plane. Direct live HTTP requests were blocked by the execution network; no successful live health response, unlocked owner session or personal Health verification is claimed.
+- PWA shell 3.4.0: let the update download, close every old Planner window and reopen, preserving pending edits. Payment reminders require the app to be running; browser suspension can delay or miss them. No closed-app push.
+- Rollback: route traffic to Worker version `eb55ec25-b731-4c92-9b72-f5dcfe25db70` (3.3.0), retaining data, bindings and historical deployments.
