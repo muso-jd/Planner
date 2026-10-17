@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.2.0 — 2026-10-16
+
+- Remove scheduled routines from Calendar; retain Today and Routines records and reminders.
+- Derive goal/project completion and progress from contained work; block parent task completion until subtasks and prerequisites are complete. Reopening required work blocks downstream completion immediately.
+- Allow tasks, goals and projects as prerequisites and containers, with mixed-link cycle prevention.
+- Add Graph, Outline, Board and Table dependency views, text/type/status/project filters and upstream/downstream chain highlights.
+- Add separate project accent colors, inherited through nested projects/goals and subtasks.
+- Add 365-day Google Health import, 28-day request windows, pagination, stopping/partial results and per-type availability reports.
+- Read oxygen saturation, respiratory rate and body fat alongside the five existing Health types. Preserve manual readings, workout annotations and archived readings on repeat imports; batch vault writes.
+- Keep Health connection disclosure and Google import review visible across background sync renders.
+
+
 ## 3.1.0 — 2026-10-16
 
 - Focus phone navigation on Notes, Diary, Feeling and Time; put other sections behind More while keeping full desktop/iPad navigation. Give phones dedicated feeling and timer/history views, with Notes as the landing view and Capture creating a note.
