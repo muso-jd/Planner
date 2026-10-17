@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.5.0 — Unreleased
+
+- Add three optional liquid-glass themes: Pearl, Dusk and Obsidian, with visual previews in Settings, frosted panels, reflective edges, a floating navigation dock and system typography.
+- Preserve custom accents and classic themes; synchronize theme selection through encrypted settings. Add reduced-transparency, increased-contrast and no-backdrop-filter fallbacks.
+- Include theme styling in the offline PWA shell; retain the existing safe update activation behavior.
+
 ## 3.4.0 — 2026-10-17
 
 - Derive project/goal funding from nested task own costs; show container/subtask breakdowns, total needed and still-open requirements in Budget. Retain legacy manual budgets without adding them again.

@@ -1,5 +1,13 @@
 # Deployment
 
+## Prepared liquid-glass update — 3.5.0
+
+Branch `feature/liquid-glass-themes`, based on `feature/funding-envelopes-routine-blocks` (PR #6). No automatic Git deployment. The built module embeds `themes.css`, and the PWA shell precaches it under 3.5.0. Existing users retain their selected classic theme until they opt into a glass theme. No binding, API, database or owner-data change is required. This source preparation is not production deployment evidence.
+
+Use the content-only upload after authorized rollout to preserve live configuration, then record exact source/deployment/version IDs, UTC and verification here. Last verified production version is 3.4.0, Worker version `f3c1eb72-ddf3-4a9a-af8b-5ed913065559`, deployment `dd2417cc-ab35-4d5f-9691-757eb02cdb0e`; it is the rollback target for 3.5. Keep data, bindings and deployment history. An older client retains the selected theme ID but renders unknown glass IDs with its Dark fallback.
+
+## Deployment target and procedure
+
 Target: Cloudflare Worker `planner`, production, https://planner.jeremydachojd.workers.dev/.
 
 Binding: `DB` → `planner-vault` (EU jurisdiction). Database schema is in `schema.sql`. No application secrets or Google client secret are required in Worker configuration. Provision workspace rows through an authenticated Cloudflare administration channel, using browser-compatible encrypted records; never embed a workspace key in source.
