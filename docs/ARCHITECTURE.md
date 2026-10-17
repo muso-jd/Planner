@@ -2,9 +2,13 @@
 
 ## Optional glass materials (3.5)
 
-`control-center.js` allow-lists six theme IDs. The three glass IDs derive `data-material=glass`, the light/dark `data-tone` and browser chrome color from the encrypted settings record; custom accent contrast continues to set `--on-accent`. The settings picker provides static CSS previews, pressed states and keyboard-focus restoration after selection. Unknown IDs fall back to Dark.
+`control-center.js` allow-lists nine theme IDs as of 3.6. The six glass IDs derive `data-material=glass`, the light/dark `data-tone` and browser chrome color from the encrypted settings record; custom accent contrast continues to set `--on-accent`. The settings picker provides static CSS previews, pressed states and keyboard-focus restoration after selection. Unknown IDs fall back to Dark. Carbon, Black Ice and Amethyst override the body background to pure black, including removal of backdrop gradients, while retaining per-material panel variables and existing accessibility fallbacks.
 
 `themes.css` loads after the shared workspace CSS. All material overrides are scoped to the glass root; the theme picker alone applies in classic modes. System typography belongs to glass modes while existing monospace metadata stays intact. Static gradient backgrounds, scoped standard/WebKit backdrop filters, opaque unsupported-filter shell fallbacks and media preference overrides avoid a rendering loop or graphics dependency. `scripts/build.mjs` embeds the stylesheet and the 3.5 PWA shell precaches it. No API, schema, credential, business logic or sync protocol change is required.
+
+## Funding row visibility (3.6)
+
+The Budget renderer hides task rows with non-positive own costs in integer cents and omits container rows without any positive-cost descendant in scope. Traversal continues through hidden nodes without adding indentation, retaining funded descendants and existing visited-ID/cycle guards. Shared `fundingRollup` and `taskFunding` remain unchanged; displayed cost/income/balance totals retain their previous semantics. The required-budget count filters positive open own costs. No record is deleted, modified or migrated by this presentation filter. PWA shell 3.6 includes the revised renderer and new theme definitions.
 
 ## Frontend foundation
 

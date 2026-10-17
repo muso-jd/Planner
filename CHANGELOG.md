@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.0 — 2026-10-17
+
+- Hide zero-cost and unset-cost task rows from Budget funding breakdowns and exclude them from the funded-task count. Keep paid descendants visible through free parent tasks; omit containers with no funded work in the selected scope. Preserve financial totals, estimates and task records.
+- Add Carbon, Black Ice and Amethyst liquid-glass themes with pure black canvases and silver, blue or violet material highlights. Existing themes and custom accents remain available.
+
 ## 3.5.0 — 2026-10-17
 
 - Add three optional liquid-glass themes: Pearl, Dusk and Obsidian, with visual previews in Settings, frosted panels, reflective edges, a floating navigation dock and system typography.

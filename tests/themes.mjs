@@ -8,8 +8,9 @@ const {chromium}=createRequire(import.meta.url)(process.env.PLANNER_PLAYWRIGHT_M
 const {server,url,db}=await testServer();
 const browser=await chromium.launch({executablePath:process.env.PLANNER_CHROMIUM,args:['--no-sandbox','--disable-dev-shm-usage']});
 const errors=[];let checks=0;
-const themes=['glass-pearl','glass-dusk','glass-obsidian'];
-const shots='.private/qa35';fs.mkdirSync(shots,{recursive:true});
+const blackThemes=['glass-carbon','glass-black-ice','glass-amethyst'];
+const themes=['glass-pearl','glass-dusk','glass-obsidian',...blackThemes];
+const shots='.private/qa36';fs.mkdirSync(shots,{recursive:true});
 try{
  const key='glasstest'.repeat(4)+'1234567',k=await keys(key),date=day();
  const records={
@@ -30,7 +31,7 @@ try{
  page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(key=>localStorage.setItem('life-workspace-key',key),key);
  await page.goto(url);await page.waitForFunction(()=>!document.querySelector('#unlock').open);
- await navigate(page,'settings');assert.equal(await page.locator('.theme-choice').count(),3);checks++;
+ await navigate(page,'settings');assert.equal(await page.locator('.theme-choice').count(),6);checks++;
  // Each material applies in place; keyboard focus and the custom accent survive rendering.
  for(const theme of themes){
   await page.locator(`button[data-theme=${theme}]`).click();
@@ -38,6 +39,7 @@ try{
   assert.equal(await page.locator('html').getAttribute('data-material'),'glass');
   assert.equal(await page.locator(`button[data-theme=${theme}]`).getAttribute('aria-pressed'),'true');
   assert.equal(await page.evaluate(()=>document.activeElement.dataset.theme),theme);
+  if(blackThemes.includes(theme)){assert.equal(await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(0, 0, 0)');assert.equal(await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundImage),'none');assert.equal(await page.locator('meta[name=theme-color]').getAttribute('content'),'#000000');}
   await page.locator('#themeAccent').fill('#89b7ce');await page.locator('#themeAccent').dispatchEvent('change');
   assert.equal(await page.evaluate(()=>document.documentElement.style.getPropertyValue('--accent')),'#89b7ce');
   checks++;
@@ -46,17 +48,17 @@ try{
  await page.evaluate(()=>dispatchEvent(new Event('online')));
  await page.waitForFunction(()=>document.querySelector('#syncStatus').dataset.state==='synced');
  let saved=await decrypt(db.prepare('SELECT data,iv FROM vaults WHERE id=?').get(id),k.key);
- assert.equal(saved.settings.theme,'glass-obsidian');assert.equal(saved.settings.accent,'#89b7ce');
- const other=await browser.newPage();await other.goto(url+'/#vault='+key);await other.waitForFunction(()=>document.documentElement.dataset.theme==='glass-obsidian');await other.close();checks++;
+ assert.equal(saved.settings.theme,'glass-amethyst');assert.equal(saved.settings.accent,'#89b7ce');
+ const other=await browser.newPage();await other.goto(url+'/#vault='+key);await other.waitForFunction(()=>document.documentElement.dataset.theme==='glass-amethyst');await other.close();checks++;
  await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>!!navigator.serviceWorker.controller);
- const shell=await page.evaluate(async()=>{const cache=await caches.open('life-planner-shell-3.5.0');return !!await cache.match('/themes.css')});assert(shell);
- await context.setOffline(true);await page.reload();await page.waitForFunction(()=>document.documentElement.dataset.theme==='glass-obsidian');assert.equal(await page.locator('html').getAttribute('data-material'),'glass');await context.setOffline(false);checks++;
+ const shell=await page.evaluate(async()=>{const cache=await caches.open('life-planner-shell-3.6.0');return !!await cache.match('/themes.css')});assert(shell);
+ await context.setOffline(true);await page.reload();await page.waitForFunction(()=>document.documentElement.dataset.theme==='glass-amethyst');assert.equal(await page.locator('html').getAttribute('data-material'),'glass');await context.setOffline(false);checks++;
  // New themes are optional, and changing back restores the original type and solid shell.
  await navigate(page,'settings');for(const theme of ['light','black','dark']){await page.locator(`button[data-theme=${theme}]`).click();assert.equal(await page.locator('html').getAttribute('data-material'),'solid');assert.equal(await page.locator('html').getAttribute('data-theme'),theme);checks++;}
  // Screenshots and horizontal overflow checks cover the affected layouts, including the editor.
  for(const [device,width,height] of [['desktop',1512,982],['ipad-portrait',1024,1366],['ipad-landscape',1366,1024],['phone',390,844]]){
   await page.setViewportSize({width,height});
-  for(const theme of themes){
+  for(const theme of blackThemes){
    await navigate(page,'settings');await page.locator(`button[data-theme=${theme}]`).click();
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    await page.screenshot({path:`${shots}/${device}-${theme}-settings.png`,fullPage:true});
