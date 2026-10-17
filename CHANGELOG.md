@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.4.0 — 2026-10-17
+
+- Derive project/goal funding from nested task own costs; show container/subtask breakdowns, total needed and still-open requirements in Budget. Retain legacy manual budgets without adding them again.
+- Add weekly/monthly category budgets, explicitly assigned expenses, Month/Week/Day remaining balances, prorated allowances and separate future scheduled spend.
+- Add first transfer/payment dates for recurring ledger entries, independently from record date, and configurable T−0/1/2/3/7-day reminders at Vienna times while Planner is open.
+- Link routines to canonical time blocks, with minute offsets and inherited dates/time/recurrence. Calendar shows routines inside blocks without duplicate standalone events; block edits update linked routines.
+- Expand solid icons, distinct navigation symbols, new budget categories and a per-entry custom-icon selector.
+
+
 ## 3.3.0 — 2026-10-17
 
 - Display Vienna save timestamps for new diary reflections in Journal, history and editors, preserving them after edits. Show legacy last-edit timestamps honestly when original save time is unavailable.

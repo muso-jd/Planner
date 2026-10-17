@@ -101,3 +101,13 @@ Health connection disclosure and Google Calendar/Tasks import preview are recons
 `calendarEntries` derives visible occurrences with `routineFrequency` and `routineOccursOn`. Settings `calendarWeeklyRoutines` and `calendarMonthlyRoutines` are separate booleans and use existing encrypted settings sync. Routine check state is date-specific; daily routines are always excluded. No schema, external calendar action or record migration is introduced.
 
 Focus is presentation-only state inside `dependencies.js`: selected item, collapsed outline branches and filter disclosure. It reuses `requirements`, containment edges and the memoized work model; completion and cycle rules are unchanged. Mobile selection scrolls the inspector into view. Alternate dependency layouts remain available.
+
+## Budget/routine model (3.4)
+
+Pure helpers in `planning.js` derive transfer-date ledger occurrences, unique-ID funding rollups, calendar reporting windows, integer-cent allowance partitions, reminder candidates and linked-routine scheduling. `spendingBudget` records hold name, amount, weekly/monthly period, scope, active-from date and color. `transaction.budgetAllocation` references one budget; `transferDate`, `paymentReminderDays` and `paymentReminderTime` are optional backward-compatible fields. Full encrypted backup/import recognizes the new type; no D1 schema or API route change is required.
+
+`budget-envelopes.js` owns the budget dialog, reporting-mode state and category-budget cards, mounted by Control Center. New expenses use the existing ledger editor with the budget/scope/category preselected. Finance summaries never write derived totals into source records. Funding traverses containment only (not arbitrary prerequisites), with visited-ID guards; confirmed tasks remain in total cost but leave open requirements. Containers' manual legacy budget fields remain untouched in storage.
+
+`routine.blockId` is the canonical relationship. `blockOffset` is a minute offset. Block editor routine assignments resolve to routine-record changes and save atomically with the block through `putMany`. Own routine time/schedule remains stored; display derives effective time. Calendar renders routine controls as siblings below the block button, avoiding nested interactive buttons. Today, reminders and Insights use the same linked schedule.
+
+Payment reminder candidates derive from transfer occurrences across month/year boundaries and Vienna instants. A throttled open-app check deduplicates toasts/optional notifications by source occurrence and reminder offset in sessionStorage. Tokens, bank credentials and production personal records are not involved. PWA shell 3.4.0 includes the new module, excluding external/API data as before.

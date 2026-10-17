@@ -200,3 +200,7 @@ Branch `feature/reflections-calendar-dependency-focus`, stacked on `feature/depe
 - Build and 38 tests passed. New reflection/calendar/focus browser suite: 13 checks; dependency/history: 30; Control Center: 60; Calendar/Health: 57. Journal regression and PWA installability/offline/reconnect passed. Simulated desktop/iPad portrait/iPad landscape/phone screenshots inspected. No physical Safari/device verification.
 - Control-plane serving version and exact source were verified. No new unlocked live-user or personal Health verification is claimed.
 - PWA shell 3.3.0: let the update download, close all old planner windows and reopen, preserving pending edits. Rollback by routing traffic to `102fa993-689d-4e08-8352-46ba578d2a2b` (3.2.0), retaining data, bindings and historical deployments.
+
+## Funding / envelopes / routine blocks — 3.4.0
+
+Source branch `feature/funding-envelopes-routine-blocks`, stacked on `feature/reflections-calendar-dependency-focus` (PR #5). No automatic Git deployment. Build embeds `budget-envelopes.js` and PWA shell 3.4.0. There is a new encrypted record type but no server/database schema, binding or authorization change. Content-only Worker upload preserves configuration. Rollback target is the previously verified 3.3.0 Worker version `eb55ec25-b731-4c92-9b72-f5dcfe25db70`; retain data and bindings. The older UI cannot edit category budgets or routine-block links, but records remain intact. Prefer a forward fix; never delete data or deployment history.
