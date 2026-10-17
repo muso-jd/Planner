@@ -1,5 +1,13 @@
 # Architecture
 
+## Optional glass materials (3.5)
+
+`control-center.js` allow-lists six theme IDs. The three glass IDs derive `data-material=glass`, the light/dark `data-tone` and browser chrome color from the encrypted settings record; custom accent contrast continues to set `--on-accent`. The settings picker provides static CSS previews, pressed states and keyboard-focus restoration after selection. Unknown IDs fall back to Dark.
+
+`themes.css` loads after the shared workspace CSS. All material overrides are scoped to the glass root; the theme picker alone applies in classic modes. System typography belongs to glass modes while existing monospace metadata stays intact. Static gradient backgrounds, scoped standard/WebKit backdrop filters, opaque unsupported-filter shell fallbacks and media preference overrides avoid a rendering loop or graphics dependency. `scripts/build.mjs` embeds the stylesheet and the 3.5 PWA shell precaches it. No API, schema, credential, business logic or sync protocol change is required.
+
+## Frontend foundation
+
 The dependency-free frontend in `public/` is embedded into a module Worker at build time. Requests to `/api/vault` use the `DB` D1 binding. The database jurisdiction is EU, with read replication disabled. A synthetic SQLite adapter tests the same SQL statements locally. Control Center 3 adds focused frontend modules without changing the vault authentication or revision protocol.
 
 ## Workspace identity and encryption

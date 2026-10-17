@@ -1,5 +1,13 @@
 # Current features
 
+## Optional liquid-glass themes (3.5)
+
+Settings → Make it yours offers Pearl (bright frost), Dusk (blue/violet twilight) and Obsidian (smoked glass) as visual preview cards. Dark, White and Black remain available; existing selections and the default remain unchanged. Glass themes add translucent panels, reflective borders, calmer icon shadows, system typography and a floating sidebar/phone dock. The custom accent and selected theme use existing encrypted settings sync and offline storage. Selection does not change planning records.
+
+Backdrop filters apply to major panels and shell surfaces rather than every calendar cell or task row. Backdrops are static CSS gradients with no pointer tracking, shaders or animated distortion. Browsers that do not support backdrop filters receive opaque shell surfaces. Reduced-transparency and increased-contrast preferences use more opaque materials when supported by the browser; no physical Safari/device performance claim is made. The PWA shell must update before these themes are available. Deployment state is recorded in the dated change report and deployment guide.
+
+## Workspace capabilities
+
 | Area | Behavior |
 |---|---|
 | Today | Three suggested ready actions, daily progress, compact mood entry, scheduled routines/time blocks and morning/evening entries |
