@@ -1,4 +1,4 @@
-# Optional liquid-glass themes — Planner 3.5 source
+# Optional liquid-glass themes — Planner 3.5
 
 ## Result
 
@@ -22,4 +22,6 @@ Fixtures and screenshots use synthetic records only. Chromium 153 and the instal
 
 ## Release state
 
-Prepared on `feature/liquid-glass-themes`, based on the 3.4 branch, for a reviewable pull request stacked on PR #6. Production remains the verified 3.4 deployment until separately rolled out. No main merge or production upload is part of this source preparation. Rollback is described in `docs/DEPLOYMENT.md`.
+Deployed with explicit user approval from source `14bb11ff1d18726156ae1d2f68b16498ae4323bf` on `feature/liquid-glass-themes`, PR https://github.com/muso-jd/Planner/pull/7, stacked on PR #6. No main merge. Production https://planner.jeremydachojd.workers.dev/ switched at `2026-10-17T11:19:13.903932Z` UTC: deployment `44ae84b3-68c1-4648-bca2-e6bd1ba9f3b9`, Worker version `1eaeeb87-3541-4cb2-ac98-0d5fa6640906`, 100% traffic.
+
+Cloudflare's downloaded module exactly contains the tested build; existing binding values and compatibility date were preserved. Live no-cache/release-qualified health returned HTTP 200 with version 3.5.0 and storage available, following an initial unqualified 3.4.0 response during rollout. The live stylesheet returned 200 and matched the local SHA-256. Existing users retain their theme; the new choices appear once the 3.5 PWA shell downloads and all old app windows close/reopen. Exact checksums and rollback to 3.4 are recorded in `docs/DEPLOYMENT.md`.

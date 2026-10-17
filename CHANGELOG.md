@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.5.0 — Unreleased
+## 3.5.0 — 2026-10-17
 
 - Add three optional liquid-glass themes: Pearl, Dusk and Obsidian, with visual previews in Settings, frosted panels, reflective edges, a floating navigation dock and system typography.
 - Preserve custom accents and classic themes; synchronize theme selection through encrypted settings. Add reduced-transparency, increased-contrast and no-backdrop-filter fallbacks.

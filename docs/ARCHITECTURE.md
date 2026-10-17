@@ -1,6 +1,6 @@
 # Architecture
 
-## Optional glass materials (3.5 source)
+## Optional glass materials (3.5)
 
 `control-center.js` allow-lists six theme IDs. The three glass IDs derive `data-material=glass`, the light/dark `data-tone` and browser chrome color from the encrypted settings record; custom accent contrast continues to set `--on-accent`. The settings picker provides static CSS previews, pressed states and keyboard-focus restoration after selection. Unknown IDs fall back to Dark.
 

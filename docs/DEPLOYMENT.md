@@ -1,10 +1,22 @@
 # Deployment
 
-## Prepared liquid-glass update — 3.5.0
+## Liquid-glass update — 3.5.0
 
-Branch `feature/liquid-glass-themes`, based on `feature/funding-envelopes-routine-blocks` (PR #6). No automatic Git deployment. The built module embeds `themes.css`, and the PWA shell precaches it under 3.5.0. Existing users retain their selected classic theme until they opt into a glass theme. No binding, API, database or owner-data change is required. This source preparation is not production deployment evidence.
+Branch `feature/liquid-glass-themes`, based on `feature/funding-envelopes-routine-blocks` (PR #6). No automatic Git deployment. The built module embeds `themes.css`, and the PWA shell precaches it under 3.5.0. Existing users retain their selected classic theme until they opt into a glass theme. No binding, API, database or owner-data change is required.
 
-Use the content-only upload after authorized rollout to preserve live configuration, then record exact source/deployment/version IDs, UTC and verification here. Last verified production version is 3.4.0, Worker version `f3c1eb72-ddf3-4a9a-af8b-5ed913065559`, deployment `dd2417cc-ab35-4d5f-9691-757eb02cdb0e`; it is the rollback target for 3.5. Keep data, bindings and deployment history. An older client retains the selected theme ID but renders unknown glass IDs with its Dark fallback.
+Use content-only uploads to preserve live configuration. The previously verified 3.4.0 Worker version `f3c1eb72-ddf3-4a9a-af8b-5ed913065559`, deployment `dd2417cc-ab35-4d5f-9691-757eb02cdb0e`, is the rollback target for 3.5. Keep data, bindings and deployment history. An older client retains the selected theme ID but renders unknown glass IDs with its Dark fallback.
+
+### Verified production rollout — 3.5.0
+
+- Explicitly authorized deployment at `2026-10-17T11:19:13.903932Z` UTC; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact tested/deployed source commit: `14bb11ff1d18726156ae1d2f68b16498ae4323bf`; tree `8e2050522c7d70b0ee01344c6ff223dac19bd057`; branch `feature/liquid-glass-themes`; https://github.com/muso-jd/Planner/pull/7, stacked on PR #6. No main merge.
+- Deployment ID `44ae84b3-68c1-4648-bca2-e6bd1ba9f3b9`; Worker version `1eaeeb87-3541-4cb2-ac98-0d5fa6640906`; 100% traffic verified through Cloudflare.
+- Downloaded deployed module contains the exact tested compiled source, including embedded assets. Compiled SHA-256: `ec4551dc6bdbc585b4e5498f04889f02eba79b80460f2b4380b4b99256306f5d`.
+- Content-only upload preserved every existing binding value (`DB`, `ARTLOOK_GATEKEEPER`, private `DRIVE_FOLDER_ID`) and compatibility date `2026-10-16`, compared before/after. No database migration, owner-record write or deployment deletion.
+- Live HTTP `/api/health?release=3.5.0-1119` returned 200 with `ok:true`, `version:3.5.0`, `storage:true`. The first unqualified request returned 3.4.0 during rollout; the subsequent no-cache, release-qualified request confirmed 3.5.0. Live `/themes.css?release=3.5.0-1119` returned 200 and exactly matched the local stylesheet SHA-256 `8b14c5e7d1416fbaa8bd6cc1461f7079c5daf0855248712b9aacda2bda0ec51b`.
+- Validation retained from the unchanged tested source: build, 45 unit/API tests, 24 targeted theme/browser checks with zero page errors, 60 existing Control Center checks and PWA installability/offline/reconnect. Desktop and simulated iPad/phone layouts inspected. No physical Safari/device or unlocked owner-session verification is claimed.
+- PWA shell 3.5.0: allow the update to download, close every old Planner window/tab, then reopen, preserving pending edits. Select a new material under Settings → Make it yours. No user's selected theme is switched automatically.
+- Rollback by routing traffic to Worker version `f3c1eb72-ddf3-4a9a-af8b-5ed913065559` (3.4.0), retaining all data, bindings and historical deployments.
 
 ## Deployment target and procedure
 

@@ -1,6 +1,6 @@
 # Current features
 
-## Optional liquid-glass themes (3.5 source)
+## Optional liquid-glass themes (3.5)
 
 Settings → Make it yours offers Pearl (bright frost), Dusk (blue/violet twilight) and Obsidian (smoked glass) as visual preview cards. Dark, White and Black remain available; existing selections and the default remain unchanged. Glass themes add translucent panels, reflective borders, calmer icon shadows, system typography and a floating sidebar/phone dock. The custom accent and selected theme use existing encrypted settings sync and offline storage. Selection does not change planning records.
 
