@@ -1,6 +1,6 @@
 {
   "name": "life-planner",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,7 @@
     "test:browser": "node tests/browser.mjs",
     "test:pwa": "node tests/pwa.mjs",
     "test:themes": "node tests/themes.mjs",
+    "test:funding-visibility": "node tests/funding-visibility.mjs",
     "test:control-center": "node tests/control-center.mjs",
     "test:journal": "node tests/journal-history.mjs",
     "test:funding-envelopes": "node tests/funding-envelopes-blocks.mjs",

@@ -10,6 +10,9 @@
 [data-preview=glass-pearl]{--preview-bg:#e6eaf2;--preview-glow:#c4c8eb;--preview-ink:#343d52;--preview-surface:#ffffff91;--preview-line:#ffffffd9}
 [data-preview=glass-dusk]{--preview-bg:#151c32;--preview-glow:#706098;--preview-ink:#ced8f0;--preview-surface:#b1c5ff1a;--preview-line:#cfdbff40}
 [data-preview=glass-obsidian]{--preview-bg:#101417;--preview-glow:#426065;--preview-ink:#c3d8d8;--preview-surface:#d8f5ff12;--preview-line:#dcefff30}
+[data-preview=glass-carbon]{--preview-bg:#000;--preview-glow:transparent;--preview-ink:#e2e2e2;--preview-surface:#ffffff12;--preview-line:#ffffff38}
+[data-preview=glass-black-ice]{--preview-bg:#000;--preview-glow:transparent;--preview-ink:#bddfff;--preview-surface:#72bbff18;--preview-line:#a8d7ff4a}
+[data-preview=glass-amethyst]{--preview-bg:#000;--preview-glow:transparent;--preview-ink:#e4caff;--preview-surface:#bb7fff18;--preview-line:#d7adff4a}
 .theme-scene-nav{display:flex;flex-direction:column;gap:9px;width:27px;flex:none;padding:12px 7px;border:1px solid var(--preview-line);border-radius:10px;background:var(--preview-surface)}
 .theme-scene-nav i{display:block;width:10px;height:10px;border-radius:3px;background:currentColor;opacity:.45}.theme-scene-nav i:first-child{opacity:.9}
 .theme-scene-content{display:flex;flex:1;min-width:0;flex-direction:column;gap:10px;padding-top:6px}
@@ -25,6 +28,11 @@
 :root[data-theme=glass-obsidian]{color-scheme:dark;--bg:#101317;--surface:#1c242bcf;--input-bg:#11191fe6;--sidebar-bg:#171f25db;--text:#f0f5f6;--muted:#acbcc3;--line:#d2ebf326;--check-idle:#96a9b1;--glow-one:#52697142;--glow-two:#294e4c40;--glow-three:#4b464625;--dialog-bg:#1c252bef;--panel:#263139;--opaque:#1c242b}
 :root[data-theme=glass-pearl]{color-scheme:light;--bg:#e7ebf2;--surface:#ffffffbd;--input-bg:#f8faffdb;--sidebar-bg:#f9fbffd6;--text:#1e2a3b;--muted:#506078;--line:#283c5b30;--check-idle:#65748a;--glow-one:#b9b3e66b;--glow-two:#9fcbd45c;--glow-three:#e1c7d447;--glass-edge:#ffffffde;--glass-top:#ffffff94;--glass-shadow:0 16px 44px #34486a0c,inset 0 1px 0 #ffffffed;--control:#ffffff69;--hover:#ffffffb8;--dialog-bg:#f5f8fced;--panel:#f3f6fc;--blue:#245992;--gold:#7a5105;--green:#206843;--pink:#934a71;--signal:#197442;--urgent:#b2233e;--opaque:#f5f8fc}
 :root[data-material=glass] body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;background:radial-gradient(ellipse at 80% 0,var(--glow-one),transparent 52%),radial-gradient(ellipse at 5% 55%,var(--glow-two),transparent 55%),radial-gradient(ellipse at 85% 100%,var(--glow-three),transparent 55%),var(--bg);background-attachment:fixed}
+:root:is([data-theme=glass-carbon],[data-theme=glass-black-ice],[data-theme=glass-amethyst]){color-scheme:dark;--bg:#000;--glass-shadow:0 18px 50px #0008,inset 0 1px 0 #ffffff1c;--text:#f4f5f7;--muted:#b0b6c0;--check-idle:#969da9}
+:root[data-theme=glass-carbon]{--surface:#141414d6;--input-bg:#070707e8;--sidebar-bg:#111111d9;--line:#ffffff26;--glass-edge:#ffffff38;--glass-top:#ffffff12;--dialog-bg:#151515f2;--panel:#202020;--opaque:#141414;--control:#ffffff07;--hover:#ffffff14}
+:root[data-theme=glass-black-ice]{--surface:#0b1722d6;--input-bg:#030b13e8;--sidebar-bg:#08121cd9;--line:#9cd4ff2e;--glass-edge:#b2ddff42;--glass-top:#85c9ff16;--dialog-bg:#0b1722f2;--panel:#12283a;--opaque:#0b1722;--control:#78bbff09;--hover:#9cd4ff18;--muted:#a9bdcf}
+:root[data-theme=glass-amethyst]{--surface:#170f21d6;--input-bg:#0b0512e8;--sidebar-bg:#120b1cd9;--line:#d0a6ff2e;--glass-edge:#dbbaff42;--glass-top:#c89aff16;--dialog-bg:#170f21f2;--panel:#291a3b;--opaque:#170f21;--control:#c294ff09;--hover:#d0a6ff18;--muted:#c0b1d1}
+:root:is([data-theme=glass-carbon],[data-theme=glass-black-ice],[data-theme=glass-amethyst]) body{background:#000}
 :root[data-material=glass] :is(h1,h2,h3){font-weight:550;letter-spacing:-.035em}
 :root[data-material=glass] h1{font-size:40px;letter-spacing:-.045em}
 :root[data-material=glass] :is(.card,.stat,.feeling-strip){background:linear-gradient(135deg,var(--glass-top),transparent 55%),var(--surface);border-color:var(--glass-edge);box-shadow:var(--glass-shadow);border-radius:24px}

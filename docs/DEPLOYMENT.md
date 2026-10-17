@@ -1,5 +1,11 @@
 # Deployment
 
+## Prepared black-glass / funding visibility update — 3.6.0
+
+Branch `feature/black-glass-funded-tasks`, stacked on `feature/liquid-glass-themes` (PR #7). Source preparation only; no automatic Git deployment or production upload. Existing theme selection is retained. Build and PWA shell versions are prepared at 3.6.0 with no new assets, bindings, migrations or API changes.
+
+If rolled out with authorization, use content-only Worker upload, preserve exact live bindings, and record source/deployment/version IDs, UTC and live verification. Rollback target is the verified 3.5.0 Worker version `1eaeeb87-3541-4cb2-ac98-0d5fa6640906`, deployment `44ae84b3-68c1-4648-bca2-e6bd1ba9f3b9`, with all data, bindings and history retained. Older clients fall back to Dark for the three new theme IDs, preserving their stored value; no funding data requires rollback.
+
 ## Liquid-glass update — 3.5.0
 
 Branch `feature/liquid-glass-themes`, based on `feature/funding-envelopes-routine-blocks` (PR #6). No automatic Git deployment. The built module embeds `themes.css`, and the PWA shell precaches it under 3.5.0. Existing users retain their selected classic theme until they opt into a glass theme. No binding, API, database or owner-data change is required.
