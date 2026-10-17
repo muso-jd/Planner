@@ -27,6 +27,23 @@ export const iconPaths={
  analytics:'M2 14h5v9H2Zm7-7h5v16H9Zm7-6h6v22h-6Z',
  settings:'m9 1 6 0 1 4 4-1 3 5-3 3 3 3-3 5-4-1-1 4H9l-1-4-4 1-3-5 3-3-3-3 3-5 4 1Zm3 7a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z',
  sync:'M12 2a10 10 0 0 1 9 6V4h2v9h-9v-2h6a8 8 0 0 0-14-5L4 5a10 10 0 0 1 8-3Zm-11 9h9v2H4a8 8 0 0 0 14 5l2 1A10 10 0 0 1 3 16v4H1Z',
+ wallet:'M3 3h16v3H4v2h18v14H2V4a1 1 0 0 1 1-1Zm13 9v6h6v-6Zm2 2h2v2h-2Z',
+ food:'M2 2h2v7h2V2h2v7h2V2h2v9l-4 3v8H5v-8l-3-3Zm16 0h4v20h-3v-9h-4V7Z',
+ travel:'M22 2 2 9l7 4 4 9 9-20ZM9 13l9-7-7 9-2 4Z',
+ transport:'M5 2h14l3 9v9h-3v3h-3v-3H8v3H5v-3H2v-9Zm1 3-2 6h16l-2-6Zm0 8a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z',
+ shopping:'M6 7V5a6 6 0 0 1 12 0v2h4l-1 16H3L2 7Zm3 0h6V5a3 3 0 0 0-6 0Z',
+ education:'m12 1 12 6-12 6L0 7Zm-8 12 8 4 8-4v6l-8 4-8-4Zm17-3h2v11h-2Z',
+ repeat:'M4 4h13V1l6 5-6 5V8H4v4H1V7a3 3 0 0 1 3-3Zm16 16H7v3l-6-5 6-5v3h13v-4h3v5a3 3 0 0 1-3 3Z',
+ diary:'M4 1h17v22H4a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3Zm3 4v2h10V5Zm0 5v2h10v-2Zm-2 8a2 2 0 0 0 0 4h13v-4Z',
+ feeling:'M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22ZM6 8h3v3H6Zm9 0h3v3h-3ZM5 14a7 7 0 0 0 14 0h-3a4 4 0 0 1-8 0Z',
+ stopwatch:'M8 0h8v3H8Zm10 4 3-2 2 3-3 2a10 10 0 1 1-2-3Zm-7 3v7h3V7Z',
+ flag:'M3 1h3v2h15l-3 5 3 5H6v10H3Z',
+ bell:'M12 1a3 3 0 0 1 3 3 7 7 0 0 1 4 6v5l3 3H2l3-3v-5a7 7 0 0 1 4-6 3 3 0 0 1 3-3Zm-3 19h6a3 3 0 0 1-6 0Z',
+ sun:'M10 0h4v4h-4Zm0 20h4v4h-4ZM0 10h4v4H0Zm20 0h4v4h-4ZM3 1l4 4-2 2-4-4Zm14 18 2-2 4 4-2 2ZM1 21l4-4 2 2-4 4ZM17 5l4-4 2 2-4 4Zm-5 1a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z',
+ inbox:'M4 3h16l4 12v7H0v-7Zm2 3-3 9h5l2 3h4l2-3h5l-3-9Z',
+ timeblock:'M2 2h20v20H2Zm3 3v4h14V5Zm0 7v7h6v-7Zm9 0v2h5v-2Zm0 5v2h5v-2Z',
+ heart:'M12 22 2 12A7 7 0 0 1 12 2a7 7 0 0 1 10 10Z',
+ coffee:'M2 3h15v3h6v6a5 5 0 0 1-5 5h-1a8 8 0 0 1-15-4Zm15 6v5h1a2 2 0 0 0 2-2V9ZM1 21h19v3H1Z',
  check:'m3 11 6 6L21 4l3 3L9 22 0 14Z'
 };
-export const navIcons={today:'goal',capture:'creative',plan:'calendar',tasks:'tasks',projects:'projects',routines:'sync',money:'business',journal:'note',trackers:'clock',health:'health',analytics:'analytics',settings:'settings',feeling:'personal',time:'clock'};
+export const navIcons={today:'sun',capture:'inbox',plan:'calendar',tasks:'tasks',projects:'projects',routines:'repeat',money:'wallet',journal:'diary',trackers:'flag',health:'heart',analytics:'analytics',settings:'settings',feeling:'feeling',time:'stopwatch'};

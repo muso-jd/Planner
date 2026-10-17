@@ -1,6 +1,6 @@
 {
   "name": "life-planner",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,6 +10,7 @@
     "test:pwa": "node tests/pwa.mjs",
     "test:control-center": "node tests/control-center.mjs",
     "test:journal": "node tests/journal-history.mjs",
+    "test:funding-envelopes": "node tests/funding-envelopes-blocks.mjs",
     "test:reflections-focus": "node tests/reflections-focus.mjs",
     "test:dependencies-history": "node tests/dependencies-history.mjs",
     "test:calendar-health": "node tests/calendar-health.mjs"

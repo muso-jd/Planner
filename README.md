@@ -20,6 +20,8 @@ Phone navigation prioritizes **Notes, Diary, Feeling and Time**, with the rest o
 
 Diary entries support image uploads and previews. Google Drive can receive normal JPEG copies and encrypted full backups after OAuth/Picker setup; the requested destination is configured privately. See [Google setup](docs/GOOGLE.md).
 
+Budget now includes **Category budgets**: create weekly/monthly Food, Travel or other allowances, add assigned expenses, and switch Month/Week/Day balances. Calendar-day proration, dated spending and future scheduled spending are labelled separately. Project/goal funding is calculated from nested task own costs and shown with a breakdown. Recurring ledger entries have a first transfer/payment date and optional T−day reminders while Planner is open. Routines can be linked to time blocks and follow their Calendar schedule without creating duplicate records.
+
 ## Develop
 
 Node.js 24 or newer. Production has no npm dependencies.
