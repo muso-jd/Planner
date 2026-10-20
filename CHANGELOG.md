@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.7.0 — 2026-10-20
+
+- Show canonical Calendar time blocks as Projects/Goals-style cards containing their routines. Add All view, block schedule filtering, selected-date progress and direct add/edit actions.
+- Move new time-block creation next to New routine; remove inline block creation from routine editing.
+- Consolidate UI typography to five shared sizes. Settings provides an adaptive scale, five individual base-size inputs and reset. Smaller actual sizes receive more relative scaling; largest scales linearly.
+- Duplicate tasks and routines from their rows or editors. Review copies before saving; completion history, daily check identity and Google integration identity are not copied.
+
 ## 3.6.1 — 2026-10-20
 
 - Create and link a new time block directly inside the routine window, with title, date, start time, duration and recurrence. Saving persists both records together; closing discards the draft.
