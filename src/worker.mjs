@@ -6,7 +6,7 @@ async function hash(s){return Array.from(new Uint8Array(await crypto.subtle.dige
 export default {async fetch(request,env){
  try {
  const url=new URL(request.url);
- if(url.pathname==='/api/health')return json({ok:true,version:'3.6.0',storage:!!env.DB});
+ if(url.pathname==='/api/health')return json({ok:true,version:'3.6.1',storage:!!env.DB});
  if(url.pathname.startsWith('/api/')){
   if(!env.DB)return json({error:'Cloud storage is unavailable'},503);
   if(request.headers.get('Origin') && request.headers.get('Origin')!==url.origin)return json({error:'Origin rejected'},403);
@@ -66,3 +66,4 @@ export default {async fetch(request,env){
  const [type,body,encoding]=ASSETS[path];return new Response(encoding==='base64'?Uint8Array.from(atob(body),c=>c.charCodeAt(0)):body,{headers:{...secureHeaders,'Content-Type':type,'Content-Security-Policy':"default-src 'self'; script-src 'self' https://accounts.google.com https://apis.google.com; connect-src 'self' https://health.googleapis.com https://www.googleapis.com https://tasks.googleapis.com https://accounts.google.com https://apis.google.com; frame-src https://accounts.google.com https://docs.google.com https://drive.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; base-uri 'none'; form-action 'self'",'Cross-Origin-Opener-Policy':'same-origin-allow-popups'}});
  } catch(e){return json({error:'Request failed; local changes remain on this device'},500)}
 }};
+

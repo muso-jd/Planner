@@ -1,6 +1,6 @@
 {
   "name": "life-planner",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,3 +21,4 @@
     "playwright": "1.62.1"
   }
 }
+

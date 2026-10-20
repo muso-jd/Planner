@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.6.1 — 2026-10-20
+
+- Create and link a new time block directly inside the routine window, with title, date, start time, duration and recurrence. Saving persists both records together; closing discards the draft.
+- Enlarge compact text (7–12 px) by 50% throughout classic and glass themes; retain icon-only navigation behavior.
+- Use white subtitles and field captions on dark themes, readable dark equivalents on light themes, and muted gray descriptions.
+
 ## 3.6.0 — 2026-10-17
 
 - Hide zero-cost and unset-cost task rows from Budget funding breakdowns and exclude them from the funded-task count. Keep paid descendants visible through free parent tasks; omit containers with no funded work in the selected scope. Preserve financial totals, estimates and task records.
@@ -137,3 +143,4 @@
 - Add time sessions, cash-flow ledger, monthly spending budget, abstinence/time-since trackers and descriptive analytics.
 - Add complete JSON backup, ICS exchange, ledger CSV and explicit Google Calendar/Tasks connection options.
 - Exclude Apple integrations.
+

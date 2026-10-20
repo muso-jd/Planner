@@ -56,3 +56,9 @@ This public repository contains application code and synthetic tests only. Perso
 Typography uses locally served Noto Sans Mono. Font licensing and source provenance are recorded in `public/fonts/README.md`.
 
 Android: open the live URL in Chrome, then choose **Install app** from the browser menu or use **Settings → Install app**. On iPhone/iPad, Safari → Share → Add to Home Screen uses the custom Life icon. Use your existing workspace key; after an online load, cached records can be edited offline and synchronized on reconnect. Run `npm run test:pwa` for installation/offline checks and `npm run test:control-center` for the redesigned workflows (Playwright required).
+
+
+
+### 3.6.1 readability and routine window
+
+Create a linked time block without leaving the routine editor. Compact text is 50% larger; dark-theme subtitles and field captions are white with gray supporting text. See [features](docs/FEATURES.md) and [change report](docs/changes/2026-10-20-routine-block-readability.md).
