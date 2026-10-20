@@ -127,3 +127,18 @@
  #timerDock{bottom:calc(var(--phone-dock-height) + 10px + env(safe-area-inset-bottom))}
  #toast{bottom:calc(var(--phone-dock-height) + 20px + env(safe-area-inset-bottom))}
 }
+/* Type settings remain usable at the largest adaptive and custom sizes. */
+.font-tier-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,calc(var(--font-sm)*17)),1fr))}
+.font-tier-control{display:flex;flex-direction:column;align-items:stretch;overflow-wrap:anywhere}
+.font-tier-control input{width:100%;min-width:0}
+.view-heading{flex-wrap:wrap}.view-heading>input{width:calc(var(--font-sm)*11 + 28px);max-width:100%}
+@media(min-width:801px){
+ :root{--adaptive-sidebar-width:max(222px,calc(var(--font-sm)*9 + 55px))}
+ .sidebar{width:var(--adaptive-sidebar-width)}
+ main{margin-left:var(--adaptive-sidebar-width)}
+}
+@media(max-width:600px){
+ :root[data-material=glass] .sidebar{height:calc(var(--phone-dock-height) + env(safe-area-inset-bottom))}
+ :root[data-material=glass] main{padding-bottom:calc(var(--phone-dock-height) + 55px + env(safe-area-inset-bottom))}
+ .font-tier-grid{grid-template-columns:1fr}
+}
