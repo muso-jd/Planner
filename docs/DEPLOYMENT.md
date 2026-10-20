@@ -4,6 +4,18 @@
 
 Jeremy explicitly instructed on 2026-10-17 to continue through deployment for requested Planner changes after validation, without a separate confirmation each time. Follow `AGENTS.md`: publish the focused branch/PR, deploy to the existing production Worker, verify and document the result. An explicit preview/draft-only request overrides this. This is standing authorization for the agent's release workflow, not a new GitHub deployment pipeline; existing merge and deployment-deletion boundaries still apply.
 
+## Routine block / readability update — 3.6.1
+
+- UTC `2026-10-20T06:42:17.626697Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Source `50facabb1329418e777117f1cce5b0cec6641e13`; branch `feature/routine-block-readability`; https://github.com/muso-jd/Planner/pull/9, stacked on PR #8. No main merge or automatic Git deployment.
+- Deployment `f454e879-38db-4b3a-87b6-b207b1c6b46f`; Worker version `ea687dc3-211d-4241-aed3-072731ba4450`; 100% traffic confirmed through Cloudflare. Content-only multipart upload preserved all live binding values and compatibility date `2026-10-16`, verified through before/after settings reads.
+- Build, 45 unit/API tests, JavaScript syntax and diff checks passed. Live health returned `ok:true`, `version:3.6.1`, `storage:true`.
+- Live Chromium at 1363×936: existing routine editor exposes new block fields, invalid offset 90 in a 60-minute block is rejected, offset 0 saves, Calendar contains the canonical block and its linked routine, closing an unsaved creation draft preserves the existing assignment. Encrypted cloud revision 2 decrypts to the expected two synthetic records with a valid link and no draft-only fields. This QA workspace is separate from the owner's data.
+- Computed styles: original smallest brand text increased from 7 to 10.5 px; page subtitle and field captions are `rgb(255,255,255)` while supporting text remains `rgb(146,153,172)`. Routine dialog screenshot inspected; document has no horizontal overflow at the tested desktop viewport.
+- Local Chromium download could not complete. Phone/iPad emulation, physical Safari and light-theme visual inspection were unavailable; these are not claimed as tested. Browser extension metadata errors were observed; no application error is claimed from those extension messages.
+- PWA shell 3.6.1 activates after existing Planner windows close. Allow the update to download, close all Planner tabs/app windows, then reopen. This was verified in the cloud browser; a controlled health-endpoint tab also prevented activation until it was closed.
+- Rollback: route traffic to 3.6.0 Worker version `decf4ce3-2c20-4c32-bfaa-ef9518d42f4b`. Keep data, bindings, and deployment history. No schema migration or owner-record changes.
+
 ## Black-glass / funding visibility update — 3.6.0
 
 Branch `feature/black-glass-funded-tasks`, stacked on `feature/liquid-glass-themes` (PR #7). No automatic Git deployment. Existing theme selection is retained. Build and PWA shell versions are 3.6.0 with no new assets, bindings, migrations or API changes.
@@ -258,3 +270,4 @@ Source branch `feature/funding-envelopes-routine-blocks`, stacked on `feature/re
 - Verification limit: serving version, traffic and exact source were verified through the control plane. Direct live HTTP requests were blocked by the execution network; no successful live health response, unlocked owner session or personal Health verification is claimed.
 - PWA shell 3.4.0: let the update download, close every old Planner window and reopen, preserving pending edits. Payment reminders require the app to be running; browser suspension can delay or miss them. No closed-app push.
 - Rollback: route traffic to Worker version `eb55ec25-b731-4c92-9b72-f5dcfe25db70` (3.3.0), retaining data, bindings and historical deployments.
+
