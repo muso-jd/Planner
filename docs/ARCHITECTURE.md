@@ -123,3 +123,9 @@ Pure helpers in `planning.js` derive transfer-date ledger occurrences, unique-ID
 `routine.blockId` is the canonical relationship. `blockOffset` is a minute offset. Block editor routine assignments resolve to routine-record changes and save atomically with the block through `putMany`. Own routine time/schedule remains stored; display derives effective time. Calendar renders routine controls as siblings below the block button, avoiding nested interactive buttons. Today, reminders and Insights use the same linked schedule.
 
 Payment reminder candidates derive from transfer occurrences across month/year boundaries and Vienna instants. A throttled open-app check deduplicates toasts/optional notifications by source occurrence and reminder offset in sessionStorage. Tokens, bank credentials and production personal records are not involved. PWA shell 3.4.0 includes the new module, excluding external/API data as before.
+
+
+
+### Inline routine block creation (3.6.1)
+
+The Control Center routine editor owns disabled draft block inputs until creation is enabled. `beforeSave` validates and builds a new canonical block, assigns its ID to the routine and strips draft-only form keys. `relatedChanges` supplies that block to the existing `putMany` batch so both records share the same local persistence and encrypted sync generation. No schema/API/binding changes. Compact type declarations are enlarged in the three existing stylesheets, preserving responsive visibility rules.

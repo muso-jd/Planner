@@ -3,9 +3,9 @@
 .theme-choice{display:block;min-width:0;padding:8px 8px 16px;text-align:left;border-radius:20px;overflow:hidden}
 .theme-settings .theme-choice[aria-pressed=true]{box-shadow:0 0 0 1px var(--accent)}
 .theme-choice-label{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 9px 4px}
-.theme-choice-label strong{font-size:16px;font-weight:550}.theme-selected{font-size:9px;color:var(--muted)}
+.theme-choice-label strong{font-size:16px;font-weight:550}.theme-selected{font-size:13.5px;color:var(--muted)}
 .theme-choice[aria-pressed=true] .theme-selected{color:var(--text)}
-.theme-description{display:block;color:var(--muted);font-size:10px;margin:0 9px;line-height:1.5}
+.theme-description{display:block;color:var(--muted);font-size:15px;margin:0 9px;line-height:1.5}
 .theme-scene{display:flex;gap:12px;height:138px;padding:15px;border-radius:13px;overflow:hidden;background:radial-gradient(ellipse at 90% 10%,var(--preview-glow),transparent 70%),var(--preview-bg);color:var(--preview-ink)}
 [data-preview=glass-pearl]{--preview-bg:#e6eaf2;--preview-glow:#c4c8eb;--preview-ink:#343d52;--preview-surface:#ffffff91;--preview-line:#ffffffd9}
 [data-preview=glass-dusk]{--preview-bg:#151c32;--preview-glow:#706098;--preview-ink:#ced8f0;--preview-surface:#b1c5ff1a;--preview-line:#cfdbff40}
@@ -20,7 +20,7 @@
 .theme-scene-panels{display:flex;gap:8px}.theme-scene-panels>i{height:33px;flex:1;border:1px solid var(--preview-line);border-radius:9px;background:linear-gradient(135deg,#ffffff16,transparent),var(--preview-surface);box-shadow:0 5px 12px #00000008}
 .theme-scene-list{display:flex;flex-direction:column;gap:9px;border:1px solid var(--preview-line);border-radius:9px;padding:11px;background:var(--preview-surface)}
 .theme-scene-list i{height:3px;width:80%;border-radius:5px;background:currentColor;opacity:.3}.theme-scene-list i:last-child{width:56%}
-.theme-help{margin:16px 0 22px}.theme-classics{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.theme-classics>.subtle{margin-right:6px}.theme-classics button{font-size:11px;padding:8px 12px}
+.theme-help{margin:16px 0 22px}.theme-classics{display:flex;align-items:center;flex-wrap:wrap;gap:8px}.theme-classics>.subtle{margin-right:6px}.theme-classics button{font-size:16.5px;padding:8px 12px}
 .theme-actions{align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;margin:22px 0 0}.theme-actions .accent-setting{min-width:160px}
 
 :root[data-material=glass]{--glass-edge:#ffffff2b;--glass-top:#ffffff16;--glass-shadow:0 18px 50px #00000020,inset 0 1px 0 #ffffff18;--glass-blur:blur(20px) saturate(125%);--control:#ffffff07;--hover:#ffffff14;--dialog-bg:#1b2338ed;--panel:#252e43;--blue:#a8caff;--gold:#f1d09a;--green:#9be3c2;--pink:#f5b9d7;--signal:#66e0a2;--urgent:#ff8790}
@@ -79,9 +79,9 @@
 @media(max-width:1150px){.theme-gallery{gap:10px}.theme-scene{padding:12px;gap:9px}.theme-choice-label{flex-wrap:wrap}}
 @media(min-width:601px) and (max-width:800px){:root[data-material=glass] .sidebar{left:8px;top:8px;bottom:8px;border-radius:22px}:root[data-material=glass] .sidebar nav button{font-size:0}:root[data-material=glass] main{padding-left:26px}}
 @media(max-width:600px){
- .theme-gallery{grid-template-columns:1fr;gap:12px}.theme-choice{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0 14px;padding:9px;align-items:center}.theme-scene{grid-row:span 2;height:95px;padding:10px;gap:8px}.theme-scene-nav{width:21px;padding:8px 5px;gap:7px}.theme-scene-nav i{width:9px;height:9px}.theme-scene-content{gap:7px}.theme-scene-panels>i{height:23px}.theme-scene-list{padding:8px}.theme-choice-label{margin:3px 5px 0;align-self:end}.theme-description{margin:5px 5px 3px;align-self:start}.theme-selected{font-size:9px}.theme-actions{gap:14px}.theme-actions button{font-size:11px}
+ .theme-gallery{grid-template-columns:1fr;gap:12px}.theme-choice{display:grid;grid-template-columns:112px minmax(0,1fr);gap:0 14px;padding:9px;align-items:center}.theme-scene{grid-row:span 2;height:95px;padding:10px;gap:8px}.theme-scene-nav{width:21px;padding:8px 5px;gap:7px}.theme-scene-nav i{width:9px;height:9px}.theme-scene-content{gap:7px}.theme-scene-panels>i{height:23px}.theme-scene-list{padding:8px}.theme-choice-label{margin:3px 5px 0;align-self:end}.theme-description{margin:5px 5px 3px;align-self:start}.theme-selected{font-size:13.5px}.theme-actions{gap:14px}.theme-actions button{font-size:16.5px}
  :root[data-material=glass] .sidebar{inset:auto 8px max(8px,env(safe-area-inset-bottom)) 8px;width:auto;height:144px;padding:5px 6px 6px;border-radius:25px;gap:3px}
- :root[data-material=glass] .sidebar nav button{font-size:10px;border-radius:16px;min-height:58px;padding:4px 2px}
+ :root[data-material=glass] .sidebar nav button{font-size:15px;border-radius:16px;min-height:58px;padding:4px 2px}
  :root[data-material=glass] main{padding-top:26px;padding-bottom:calc(205px + env(safe-area-inset-bottom))}
  :root[data-material=glass] h1{font-size:32px}
  :root[data-material=glass] :is(.card,.stat,.feeling-strip){border-radius:21px}
@@ -102,3 +102,20 @@
  :root[data-material=glass] #content>.card,:root[data-material=glass] #content>.grid>.card{-webkit-backdrop-filter:none;backdrop-filter:none}
 }
 @media(forced-colors:active){.theme-choice[aria-pressed=true]{outline:2px solid Highlight;outline-offset:2px}:root[data-material=glass] :is(.sidebar,dialog,#toast,#timerDock){backdrop-filter:none;-webkit-backdrop-filter:none}}
+
+
+/* Readable hierarchy: subtitles are white on dark materials; descriptions stay muted. */
+:root{--subtitle:#fff}
+:root[data-tone=light]{--subtitle:#202536}
+#viewSubtitle,.card-head h2,.card-head h3,.trend-chart figcaption,.routine-block-create>.inline{color:var(--subtitle)}
+.routine-block-create{border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.routine-block-create .fields{margin-top:12px}
+.routine-block-create .fields>label{min-width:0}
+.routine-block-create input,.routine-block-create select{max-width:100%}
+.sidebar .brand span,.sidebar>#syncStatus{white-space:normal;overflow-wrap:anywhere}
+.sidebar nav button{white-space:normal}
+:root[data-material=glass] .sidebar nav button{font-size:13px}
+@media(max-width:600px){:root[data-material=glass] .sidebar nav button{font-size:15px;line-height:1.25}.sidebar nav{min-height:72px;flex-basis:72px}.sidebar{height:calc(158px + env(safe-area-inset-bottom))}main{padding-bottom:calc(205px + env(safe-area-inset-bottom))}}
+@media(min-width:601px) and (max-width:800px){:root[data-material=glass] .sidebar nav button{font-size:0}}
+.input-field>.field-caption{color:var(--subtitle)}
+.input-field>input,.input-field>select,.input-field>textarea{padding-top:34px;min-height:68px}
