@@ -62,3 +62,8 @@ Android: open the live URL in Chrome, then choose **Install app** from the brows
 ### 3.6.1 readability and routine window
 
 Create a linked time block without leaving the routine editor. Compact text is 50% larger; dark-theme subtitles and field captions are white with gray supporting text. See [features](docs/FEATURES.md) and [change report](docs/changes/2026-10-20-routine-block-readability.md).
+
+
+### 3.7.0 routine groups and UI controls
+
+Routines now live inside project-style time-block cards, with independent routines shown separately. Create time blocks beside New routine. Settings → UI typography controls five shared sizes with adaptive scaling and individual adjustments. Tasks and routines can be duplicated into an editable draft. See [change report](docs/changes/2026-10-20-routine-groups-adaptive-fonts.md).

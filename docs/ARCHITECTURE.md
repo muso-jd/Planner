@@ -129,3 +129,12 @@ Payment reminder candidates derive from transfer occurrences across month/year b
 ### Inline routine block creation (3.6.1)
 
 The Control Center routine editor owns disabled draft block inputs until creation is enabled. `beforeSave` validates and builds a new canonical block, assigns its ID to the routine and strips draft-only form keys. `relatedChanges` supplies that block to the existing `putMany` batch so both records share the same local persistence and encrypted sync generation. No schema/API/binding changes. Compact type declarations are enlarged in the three existing stylesheets, preserving responsive visibility rules.
+
+
+### Routine groups, typography and duplicate drafts — 3.7.0
+
+`planning.groupedRoutines` derives nesting from canonical block IDs and recurrence, without copying or rewriting routine schedules. Deleted/missing blocks return their routines to the independent group. The previous inline creation branch is removed; block creation uses the existing editor and routine assignments through `relatedChanges`.
+
+`typography.js` owns five token definitions and validates saved bases/scale. CSS type declarations use only `--font-xs/sm/md/lg/xl` (zero-size icon-only labels remain visibility controls). Actual base-size interpolation makes the smallest type grow fastest relatively and the largest linearly. `applyTypography` writes five root properties. The Control Center applies settings after renders and previews changes without rerendering the controls; valid input changes persist through existing encrypted settings merge. Mobile dock offsets and field-caption spacing use type tokens. Both new modules are embedded and included in the versioned PWA shell.
+
+`record-actions.duplicateDraft` deep-copies a task/routine while removing identity, completion and Google fields. The new editor receives the draft as defaults; no record exists until Save. Its existing validation/putMany flow performs the write. Reopening an editor in the same event does not let a queued old close event clear the new editor’s attachment draft.

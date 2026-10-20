@@ -83,3 +83,11 @@ export function paymentReminders(records,now=new Date()){
 }
 export function routineBlock(records,r){const b=records[r.blockId];return b?.type==='block'&&!b.deleted?b:null;}
 export function routineTime(records,r){const b=routineBlock(records,r);if(!b||!b.time)return r.time||'';const [h,m]=b.time.split(':').map(Number),minutes=h*60+m+Math.max(0,Number(r.blockOffset)||0);return String(Math.floor(minutes/60)%24).padStart(2,'0')+':'+String(minutes%60).padStart(2,'0');}
+
+
+// Use the canonical block's recurrence for grouped views, retaining each routine's own schedule.
+export function groupedRoutines(records,frequency='all'){
+ const active=Object.values(records).filter(r=>!r.deleted),blocks=active.filter(r=>r.type==='block');
+ const sort=(a,b)=>String(routineTime(records,a)||'').localeCompare(String(routineTime(records,b)||''))||String(a.title||'').localeCompare(String(b.title||''));
+ return {blocks:blocks.filter(b=>frequency==='all'||b.repeat===frequency).sort((a,b)=>String(a.time||'').localeCompare(String(b.time||''))).map(block=>({block,routines:active.filter(r=>r.type==='routine'&&routineBlock(records,r)?.id===block.id).sort(sort)})),unassigned:active.filter(r=>r.type==='routine'&&!routineBlock(records,r)&&(frequency==='all'||routineFrequency(r)===frequency)).sort(sort)};
+}

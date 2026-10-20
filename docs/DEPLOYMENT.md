@@ -4,6 +4,19 @@
 
 Jeremy explicitly instructed on 2026-10-17 to continue through deployment for requested Planner changes after validation, without a separate confirmation each time. Follow `AGENTS.md`: publish the focused branch/PR, deploy to the existing production Worker, verify and document the result. An explicit preview/draft-only request overrides this. This is standing authorization for the agent's release workflow, not a new GitHub deployment pipeline; existing merge and deployment-deletion boundaries still apply.
 
+## Routine groups / adaptive typography / duplication — 3.7.0
+
+- Final rollout UTC `2026-10-20T07:12:02.267075Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact deployed source `38b44d4d845e2834ea82454317e94f195427b444`; branch `feature/routine-groups-adaptive-fonts`; https://github.com/muso-jd/Planner/pull/10, stacked on PR #9. No main merge.
+- Final deployment `9e60a25d-f478-4e66-bc83-a7b67b0fe556`; Worker version `c6bf5e04-bd99-4a88-9254-3250c20e9dd5`; 100% traffic verified through the deployment API. The content-only upload preserved exact live binding values and compatibility date `2026-10-16`.
+- The initial 3.7 rollout used source `29e1a0bba76cef1bc8158f5a0f36c5204f5a1293` at `2026-10-20T07:04:11.15268Z`, Worker version `f2010dad-71e3-43f2-88ec-d82504973137`. Live review led to large-font layout corrections (source `2f367cf1010947e2d673a939f92cb7f876621b35` at `2026-10-20T07:08:15.732436Z`, version `2afcfd22-7b7a-42f4-bf49-37f2ab6f0c71`), then immediate valid-input persistence in the final source. These versions remain retained.
+- Build, all 49 unit/API tests, JavaScript syntax and diff checks passed. Live health returned `ok:true`, `version:3.7.0`, `storage:true` on both the initial and final rollouts; final deployment and settings were also verified through Cloudflare.
+- Live desktop Chromium at 1363×936 verified project-style block grouping, top-level creation, absent inline creation, canonical weekly filtering, new routine placement inside a block, task/routine duplicate draft/save/cancel behavior, adaptive maximum, individual font editing and reset. Dark and Carbon glass layouts were inspected. At 150%, the five root sizes were 24, 27.36, 30.55, 39 and 51 px: smallest doubles, largest scales 1.5×. The corrected layout had no document horizontal overflow, a 301.234 px sidebar and stacked type controls.
+- Encrypted QA cloud revision 14 decrypted to distinct task copies, the routine copy retaining its block placement, and `fontXS:19` saved from the live UI. The test workspace is synthetic and separate from owner records. Final QA sizes were reset to defaults afterward.
+- PWA shell `3.7.0-r2` includes typography.js and record-actions.js. Allow download, close all Planner tabs and app windows, then reopen. Shell activation was verified in the cloud browser. No owner record rewrite, migration, new binding or deployment deletion.
+- Local Chromium download, phone/iPad viewport emulation and physical Safari tests were unavailable. They are not claimed as tested. Real Google exports and personal-owner sessions were not used.
+- Rollback: route traffic to 3.6.1 Worker version `ea687dc3-211d-4241-aed3-072731ba4450`, keeping records, bindings and deployment history. Older clients ignore new font settings; canonical block/routine/copy records retain their existing schema.
+
 ## Routine block / readability update — 3.6.1
 
 - UTC `2026-10-20T06:42:17.626697Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.

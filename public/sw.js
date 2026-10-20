@@ -1,7 +1,7 @@
 // Cache only this public app shell. API responses and external services bypass it.
-const CACHE='life-planner-shell-3.6.1';
+const CACHE='life-planner-shell-3.7.0-r2';
 const SHELL=['/','/index.html','/style.css','/workspace.css','/app.js','/core.js','/budget-envelopes.js','/dependencies.js','/planning.js','/control-center.js','/attachments.js','/solid-icons.js','/calendar.js','/health-data.js','/health.js','/insights.js','/google-export.js','/pwa.js','/manifest.webmanifest','/fonts/noto-sans-mono.woff','/icons/life-192.png','/icons/life-512.png','/icons/life-maskable-512.png','/icons/life-ios-180.png'];
-SHELL.push('/themes.css');
+SHELL.push('/themes.css','/typography.js','/record-actions.js');
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL.map(path=>new Request(path,{cache:'reload'}))))));
 // A new shell activates after all old app windows close; never force a reload during editing.
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('life-planner-shell-')&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
