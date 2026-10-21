@@ -1,0 +1,42 @@
+name: Repository index
+
+on:
+  push:
+  create:
+  delete:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, closed, ready_for_review, converted_to_draft]
+  release:
+    types: [published, edited, deleted]
+  workflow_dispatch:
+  schedule:
+    - cron: '23 5 * * *'
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: repository-index
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    # Fork PRs have read-only tokens and are picked up by the daily refresh.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out trusted default-branch maintenance code
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Check index maintenance behavior
+        run: python3 .github/scripts/test_repository_index.py
+      - name: Refresh the README index only
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 .github/scripts/update_repository_index.py --write
