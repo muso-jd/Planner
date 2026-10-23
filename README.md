@@ -1,4 +1,26 @@
-# Planner
+# Life Planner
+
+A personal workspace for tasks, goals, projects, routines, finances, reflection and time tracking. Explore dependencies, plan calendar blocks and review progress across a shared workspace, with encrypted Cloudflare D1 synchronization and optional glass themes.
+
+[Open the recorded app/site address](https://planner.jeremydachojd.workers.dev/) · [Source](https://github.com/muso-jd/Planner/tree/feature/routine-groups-adaptive-fonts). Hosting and publication evidence appears in the index below.
+
+**Current work:** `feature/routine-groups-adaptive-fonts`. The default branch retains an earlier source baseline; use the linked task branch for the described updates.
+
+## Changelog
+
+**3.7.0 — 2026-10-20**
+
+- Show canonical Calendar time blocks as Projects/Goals-style cards containing their routines. Add All view, block schedule filtering, selected-date progress and direct add/edit actions.
+- Move new time-block creation next to New routine; remove inline block creation from routine editing.
+- Consolidate UI typography to five shared sizes. Settings provides an adaptive scale, five individual base-size inputs and reset. Smaller actual sizes receive more relative scaling; largest scales linearly.
+
+**3.6.1 — 2026-10-20**
+
+- Create and link a new time block directly inside the routine window, with title, date, start time, duration and recurrence. Saving persists both records together; closing discards the draft.
+- Enlarge compact text (7–12 px) by 50% throughout classic and glass themes; retain icon-only navigation behavior.
+- Use white subtitles and field captions on dark themes, readable dark equivalents on light themes, and muted gray descriptions.
+
+[Full changelog](https://github.com/muso-jd/Planner/blob/feature/routine-groups-adaptive-fonts/CHANGELOG.md). These are the source branch’s recorded entries; deployment state is listed separately below.
 
 <!-- repository-index:start -->
 ## Repository dashboard
@@ -67,3 +89,5 @@ Keep the default branch as the project entry point. Reuse an existing coherent t
 This panel is generated from GitHub metadata and `.github/repository-index.json`. Existing project documentation below is preserved. See [index maintenance and policy](https://github.com/muso-jd/Planner/blob/main/.github/REPOSITORY_INDEX.md) for refresh triggers, limitations, and how to record deployments.
 <!-- repository-index:end -->
 
+<!-- project-guide:start -->
+<!-- project-guide:end -->

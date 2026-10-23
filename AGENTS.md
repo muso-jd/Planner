@@ -26,3 +26,8 @@ branch for every meaningful change. Preserve other project-specific instructions
   Do not delete historical deployments as part of Git housekeeping.
 - Report actual validation and deployment status. Keep secrets, client images,
   gallery passwords, pairing links and personal workspace data out of Git.
+
+
+## Repository landing-page order — 2026-10-23
+
+Lead README with the app/site/project description and verified UI previews where available, then Changelog, then the generated repository dashboard/index, then setup and detailed guides. Clearly distinguish active task-branch work from the default source baseline and recorded deployments. Preserve existing documentation. Refresh the marked dashboard in place; do not move it ahead of the description. Repository deletion remains manual.
