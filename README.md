@@ -43,7 +43,7 @@ These are recorded destinations, not a fresh availability or security check. Git
 
 | Branch | Purpose | GitHub state / target | Latest source/docs commit (UTC) | Links |
 | --- | --- | --- | --- | --- |
-| [main](https://github.com/muso-jd/Planner/tree/main) | Default source and repository index | Default branch | 2026-10-21 03:27:24 | [3ed4c1f](https://github.com/muso-jd/Planner/commit/3ed4c1f97d95e3b99afb1ba43ec56cadd3aecf27) |
+| [main](https://github.com/muso-jd/Planner/tree/main) | Default source and repository index | Default branch | 2026-10-23 08:12:15 | [1143cb0](https://github.com/muso-jd/Planner/commit/1143cb000d2cec1120cff3f828b7d71a95e1f738) |
 | [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) | Planner 3.7: routine block cards, adaptive type and duplication | Open PR #10 → feature/routine-block-readability | 2026-10-20 07:14:54 | [ba4af19](https://github.com/muso-jd/Planner/commit/ba4af19d243fc5c03596d57654bf66a841bf4bea) · [PR #10](https://github.com/muso-jd/Planner/pull/10) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Froutine-groups-adaptive-fonts) |
 | [feature/routine-block-readability](https://github.com/muso-jd/Planner/tree/feature%2Froutine-block-readability) | Planner 3.6.1: create time blocks from routines and enlarge compact text | Open PR #9 → feature/black-glass-funded-tasks | 2026-10-20 06:46:59 | [96c90af](https://github.com/muso-jd/Planner/commit/96c90afda645358e6c6a8bb2d8c25f5128e6caa2) · [PR #9](https://github.com/muso-jd/Planner/pull/9) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Froutine-block-readability) |
 | [feature/black-glass-funded-tasks](https://github.com/muso-jd/Planner/tree/feature%2Fblack-glass-funded-tasks) | Planner 3.6: hide free funding rows and add black glass themes | Open PR #8 → feature/liquid-glass-themes | 2026-10-17 11:35:37 | [31c5ab1](https://github.com/muso-jd/Planner/commit/31c5ab13520d3da74ef5b8efdf8087d6f0d37daf) · [PR #8](https://github.com/muso-jd/Planner/pull/8) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Fblack-glass-funded-tasks) |
@@ -64,7 +64,7 @@ Default-branch source/docs commit details exclude automatic index-only commits.
 
 | Branch | Latest commit summary |
 | --- | --- |
-| [main](https://github.com/muso-jd/Planner/tree/main) | ci: activate repository dashboard updates |
+| [main](https://github.com/muso-jd/Planner/tree/main) | Lead repository landing page with app overview and changelog |
 | [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) | Record Planner 3.7 deployment and final browser validation |
 | [feature/routine-block-readability](https://github.com/muso-jd/Planner/tree/feature%2Froutine-block-readability) | Record Planner 3.6.1 rollout and live validation |
 | [feature/black-glass-funded-tasks](https://github.com/muso-jd/Planner/tree/feature%2Fblack-glass-funded-tasks) | docs: record Planner 3.6 rollout and standing deployment authorization |
@@ -80,7 +80,7 @@ Default-branch source/docs commit details exclude automatic index-only commits.
 
 ### Version history
 
-No published GitHub Releases were found in the initial inventory. Tag inventory will be populated by the first automatic refresh.
+No published GitHub Releases were found. App versions recorded in deployment guides are not automatically Git tags or releases.
 
 ### Working convention
 
