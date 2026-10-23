@@ -58,7 +58,7 @@ Default-branch source/docs commit details exclude automatic index-only commits.
 
 ### Version history
 
-No published GitHub Releases were found. App versions recorded in deployment guides are not automatically Git tags or releases.
+No published GitHub Releases were found in the initial inventory. Tag inventory will be populated by the first automatic refresh.
 
 ### Working convention
 
