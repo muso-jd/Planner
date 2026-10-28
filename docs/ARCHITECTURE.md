@@ -129,3 +129,24 @@ Payment reminder candidates derive from transfer occurrences across month/year b
 ### Inline routine block creation (3.6.1)
 
 The Control Center routine editor owns disabled draft block inputs until creation is enabled. `beforeSave` validates and builds a new canonical block, assigns its ID to the routine and strips draft-only form keys. `relatedChanges` supplies that block to the existing `putMany` batch so both records share the same local persistence and encrypted sync generation. No schema/API/binding changes. Compact type declarations are enlarged in the three existing stylesheets, preserving responsive visibility rules.
+
+
+### Routine groups, typography and duplicate drafts — 3.7.0
+
+`planning.groupedRoutines` derives nesting from canonical block IDs and recurrence, without copying or rewriting routine schedules. Deleted/missing blocks return their routines to the independent group. The previous inline creation branch is removed; block creation uses the existing editor and routine assignments through `relatedChanges`.
+
+`typography.js` owns five token definitions and validates saved bases/scale. CSS type declarations use only `--font-xs/sm/md/lg/xl` (zero-size icon-only labels remain visibility controls). Actual base-size interpolation makes the smallest type grow fastest relatively and the largest linearly. `applyTypography` writes five root properties. The Control Center applies settings after renders and previews changes without rerendering the controls; valid input changes persist through existing encrypted settings merge. Mobile dock offsets and field-caption spacing use type tokens. Both new modules are embedded and included in the versioned PWA shell.
+
+`record-actions.duplicateDraft` deep-copies a task/routine while removing identity, completion and Google fields. The new editor receives the draft as defaults; no record exists until Save. Its existing validation/putMany flow performs the write. Reopening an editor in the same event does not let a queued old close event clear the new editor’s attachment draft.
+
+
+### Today agenda (3.7.1)
+`planning.todayAgenda` derives Monday–Sunday dates from the selected Vienna civil date, partitions open tasks into urgent and other weekly deadlines, and resolves expense ledger occurrences for every intersecting month. It writes no records. `core.priorityBadge` provides shared task badge HTML. Control Center renders the agenda and compact routine rows with canonical block times; existing dependency completion validation remains in place.
+
+
+### 3.7.2 Compact Today rows and ascending priorities
+Task rows remove duplicate/Google-send controls and use equally sized checkmark, clock and P0–P10 chips. Today’s desktop agenda is two-thirds actions and one-third daily rhythm; screens at 1150 px and below stack the panels. Routine rows retain completion and editing, show only icon/title/right-aligned time, and truncate long titles to one line with the full title available on the edit control. Nonzero priority sorts P1 (highest) through P10 (lowest), after urgent work; the explicit Due date sort continues to prioritize dates. Editors, badges and Insights follow that meaning. Saved task ratings are unchanged.
+
+
+### Huawei gateway (3.8.0)
+`src/huawei.mjs` is embedded into the single Worker by the existing build. Authenticated `/api/huawei/*` routes perform status, signed-state start, secret-backed exchange/refresh and bounded allowlisted reads. Public callback HTML/JS returns only code/state to the original origin. `huawei-health.js` handles page-memory tokens, cancel/progress, preview and import; `huawei-data.js` validates and normalizes six metrics with stable source IDs. New modules are PWA-cached; auth/API responses bypass cache. No new table, persistent OAuth-token storage or owner-data migration. The Google Health connector remains separate. See HUAWEI.md for scope/security/semantic limits.

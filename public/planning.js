@@ -1,4 +1,4 @@
-import {day,occursOn,taskOrder,viennaInstant} from './core.js';
+import {day,occursOn,taskOrder,viennaInstant,isUrgent} from './core.js';
 import {children} from './dependencies.js';
 
 export const routineFrequency=r=>['daily','weekly','monthly'].includes(r.frequency)?r.frequency:'daily';
@@ -83,3 +83,21 @@ export function paymentReminders(records,now=new Date()){
 }
 export function routineBlock(records,r){const b=records[r.blockId];return b?.type==='block'&&!b.deleted?b:null;}
 export function routineTime(records,r){const b=routineBlock(records,r);if(!b||!b.time)return r.time||'';const [h,m]=b.time.split(':').map(Number),minutes=h*60+m+Math.max(0,Number(r.blockOffset)||0);return String(Math.floor(minutes/60)%24).padStart(2,'0')+':'+String(minutes%60).padStart(2,'0');}
+
+
+// Use the canonical block's recurrence for grouped views, retaining each routine's own schedule.
+export function groupedRoutines(records,frequency='all'){
+ const active=Object.values(records).filter(r=>!r.deleted),blocks=active.filter(r=>r.type==='block');
+ const sort=(a,b)=>String(routineTime(records,a)||'').localeCompare(String(routineTime(records,b)||''))||String(a.title||'').localeCompare(String(b.title||''));
+ return {blocks:blocks.filter(b=>frequency==='all'||b.repeat===frequency).sort((a,b)=>String(a.time||'').localeCompare(String(b.time||''))).map(block=>({block,routines:active.filter(r=>r.type==='routine'&&routineBlock(records,r)?.id===block.id).sort(sort)})),unassigned:active.filter(r=>r.type==='routine'&&!routineBlock(records,r)&&(frequency==='all'||routineFrequency(r)===frequency)).sort(sort)};
+}
+
+// Use the selected Vienna calendar date; weeks run Monday through Sunday.
+export function todayAgenda(records,date,now=new Date()){
+ const dates=periodDates(date,'week'),open=Object.values(records).filter(r=>r.type==='task'&&!r.deleted&&!r.done);
+ const urgent=sortTasks(open.filter(r=>isUrgent(r,now)));
+ const urgentIds=new Set(urgent.map(r=>r.id));
+ const tasks=sortTasks(open.filter(r=>dates.includes(r.due)&&!urgentIds.has(r.id)),'due');
+ const payments=[...new Set(dates.map(d=>d.slice(0,7)))].flatMap(month=>ledgerOccurrences(records,month)).filter(r=>r.kind!=='income'&&dates.includes(r.date));
+ return {from:dates[0],to:dates.at(-1),urgent,tasks,payments};
+}

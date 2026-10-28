@@ -52,7 +52,7 @@ Budget funding trees omit task rows whose own cost rounds to zero cents, includi
 
 ## Urgency and entry colors (2.1.0)
 
-- **Urgent · Priority 0** is a dedicated option in a task's priority selector. Existing importance scores 1–10 keep their meaning (higher is more important); 0 is the urgent override.
+- **Urgent · Priority 0** is a dedicated option in a task's priority selector. P1 is the highest nonurgent priority and P10 is the lowest; P0 is the urgent override. Existing saved numbers are not remapped.
 - An unfinished task becomes effectively P0 after its timed deadline in Europe/Vienna, or after its due date ends if no time is set. This is derived without overwriting the chosen importance. Rescheduling removes automatic overdue urgency; manual P0 remains urgent. Completing/archiving removes urgency.
 - A persistent urgent summary appears across views, including phone capture. Urgent/overdue filters and urgent-first ordering make the queue reviewable. Budget/time/task prerequisites still apply to urgent work.
 - In **Connect → Reminder preferences**, choose overdue reminders: every 30 minutes, hourly (default), daily or off. One grouped toast/optional browser notification lists up to three overdue titles. A per-device timestamp throttles reminders across reloads. Foreground reminders require the page to be visible; there is no closed-browser push.
@@ -152,3 +152,27 @@ Focus uses a collapsible project/task outline, a selected-item inspector, immedi
 ## Routine window and readability — 3.6.1
 
 Under the time-block selector, enable **Create a new time block**. Enter its title, start date/time, duration and recurrence, then save the routine. Both records persist in one batch and the block appears in Calendar. Existing assignments remain available when new-block creation is switched off. Closing without saving creates neither record. A routine offset must fit the new block duration and remain on the same day. The routine’s independent repeat schedule remains available when unlinked. Compact text declarations from 7 through 12 px increase by 50%; headings and larger text retain their sizes. Dark-theme subtitles and field captions are white; explanatory text stays muted gray. Light themes retain dark captions for contrast.
+
+
+## Routine groups, adaptive fonts and duplication — 3.7.0 (current)
+
+This replaces the 3.6.1 inline block-creation control. Routines → New time block sits beside New routine and opens the canonical Calendar block editor. Existing routines can be assigned there. Time blocks use the Projects/Goals card style with an accent edge, schedule, selected-day progress, nested routines, Edit time block and Routine in this block. Independent routines appear separately. All shows all blocks (including empty, one-time and yearly blocks); Daily/Weekly/Monthly follow the block’s actual recurrence for linked routines and the routine’s own recurrence for independent routines. Analysis retains its 28-day consistency view.
+
+Settings → UI typography offers an 80–150% adaptive scale and exactly five independently adjustable base sizes: Small 12, Compact 14, Body 16, Section 22 and Display 34 px by default. Individual bases accept 10–64 px. The smallest actual base gets twice the relative scale change; the largest scales linearly; intermediate sizes interpolate by actual size. Immediate previews persist immediately on valid input and sync as separate settings fields. Reset restores the default five sizes and 100%. Existing themes, white dark-theme captions and muted supporting text remain.
+
+Duplicate controls appear on task/routine rows and in saved task/routine editors. A copy opens for review; Save creates a new ID, while closing creates no record. Planning details, task project/parent/dependencies, routine block placement and attachments are retained. Task completion/history, record timestamps and Google identities are cleared. Duplicating a parent task copies that task only; its children remain with the original. Routine completion checks are keyed to its new ID, so old check history is not copied. Attachments reference the same encrypted files.
+
+
+### 3.7.1 Today agenda and priority badges
+
+Today shows all open urgent tasks without a three-task cap, including blocked tasks. Remaining open tasks and outgoing ledger payments due in the selected Monday–Sunday week appear below, with recurring occurrences and transfer dates resolved across month/year boundaries. Urgent tasks appear once. Ledger entries have no settlement state; this is the scheduled payment list, not an unpaid-bill inference. Three additional available actions remain below the agenda.
+
+Every task title in shared lists and Calendar shows its rating; P0/overdue keeps red styling. Existing semantics remain: P0 is urgent, otherwise lower nonzero ratings mean greater importance. Daily rhythm uses equal-width panels, a full-width title, compact time/category metadata, natural wrapping and existing check/edit/duplicate controls. Canonical block times are respected.
+
+
+### 3.7.2 Compact Today rows and ascending priorities
+Task rows remove duplicate/Google-send controls and use equally sized checkmark, clock and P0–P10 chips. Today’s desktop agenda is two-thirds actions and one-third daily rhythm; screens at 1150 px and below stack the panels. Routine rows retain completion and editing, show only icon/title/right-aligned time, and truncate long titles to one line with the full title available on the edit control. Nonzero priority sorts P1 (highest) through P10 (lowest), after urgent work; the explicit Due date sort continues to prioritize dates. Editors, badges and Insights follow that meaning. Saved task ratings are unchanged.
+
+
+### Huawei Health — 3.8.0
+Health now offers a separate direct Huawei connection: sleep-stage intervals, daily heart-rate/resting-HR/stress/SpO₂ sample summaries and individual weight measurements. Stress retains Huawei’s 1–99 scale; sleep-stage calendar-day totals remain separate from nightly summaries. Server-side OAuth keeps the app secret private, and tokens are page-memory-only. Imports require preview/review, preserve manual data and notes, and use existing encrypted sync. Live connection requires a Huawei web app, approved scopes, and Worker credentials; none are invented or bundled. HRV/respiratory availability for GT 2, nightly scores and activity/workout mapping remain unverified/unimplemented. See [Huawei setup and capability matrix](HUAWEI.md).

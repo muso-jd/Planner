@@ -4,6 +4,19 @@
 
 Jeremy explicitly instructed on 2026-10-17 to continue through deployment for requested Planner changes after validation, without a separate confirmation each time. Follow `AGENTS.md`: publish the focused branch/PR, deploy to the existing production Worker, verify and document the result. An explicit preview/draft-only request overrides this. This is standing authorization for the agent's release workflow, not a new GitHub deployment pipeline; existing merge and deployment-deletion boundaries still apply.
 
+## Routine groups / adaptive typography / duplication — 3.7.0
+
+- Final rollout UTC `2026-10-20T07:12:02.267075Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact deployed source `38b44d4d845e2834ea82454317e94f195427b444`; branch `feature/routine-groups-adaptive-fonts`; https://github.com/muso-jd/Planner/pull/10, stacked on PR #9. No main merge.
+- Final deployment `9e60a25d-f478-4e66-bc83-a7b67b0fe556`; Worker version `c6bf5e04-bd99-4a88-9254-3250c20e9dd5`; 100% traffic verified through the deployment API. The content-only upload preserved exact live binding values and compatibility date `2026-10-16`.
+- The initial 3.7 rollout used source `29e1a0bba76cef1bc8158f5a0f36c5204f5a1293` at `2026-10-20T07:04:11.15268Z`, Worker version `f2010dad-71e3-43f2-88ec-d82504973137`. Live review led to large-font layout corrections (source `2f367cf1010947e2d673a939f92cb7f876621b35` at `2026-10-20T07:08:15.732436Z`, version `2afcfd22-7b7a-42f4-bf49-37f2ab6f0c71`), then immediate valid-input persistence in the final source. These versions remain retained.
+- Build, all 49 unit/API tests, JavaScript syntax and diff checks passed. Live health returned `ok:true`, `version:3.7.0`, `storage:true` on both the initial and final rollouts; final deployment and settings were also verified through Cloudflare.
+- Live desktop Chromium at 1363×936 verified project-style block grouping, top-level creation, absent inline creation, canonical weekly filtering, new routine placement inside a block, task/routine duplicate draft/save/cancel behavior, adaptive maximum, individual font editing and reset. Dark and Carbon glass layouts were inspected. At 150%, the five root sizes were 24, 27.36, 30.55, 39 and 51 px: smallest doubles, largest scales 1.5×. The corrected layout had no document horizontal overflow, a 301.234 px sidebar and stacked type controls.
+- Encrypted QA cloud revision 14 decrypted to distinct task copies, the routine copy retaining its block placement, and `fontXS:19` saved from the live UI. The test workspace is synthetic and separate from owner records. Final QA sizes were reset to defaults afterward.
+- PWA shell `3.7.0-r2` includes typography.js and record-actions.js. Allow download, close all Planner tabs and app windows, then reopen. Shell activation was verified in the cloud browser. No owner record rewrite, migration, new binding or deployment deletion.
+- Local Chromium download, phone/iPad viewport emulation and physical Safari tests were unavailable. They are not claimed as tested. Real Google exports and personal-owner sessions were not used.
+- Rollback: route traffic to 3.6.1 Worker version `ea687dc3-211d-4241-aed3-072731ba4450`, keeping records, bindings and deployment history. Older clients ignore new font settings; canonical block/routine/copy records retain their existing schema.
+
 ## Routine block / readability update — 3.6.1
 
 - UTC `2026-10-20T06:42:17.626697Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
@@ -271,3 +284,54 @@ Source branch `feature/funding-envelopes-routine-blocks`, stacked on `feature/re
 - PWA shell 3.4.0: let the update download, close every old Planner window and reopen, preserving pending edits. Payment reminders require the app to be running; browser suspension can delay or miss them. No closed-app push.
 - Rollback: route traffic to Worker version `eb55ec25-b731-4c92-9b72-f5dcfe25db70` (3.3.0), retaining data, bindings and historical deployments.
 
+
+
+## Today agenda / task priority — 3.7.1
+
+Prepared on `feature/routine-groups-adaptive-fonts`, reusing PR #10. Build and 52 unit/API tests pass. Content-only upload to existing `planner` production preserves bindings/settings/data. PWA shell 3.7.1 activates after all old app windows close. Rollback target is Worker version `c6bf5e04-bd99-4a88-9254-3250c20e9dd5` (3.7.0); retain data, bindings and deployment history. Exact rollout evidence follows after publication.
+
+### Verified production rollout — 3.7.1
+
+- UTC: `2026-10-28T06:08:03.462511Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact tested/deployed source: `f6300aeaae7a88622d63389ac97d89a81a95ba7c`, branch `feature/routine-groups-adaptive-fonts`. GitHub push was rejected by automatic approval review because explicit authorization to disclose source to the public repository is required. Existing PR #10 and the default repository dashboard have not been updated remotely.
+- Deployment: `893832d4-63fb-4729-acd8-39c99eb72dfa`; Worker version `f2ad6fd2-c100-4ebe-a12b-b66fbd9916f0`; 100% traffic. Content API verified the deployed module contains the exact tested compiled source. Before/after settings comparison verified all binding values and compatibility date unchanged.
+- Build, 52 unit/API tests, JavaScript syntax and diff checks passed. Live health returned version 3.7.1 with storage available. Served core.js and control-center.js matched local bytes. Browser DOM verified the new Today headings and Monday–Sunday date range, but the owner workspace is locked: no signed-in routine/completion or layout testing is claimed. Local Chromium installation failed; responsive device layouts and physical Safari/iPad remain unverified.
+- Initial upload of source `b4d6baa` at `2026-10-28T06:06:16.791196Z` used deployment `a2e48ac5-7df1-4b42-81a8-f553a32fafc7`, version `431f90c4-604c-4bdb-ba4b-5b0031d2408f`. The final source retains task edit button accessible names with visible priority badges.
+- PWA shell 3.7.1: close all old Planner tabs/app windows after the update downloads, then reopen. Preserve pending edits and workspace keys.
+- Rollback: route traffic to `c6bf5e04-bd99-4a88-9254-3250c20e9dd5` (3.7.0); preserve bindings, records and historical deployments. No record/schema migration.
+
+
+## Compact Today rows / ascending priority — 3.7.2
+
+Prepared on the existing `feature/routine-groups-adaptive-fonts` branch. Build, 53 unit/API tests and the targeted responsive Chromium suite passed. No migration, new binding or saved-priority rewrite. Publish through the content-only upload to existing `planner` production; verify compiled source, traffic, health and settings. Rollback target: `f2ad6fd2-c100-4ebe-a12b-b66fbd9916f0` (3.7.1), retaining records/bindings/history. PWA shell 3.7.2 activates after all old app windows close. GitHub publication remains blocked pending explicit approval from the previous review.
+
+### Verified production rollout — 3.7.2
+
+- UTC: `2026-10-28T07:28:51.540572Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact tested/deployed source: `6253f820ba1e82cffac99361b4f2750578c91ce0`; branch `feature/routine-groups-adaptive-fonts`.
+- Deployment: `dfcbe1ee-6178-457b-ab8f-7952ab212adb`; Worker version `7389c889-32fa-4777-a9cd-4732204ab30d`; 100% traffic. Deployed module contains the exact tested compiled source; full before/after settings equality verified, including bindings and compatibility date.
+- Build, 53 unit/API tests, targeted Chromium 153 responsive checks, JS syntax and diff checks passed. Synthetic local fixtures verified control sizes/removal, priority order/editor, routine completion and timer start. Desktop, simulated iPad landscape/portrait and phone screenshots inspected. Physical Safari/devices and unlocked owner workspace not tested.
+- PWA shell 3.7.2: close all old app windows after download and reopen. Saved ratings were not remapped and owner records were not rewritten.
+- Rollback to `f2ad6fd2-c100-4ebe-a12b-b66fbd9916f0` (3.7.1), keeping bindings, records and deployment history.
+- GitHub source/PR/default-dashboard publication remains blocked by the earlier automatic approval rejection requiring explicit permission to publish to public `muso-jd/Planner`. This follow-up does not supply that permission; no new push was attempted.
+
+
+## Huawei read-only connection — 3.8.0
+
+Prepared on the current task branch without remapping tasks or importing the uploaded Fit archive. New optional Worker bindings: `HUAWEI_CLIENT_ID`, secret `HUAWEI_CLIENT_SECRET`, optional approved `HUAWEI_HISTORY_SCOPE` (week/month/year). Callback: `https://planner.jeremydachojd.workers.dev/integrations/huawei/callback`. Until credentials/approval are configured, the authenticated status endpoint shows setup required and Connect is disabled. No Huawei bindings were present when production settings were inspected. See HUAWEI.md; do not put secret values in source/docs. Content-only publication retains live configuration; activating Huawei later requires explicit secure configuration. No D1 schema change. Rollback target: 3.7.2 Worker version `7389c889-32fa-4777-a9cd-4732204ab30d`; keep data/bindings/version history.
+
+### Verified production rollout — 3.8.0
+
+- UTC: `2026-10-28T08:48:40.275832Z`; Worker `planner` / production; https://planner.jeremydachojd.workers.dev/.
+- Exact tested/deployed source: `118431072a4bf6df713bba57b8f6362105c668ab`; branch `feature/routine-groups-adaptive-fonts`.
+- Deployment: `a4278dc6-bad9-49da-b5f0-6923eb1007dd`; Worker version `f99c3dc2-d8bf-4f11-b8ca-18b8c4699d1f`; 100% traffic. Deployed module contains the exact tested compiled source. Full before/after settings equality verified; existing bindings and compatibility date preserved. No Huawei credentials were added, and no Huawei account was connected/read.
+- Build, all 60 unit/API tests, targeted Huawei Chromium browser suite, 57 existing Calendar/Health checks and PWA installability/offline/reconnect checks passed. Representative desktop, simulated iPad landscape/portrait and phone screenshots inspected. Physical Safari/devices remain untested. Huawei tests use synthetic mocked consent/data, not real provider authorization.
+- The connection UI and gateway are deployed; actual Huawei access remains setup-blocked because app credentials/approval are missing. The missing-setup UI prevents connection. The uploaded Fit archive was not imported.
+- PWA shell 3.8.0 activates after all old app windows close. Rollback: route traffic to `7389c889-32fa-4777-a9cd-4732204ab30d` (3.7.2), preserving records, bindings and deployment history. No D1 migration.
+- GitHub source/PR/default-dashboard publication remains blocked by the existing automatic-review rejection requiring explicit public source publication permission. No new push attempted.
+
+Live `/api/health` verified HTTP 200 with `ok:true`, `version:3.8.0`, `storage:true` through curl. An earlier Python HTTP client received network-path 403 responses; no successful authenticated production Huawei call is claimed.
+
+## GitHub publication authorization — 2026-10-28
+
+Jeremy explicitly approved the prepared GitHub push. This supersedes the earlier public-publication blocker for the prepared Planner source and documentation commits. Publish the existing task branch and default-branch index, update PR #10, and retain its existing target. No merge, resource deletion or new deployment is required. Huawei credentials/approval remain separate activation prerequisites.

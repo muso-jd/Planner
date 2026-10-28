@@ -1,5 +1,30 @@
 # Changelog
 
+## 3.8.0 — 2026-10-28
+
+- Add a direct Huawei Health read-only connection with server-side OAuth exchange, session-only tokens, explicit previews and encrypted imports.
+- Import sleep-stage intervals, heart rate, resting heart rate, Huawei stress (1–99), SpO₂ and weight; keep provider scales and summary meanings separate.
+- Expose missing setup and per-type access errors. Huawei app credentials, vendor approval and real device/account verification remain required.
+
+## 3.7.2 — 2026-10-28
+
+- Simplify task rows to checkmark, title/details, compact P rating and matching clock; remove row duplicate and Google-send controls.
+- Restore Today’s 2:1 desktop columns and use single-line routine titles with right-aligned times, retaining completion/editing.
+- Reverse nonurgent priority semantics to P1 highest through P10 lowest across sorting, editing and Insights, without remapping records.
+
+## 3.7.1 — 2026-10-28
+
+- Show compact priority badges for every task, including Calendar, project and dependency titles. Urgent/overdue tasks retain red P0.
+- Today lists every urgent task, plus remaining tasks and expense/payment occurrences due in the selected Monday–Sunday week. Blocked work remains visible with its existing completion guard.
+- Widen Today’s routine panel and place time/category beneath each title; use canonical linked-block times and remove redundant Routine labels.
+
+## 3.7.0 — 2026-10-20
+
+- Show canonical Calendar time blocks as Projects/Goals-style cards containing their routines. Add All view, block schedule filtering, selected-date progress and direct add/edit actions.
+- Move new time-block creation next to New routine; remove inline block creation from routine editing.
+- Consolidate UI typography to five shared sizes. Settings provides an adaptive scale, five individual base-size inputs and reset. Smaller actual sizes receive more relative scaling; largest scales linearly.
+- Duplicate tasks and routines from their rows or editors. Review copies before saving; completion history, daily check identity and Google integration identity are not copied.
+
 ## 3.6.1 — 2026-10-20
 
 - Create and link a new time block directly inside the routine window, with title, date, start time, duration and recurrence. Saving persists both records together; closing discards the draft.

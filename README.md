@@ -62,3 +62,23 @@ Android: open the live URL in Chrome, then choose **Install app** from the brows
 ### 3.6.1 readability and routine window
 
 Create a linked time block without leaving the routine editor. Compact text is 50% larger; dark-theme subtitles and field captions are white with gray supporting text. See [features](docs/FEATURES.md) and [change report](docs/changes/2026-10-20-routine-block-readability.md).
+
+
+### 3.7.0 routine groups and UI controls
+
+Routines now live inside project-style time-block cards, with independent routines shown separately. Create time blocks beside New routine. Settings → UI typography controls five shared sizes with adaptive scaling and individual adjustments. Tasks and routines can be duplicated into an editable draft. See [change report](docs/changes/2026-10-20-routine-groups-adaptive-fonts.md).
+
+
+### 3.7.1 Today agenda and priority badges
+
+Today shows all open urgent tasks without a three-task cap, including blocked tasks. Remaining open tasks and outgoing ledger payments due in the selected Monday–Sunday week appear below, with recurring occurrences and transfer dates resolved across month/year boundaries. Urgent tasks appear once. Ledger entries have no settlement state; this is the scheduled payment list, not an unpaid-bill inference. Three additional available actions remain below the agenda.
+
+Every task title in shared lists and Calendar shows its rating; P0/overdue keeps red styling. Existing semantics remain: P0 is urgent, otherwise lower nonzero ratings mean greater importance. Daily rhythm uses equal-width panels, a full-width title, compact time/category metadata, natural wrapping and existing check/edit/duplicate controls. Canonical block times are respected.
+
+
+### 3.7.2 Compact Today rows and ascending priorities
+Task rows remove duplicate/Google-send controls and use equally sized checkmark, clock and P0–P10 chips. Today’s desktop agenda is two-thirds actions and one-third daily rhythm; screens at 1150 px and below stack the panels. Routine rows retain completion and editing, show only icon/title/right-aligned time, and truncate long titles to one line with the full title available on the edit control. Nonzero priority sorts P1 (highest) through P10 (lowest), after urgent work; the explicit Due date sort continues to prioritize dates. Editors, badges and Insights follow that meaning. Saved task ratings are unchanged.
+
+
+### Huawei Health — 3.8.0
+Health now offers a separate direct Huawei connection: sleep-stage intervals, daily heart-rate/resting-HR/stress/SpO₂ sample summaries and individual weight measurements. Stress retains Huawei’s 1–99 scale; sleep-stage calendar-day totals remain separate from nightly summaries. Server-side OAuth keeps the app secret private, and tokens are page-memory-only. Imports require preview/review, preserve manual data and notes, and use existing encrypted sync. Live connection requires a Huawei web app, approved scopes, and Worker credentials; none are invented or bundled. HRV/respiratory availability for GT 2, nightly scores and activity/workout mapping remain unverified/unimplemented. See [Huawei setup and capability matrix](docs/HUAWEI.md).

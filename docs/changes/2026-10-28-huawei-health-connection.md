@@ -1,0 +1,18 @@
+# Direct Huawei Health connection — 3.8.0
+
+The prior Google Health connector cannot be assumed to expose Huawei-origin Google Fit history. Add a separate Huawei Health Service Kit cloud connection for ongoing compatible account data. The existing Google connector and all task/routine behavior remain available. The uploaded Fit archive was inspected previously; its personal data is not bundled, committed or imported by this change.
+
+Implemented: authenticated, read-only gateway; missing-configuration status; server-side OAuth code exchange/refresh; workspace/origin/expiry-bound signed state plus HttpOnly cookie; same-origin callback with postMessage/BroadcastChannel for isolated popup contexts; runtime-only access/refresh tokens; metric selection, progress/cancel, explicit preview and encrypted import. Data includes sleep-stage intervals, heart rate, resting HR, Huawei stress, SpO₂ and weight. Daily sampled means/min/max/count stay separate from resting-HR inference. Huawei stress 1–99 stays separate from manual 1–5. Awake sleep stages are displayed but excluded from asleep totals; stage calendar-day totals do not masquerade as nightly summaries/scores.
+
+The gateway allows only known metrics and fixed read endpoints. Request bodies and provider responses are bounded; requests time out; provider errors do not echo secrets; only the documented EU regional redirect is allowed. Missing scopes/history grants remain explicit errors. Selected metrics determine consent scopes. Stable IDs avoid duplicate reimports; local notes/manual data/tombstones survive. Corrected sleep segments supersede provider segments on refreshed nonempty days with recoverable tombstones. A plaintext-size preflight prevents saving a batch that could exceed the existing encrypted vault sync limit.
+
+Validation:
+- `npm run build`; `npm test`: all 60 unit/API tests passed.
+- Targeted Huawei Chromium 153 suite passed: missing setup, mocked real callback/OAuth, six metrics, preview without writes, explicit import/reimport, separate stress scales, memory-only tokens, disconnect and four viewports.
+- Existing Calendar/Health suite: all 57 checks passed, including Google read-only OAuth/API/pagination/partial errors/annotations and cross-device sync. Its old task-row export selector was updated to the existing saved editor action after the prior row-button removal; Google connection selectors are now scoped to the Google card.
+- PWA: installability (zero errors), manifest/icons/install UI, static-only caching, offline reopen/edit/reload and reconnect sync passed.
+- JavaScript syntax and diff checks passed. Desktop, simulated iPad landscape/portrait and phone screenshots inspected. Physical Safari/devices and real Huawei account/consent remain untested.
+
+Production setup inspection found no Huawei credential bindings. The code can be deployed while the connection is disabled. Real access requires Huawei web-app registration, approved read/history scopes, secure Worker credentials, Huawei Health data-sharing authorization and user consent. No credentials or approval were fabricated, no personal account queried. Nightly sleep scores/summaries, workouts/activity, HRV and respiratory mappings remain unimplemented; their API availability is documented separately from GT 2 device/account availability. See HUAWEI.md for the capability matrix, exact scopes and setup; DEPLOYMENT.md for actual source/rollout/rollback evidence.
+
+GitHub publication remains blocked by the existing automatic-review rejection requiring explicit public source publication permission. No new push was attempted; source and evidence are committed locally on the existing task branch.

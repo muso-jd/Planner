@@ -9,3 +9,7 @@
 - Preserve existing deployed versions. Deployment deletion requires separate explicit confirmation.
 - Cloud data is encrypted client-side. Preserve CAS revision checks, tombstones, field-level merge and conflict review when modifying sync.
 - Google integrations are explicit user actions; no Apple Calendar/Reminders/Tasks integration. iOS Home Screen icon/installation metadata is explicitly requested and allowed.
+
+## Standing sync workflow (2026-10-28)
+- Reuse the current coherent task branch and existing PR. Automatically commit/push validated changes and deploy to the established production target. Preserve remote concurrent work; never force-push.
+- Keep the default README as the repository/deployment index; refresh its existing generator rather than editing generated panels. Do not merge or delete resources without authorization.
