@@ -48,14 +48,14 @@ These are recorded destinations, not a fresh availability or security check. Git
 
 | Destination | URL | Source / evidence |
 | --- | --- | --- |
-| 3.7.0 production destination \(recorded\) | [Open](https://planner.jeremydachojd.workers.dev/) | [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) · [Record](https://github.com/muso-jd/Planner/blob/feature%2Froutine-groups-adaptive-fonts/docs/DEPLOYMENT.md) |
+| 3.8.0 production destination \(verified 2026-10-28; Huawei activation pending\) | [Open](https://planner.jeremydachojd.workers.dev/) | [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) · [Record](https://github.com/muso-jd/Planner/blob/feature%2Froutine-groups-adaptive-fonts/docs/DEPLOYMENT.md) |
 
 ### Branches and work
 
 | Branch | Purpose | GitHub state / target | Latest source/docs commit (UTC) | Links |
 | --- | --- | --- | --- | --- |
-| [main](https://github.com/muso-jd/Planner/tree/main) | Default source and repository index | Default branch | 2026-10-23 08:12:15 | [1143cb0](https://github.com/muso-jd/Planner/commit/1143cb000d2cec1120cff3f828b7d71a95e1f738) |
-| [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) | Planner 3.7: routine block cards, adaptive type and duplication | Open PR #10 → feature/routine-block-readability | 2026-10-20 07:14:54 | [ba4af19](https://github.com/muso-jd/Planner/commit/ba4af19d243fc5c03596d57654bf66a841bf4bea) · [PR #10](https://github.com/muso-jd/Planner/pull/10) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Froutine-groups-adaptive-fonts) |
+| [main](https://github.com/muso-jd/Planner/tree/main) | Default source and repository index | Default branch | 2026-10-28 09:01:08 | [9a2e70d](https://github.com/muso-jd/Planner/commit/9a2e70d2ad06d214013bdd194f11e112948407a8) |
+| [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) | Planner 3.8: focused Today agenda, compact priorities and Huawei Health | Open PR #10 → feature/routine-block-readability | 2026-10-28 09:00:14 | [c13bf00](https://github.com/muso-jd/Planner/commit/c13bf00be64a13b2e2d22f62b5269ac709120244) · [PR #10](https://github.com/muso-jd/Planner/pull/10) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Froutine-groups-adaptive-fonts) |
 | [feature/routine-block-readability](https://github.com/muso-jd/Planner/tree/feature%2Froutine-block-readability) | Planner 3.6.1: create time blocks from routines and enlarge compact text | Open PR #9 → feature/black-glass-funded-tasks | 2026-10-20 06:46:59 | [96c90af](https://github.com/muso-jd/Planner/commit/96c90afda645358e6c6a8bb2d8c25f5128e6caa2) · [PR #9](https://github.com/muso-jd/Planner/pull/9) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Froutine-block-readability) |
 | [feature/black-glass-funded-tasks](https://github.com/muso-jd/Planner/tree/feature%2Fblack-glass-funded-tasks) | Planner 3.6: hide free funding rows and add black glass themes | Open PR #8 → feature/liquid-glass-themes | 2026-10-17 11:35:37 | [31c5ab1](https://github.com/muso-jd/Planner/commit/31c5ab13520d3da74ef5b8efdf8087d6f0d37daf) · [PR #8](https://github.com/muso-jd/Planner/pull/8) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Fblack-glass-funded-tasks) |
 | [feature/liquid-glass-themes](https://github.com/muso-jd/Planner/tree/feature%2Fliquid-glass-themes) | Planner 3.5: optional Pearl, Dusk and Obsidian glass themes | Open PR #7 → feature/funding-envelopes-routine-blocks | 2026-10-17 11:21:01 | [dfc0dc8](https://github.com/muso-jd/Planner/commit/dfc0dc8ef27f0723511f403f048af8c6a0de2ec2) · [PR #7](https://github.com/muso-jd/Planner/pull/7) · [Compare](https://github.com/muso-jd/Planner/compare/main...feature%2Fliquid-glass-themes) |
@@ -75,8 +75,8 @@ Default-branch source/docs commit details exclude automatic index-only commits.
 
 | Branch | Latest commit summary |
 | --- | --- |
-| [main](https://github.com/muso-jd/Planner/tree/main) | Lead repository landing page with app overview and changelog |
-| [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) | Record Planner 3.7 deployment and final browser validation |
+| [main](https://github.com/muso-jd/Planner/tree/main) | Update Planner entry point and deployment index for published 3.8.0 |
+| [feature/routine-groups-adaptive-fonts](https://github.com/muso-jd/Planner/tree/feature%2Froutine-groups-adaptive-fonts) | Planner 3.8: weekly agenda, compact priorities and direct Huawei Health imports |
 | [feature/routine-block-readability](https://github.com/muso-jd/Planner/tree/feature%2Froutine-block-readability) | Record Planner 3.6.1 rollout and live validation |
 | [feature/black-glass-funded-tasks](https://github.com/muso-jd/Planner/tree/feature%2Fblack-glass-funded-tasks) | docs: record Planner 3.6 rollout and standing deployment authorization |
 | [feature/liquid-glass-themes](https://github.com/muso-jd/Planner/tree/feature%2Fliquid-glass-themes) | docs: record verified Planner 3.5 rollout |
