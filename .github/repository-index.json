@@ -2,7 +2,7 @@
   "schema_version": 1,
   "deployments": [
     {
-      "label": "3.7.0 production destination (recorded)",
+      "label": "3.8.0 production destination (verified 2026-10-28; Huawei activation pending)",
       "url": "https://planner.jeremydachojd.workers.dev/",
       "source_branch": "feature/routine-groups-adaptive-fonts",
       "evidence_url": "https://github.com/muso-jd/Planner/blob/feature%2Froutine-groups-adaptive-fonts/docs/DEPLOYMENT.md"

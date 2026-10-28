@@ -6,7 +6,18 @@ A personal workspace for tasks, goals, projects, routines, finances, reflection 
 
 **Current work:** `feature/routine-groups-adaptive-fonts`. The default branch retains an earlier source baseline; use the linked task branch for the described updates.
 
+**Production update — 2026-10-28:** Planner 3.8.0 is deployed with a direct read-only Huawei connector for sleep stages, heart rate, resting heart rate, Huawei stress, SpO₂ and weight. Live access is disabled pending Huawei app credentials/approval. Build, 60 unit/API tests, targeted Huawei browser tests, 57 Calendar/Health checks and PWA/offline checks passed. Source `118431072a4bf6df713bba57b8f6362105c668ab`; Worker version `f99c3dc2-d8bf-4f11-b8ca-18b8c4699d1f`. Source publication was explicitly approved on 2026-10-28. The generated dashboard tracks the task branch and existing PR.
+
 ## Changelog
+
+**3.8.0 — 2026-10-28**
+
+- Add direct read-only Huawei Health authorization and reviewed imports for sleep stages, heart rate, resting HR, Huawei stress, SpO₂ and weight. Live access requires Huawei credentials and approval.
+
+**3.7.2 — 2026-10-28**
+
+- Show all urgent tasks and weekly tasks/payments on Today, simplify task controls and routine rows, and sort P1 highest through P10 lowest without rewriting saved ratings.
+
 
 **3.7.0 — 2026-10-20**
 
