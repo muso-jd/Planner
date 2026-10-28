@@ -91,3 +91,25 @@
 @media(max-width:600px){.routine-members{padding-left:8px}.routine-block-card .row .tag{white-space:normal}.routine-block-actions button{white-space:normal}.font-tier-grid{grid-template-columns:1fr}}
 
 .input-field>.field-caption{font-size:var(--font-xs)}
+
+/* Compact agenda controls and single-line routine rows. */
+.priority-badge{display:inline-grid;place-items:center;font:var(--font-sm)/1 var(--mono);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:color-mix(in srgb,var(--accent) 8%,transparent);border-radius:8px;padding:4px;margin:0 0 0 8px;white-space:nowrap}
+.urgent-badge{line-height:1;white-space:nowrap}
+.row.task-row{display:grid;grid-template-columns:40px 32px minmax(0,1fr) 88px;column-gap:12px}
+.task-row>.entry-icon-rail{width:32px;min-width:0;padding:0;align-self:center}
+.task-row .task-row-actions{display:flex;flex-direction:row;gap:8px;align-items:center}
+.row.task-row>button.check,.task-row .task-row-actions button,.task-row-actions>.priority-badge,.task-row-actions>.urgent-badge{display:grid;place-items:center;box-sizing:border-box;width:40px;height:40px;min-width:40px;min-height:40px;padding:6px;margin:0;border-radius:8px;flex:none}
+.task-row .task-row-actions button{border:0;background:none}.task-row .task-row-actions .area-icon{width:28px;height:28px;min-width:28px}
+.task-row-actions>.priority-badge,.task-row-actions>.urgent-badge{font:var(--font-sm)/1 var(--mono);letter-spacing:0}
+.today-agenda{align-items:start}.today-agenda h3{margin-top:12px}.today-agenda>.focus-card{grid-column:span 8}.today-agenda>.today-rhythm{grid-column:span 4;padding:20px}
+.today-rhythm .card-head{gap:8px}.today-rhythm .card-head h2{font-size:var(--font-md)}
+.today-rhythm .today-routine{display:grid;grid-template-columns:34px 24px minmax(0,1fr) auto;column-gap:8px;align-items:center;padding:12px 0;min-height:60px}
+.today-routine>.entry-icon-rail{width:24px;min-width:0;padding:0;align-self:center}.today-routine>.entry-icon-rail>.area-icon{width:24px;height:24px;min-width:24px;flex-basis:24px}
+.today-routine>.row-body{overflow:hidden}.today-routine>.row-body>.link-button{display:block;width:100%;min-height:36px;padding:4px 0;line-height:1.3;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--font-sm)}
+.today-routine .entry-heading{display:inline}.today-routine .entry-title{font-size:var(--font-sm);white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.today-routine>.routine-time{justify-self:end;text-align:right;white-space:nowrap;font:var(--font-sm)/1.3 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.calendar-event .priority-badge,.calendar-event .urgent-badge{margin:4px 0 0;font-size:var(--font-xs);white-space:nowrap}
+@media(max-width:1150px){.today-agenda>.focus-card,.today-agenda>.today-rhythm{grid-column:span 12}}
+@media(max-width:600px){.row.task-row{grid-template-columns:40px 24px minmax(0,1fr) 84px;column-gap:6px}.task-row>.entry-icon-rail{width:24px}.task-row .task-row-actions{gap:4px}.row.task-row>button.check{width:40px;min-width:40px}.today-agenda .ledger-row{flex-wrap:wrap}.today-agenda .ledger-row>.row-body{flex-basis:60%}.today-agenda .ledger-amount{margin-left:auto;max-width:100%;overflow-wrap:anywhere}}
+
+.huawei-connection{margin-bottom:18px}.huawei-connection summary{cursor:pointer}.huawei-connection code{overflow-wrap:anywhere}.huawei-metric-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 16px;margin:16px 0}.huawei-metric-picker>label.inline{display:flex;align-items:center;gap:10px;margin:0;min-height:44px}.huawei-metric-picker input[type=checkbox]{flex:0 0 20px;width:20px;margin:0}.huawei-connection .toolbar>label:has(#huaweiImportDays){min-width:145px}.huawei-connection .toolbar>label select{max-width:100%;width:100%}@media(max-width:800px){.huawei-metric-picker{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){.huawei-metric-picker{grid-template-columns:1fr}}

@@ -1,8 +1,9 @@
 import fs from 'node:fs';
 const assets={};for(const [file,type] of [['index.html','text/html; charset=utf-8'],['app.js','text/javascript; charset=utf-8'],['core.js','text/javascript; charset=utf-8'],['style.css','text/css; charset=utf-8'],['workspace.css','text/css; charset=utf-8'],['pwa.js','text/javascript; charset=utf-8'],['sw.js','text/javascript; charset=utf-8'],['manifest.webmanifest','application/manifest+json']])assets['/'+file]=[type,fs.readFileSync('public/'+file,'utf8')];
-for(const file of ["typography.js","record-actions.js","budget-envelopes.js","dependencies.js","planning.js","control-center.js","attachments.js","solid-icons.js","calendar.js","health-data.js","health.js","insights.js","google-export.js"])assets['/'+file]=['text/javascript; charset=utf-8',fs.readFileSync('public/'+file,'utf8')];
+for(const file of ["typography.js","record-actions.js","budget-envelopes.js","dependencies.js","planning.js","control-center.js","attachments.js","solid-icons.js","calendar.js","health-data.js","health.js","huawei-health.js","huawei-data.js","huawei-callback.js","insights.js","google-export.js"])assets['/'+file]=['text/javascript; charset=utf-8',fs.readFileSync('public/'+file,'utf8')];
 assets['/themes.css']=['text/css; charset=utf-8',fs.readFileSync('public/themes.css','utf8')];
 assets['/fonts/noto-sans-mono.woff']=['font/woff',fs.readFileSync('public/fonts/noto-sans-mono.woff.base64','utf8').trim(),'base64'];
 for(const name of ['life-192','life-512','life-maskable-512','life-ios-180'])assets['/icons/'+name+'.png']=['image/png',fs.readFileSync('public/icons/'+name+'.png.base64','utf8').trim(),'base64'];
-fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/worker.mjs',fs.readFileSync('src/worker.mjs','utf8').replace('__ASSETS__',()=>JSON.stringify(assets)));
+assets['/huawei-callback.html']=['text/html; charset=utf-8',fs.readFileSync('public/huawei-callback.html','utf8')];
+fs.mkdirSync('dist',{recursive:true});fs.writeFileSync('dist/worker.mjs',fs.readFileSync('src/worker.mjs','utf8').replace('// __HUAWEI_SERVER__',()=>fs.readFileSync('src/huawei.mjs','utf8').replace(/^export /gm,'' )).replace('__ASSETS__',()=>JSON.stringify(assets)));
 

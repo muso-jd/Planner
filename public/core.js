@@ -34,11 +34,18 @@ export function occursOn(block,date){if(!block.due||date<block.due)return false;
 export function viennaInstant(date,time){const raw=new Date(date+'T'+time+':00Z');const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(raw);const p=Object.fromEntries(parts.map(x=>[x.type,x.value]));const displayed=Date.parse(`${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:00Z`);return raw.getTime()-(displayed-raw.getTime())}
 export function isOverdue(task,now=new Date()){if(task.type!=='task'||task.deleted||task.done||!task.due)return false;const today=day(now);return task.due<today||(task.due===today&&!!task.time&&now.getTime()>viennaInstant(task.due,task.time))}
 export function isUrgent(task,now=new Date()){return task.type==='task'&&!task.deleted&&!task.done&&(task.priority===0||isOverdue(task,now))}
-export function taskOrder(a,b,now=new Date()){return Number(!!a.done)-Number(!!b.done)||Number(isUrgent(b,now))-Number(isUrgent(a,now))||(a.due||'9999').localeCompare(b.due||'9999')||(a.time||'99:99').localeCompare(b.time||'99:99')||(b.priority??5)-(a.priority??5)}
+export function taskOrder(a,b,now=new Date()){return Number(!!a.done)-Number(!!b.done)||Number(isUrgent(b,now))-Number(isUrgent(a,now))||((isUrgent(a,now)?0:a.priority??5)-(isUrgent(b,now)?0:b.priority??5))||(a.due||'9999').localeCompare(b.due||'9999')||(a.time||'99:99').localeCompare(b.time||'99:99')}
 export function safeColor(value){return typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value)?value:''}
 
 export function reflectionStamp(record){
  const stable=record.at||record.createdAt,at=stable||record.updated;
  if(!at||!Number.isFinite(Date.parse(at)))return 'Time not recorded';
  return (stable?'Saved ':'Last edited ')+new Date(at).toLocaleString('en-GB',{timeZone:'Europe/Vienna',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'})+' · Vienna';
+}
+
+export function priorityBadge(task,now=new Date()){
+ if(task.type!=='task')return '';
+ const urgent=isUrgent(task,now),priority=urgent?0:task.priority??5;
+ const label=urgent?'Urgent · Priority 0'+(isOverdue(task,now)?' · Overdue':''):'Priority '+priority;
+ return `<span class="${urgent?'urgent-badge':'priority-badge'}" aria-label="${esc(label)}" title="${esc(label)}">P${esc(priority)}</span>`;
 }

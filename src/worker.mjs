@@ -1,3 +1,4 @@
+// __HUAWEI_SERVER__
 // Client assets are embedded at build time; personal data is never bundled.
 const ASSETS = __ASSETS__;
 const secureHeaders = { 'Cache-Control':'no-store', 'X-Content-Type-Options':'nosniff', 'Referrer-Policy':'no-referrer', 'X-Frame-Options':'DENY', 'Permissions-Policy':'camera=(), microphone=(), geolocation=()' };
@@ -6,13 +7,14 @@ async function hash(s){return Array.from(new Uint8Array(await crypto.subtle.dige
 export default {async fetch(request,env){
  try {
  const url=new URL(request.url);
- if(url.pathname==='/api/health')return json({ok:true,version:'3.7.0',storage:!!env.DB});
+ if(url.pathname==='/api/health')return json({ok:true,version:'3.8.0',storage:!!env.DB});
  if(url.pathname.startsWith('/api/')){
   if(!env.DB)return json({error:'Cloud storage is unavailable'},503);
   if(request.headers.get('Origin') && request.headers.get('Origin')!==url.origin)return json({error:'Origin rejected'},403);
   const token=(request.headers.get('Authorization')||'').replace(/^Bearer /,'');
   if(!/^[A-Za-z0-9_-]{43}$/.test(token))return json({error:'Workspace key required'},401);
   const id=await hash(token);
+  if(url.pathname.startsWith('/api/huawei/')){const owner=await env.DB.prepare('SELECT id FROM vaults WHERE id=?').bind(id).first();if(!owner)return json({error:'Workspace not found'},404);return handleHuawei(request,env,id);}
   if(url.pathname==='/api/drive/status'||url.pathname==='/api/drive/list'){
    const owner=await env.DB.prepare('SELECT id FROM vaults WHERE id=?').bind(id).first();if(!owner)return json({error:'Workspace not found'},404);
    if(url.pathname==='/api/drive/status'&&request.method==='GET')return json({gatekeeper:!!env.ARTLOOK_GATEKEEPER,folderConfigured:!!env.DRIVE_FOLDER_ID,mode:'read-only',writes:'Google OAuth authorization required'});
@@ -61,7 +63,7 @@ export default {async fetch(request,env){
   }
   return json({error:'Not found'},404);
  }
- const path=url.pathname==='/'?'/index.html':url.pathname;
+ const path=url.pathname==='/integrations/huawei/callback'?'/huawei-callback.html':url.pathname==='/'?'/index.html':url.pathname;
  if(!ASSETS[path])return new Response('Not found',{status:404,headers:secureHeaders});
  const [type,body,encoding]=ASSETS[path];return new Response(encoding==='base64'?Uint8Array.from(atob(body),c=>c.charCodeAt(0)):body,{headers:{...secureHeaders,'Content-Type':type,'Content-Security-Policy':"default-src 'self'; script-src 'self' https://accounts.google.com https://apis.google.com; connect-src 'self' https://health.googleapis.com https://www.googleapis.com https://tasks.googleapis.com https://accounts.google.com https://apis.google.com; frame-src https://accounts.google.com https://docs.google.com https://drive.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; base-uri 'none'; form-action 'self'",'Cross-Origin-Opener-Policy':'same-origin-allow-popups'}});
  } catch(e){return json({error:'Request failed; local changes remain on this device'},500)}

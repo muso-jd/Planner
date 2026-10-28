@@ -1,4 +1,4 @@
-import {day,occursOn,taskOrder,viennaInstant} from './core.js';
+import {day,occursOn,taskOrder,viennaInstant,isUrgent} from './core.js';
 import {children} from './dependencies.js';
 
 export const routineFrequency=r=>['daily','weekly','monthly'].includes(r.frequency)?r.frequency:'daily';
@@ -90,4 +90,14 @@ export function groupedRoutines(records,frequency='all'){
  const active=Object.values(records).filter(r=>!r.deleted),blocks=active.filter(r=>r.type==='block');
  const sort=(a,b)=>String(routineTime(records,a)||'').localeCompare(String(routineTime(records,b)||''))||String(a.title||'').localeCompare(String(b.title||''));
  return {blocks:blocks.filter(b=>frequency==='all'||b.repeat===frequency).sort((a,b)=>String(a.time||'').localeCompare(String(b.time||''))).map(block=>({block,routines:active.filter(r=>r.type==='routine'&&routineBlock(records,r)?.id===block.id).sort(sort)})),unassigned:active.filter(r=>r.type==='routine'&&!routineBlock(records,r)&&(frequency==='all'||routineFrequency(r)===frequency)).sort(sort)};
+}
+
+// Use the selected Vienna calendar date; weeks run Monday through Sunday.
+export function todayAgenda(records,date,now=new Date()){
+ const dates=periodDates(date,'week'),open=Object.values(records).filter(r=>r.type==='task'&&!r.deleted&&!r.done);
+ const urgent=sortTasks(open.filter(r=>isUrgent(r,now)));
+ const urgentIds=new Set(urgent.map(r=>r.id));
+ const tasks=sortTasks(open.filter(r=>dates.includes(r.due)&&!urgentIds.has(r.id)),'due');
+ const payments=[...new Set(dates.map(d=>d.slice(0,7)))].flatMap(month=>ledgerOccurrences(records,month)).filter(r=>r.kind!=='income'&&dates.includes(r.date));
+ return {from:dates[0],to:dates.at(-1),urgent,tasks,payments};
 }

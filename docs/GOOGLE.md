@@ -79,3 +79,7 @@ Select **Health → Google Health → Last 365 days → Preview Google data**. T
 **Available data** reports returned versus importable readings and their coverage, alongside empty results and errors. The last report synchronizes privately as encrypted settings. It checks eight supported metrics, not every enabled API. Enabling APIs or adding OAuth consent-screen scopes is separate from granting the browser token those scopes and having actual data in Google Health. The existing three read-only scope groups cover the additional oxygen/respiratory/body-fat metrics. No additional scopes are requested. Actual personal account readings remain unverified in this release because the agent browser has no unlocked workspace or session token.
 
 Schema and pagination references rechecked 2026-10-16: https://developers.google.com/health/data-types and https://developers.google.com/health/reference/rest/v4/users.dataTypes.dataPoints/list and https://developers.google.com/health/reference/rest/v4/users.dataTypes.dataPoints .
+
+
+## Huawei watches and legacy Fit data
+Google Health is not assumed to expose Huawei-origin Google Fit Takeout records. Direct ongoing Huawei account access is now a separate connector documented in [HUAWEI.md](HUAWEI.md). Fit archive backfill is a separate future importer. Task row export icons were removed in 3.7.2; Send saved task to Google remains in the saved task editor.
